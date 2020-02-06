@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 500px;
+            margin: 20px auto;
+            list-style: none;
+        }
+        li {
+            line-height: 20px;
+            text-align: center;
+            border-bottom:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <ul id="box">
+        <li>1</li> 
+        <li>2</li> 
+        <li>3</li> 
+        <li>4</li> 
+        <li>5</li> 
+    </ul>
+    <script>
+        // 给奇数行增加红色，偶数行增加绿色
+        let lis = document.getElementsByTagName('li');
+        for (var i = 0; i < lis.length; i++) {
+            if(i%2 === 0){
+                lis[i].style.background = 'red';
+            }
+            else {
+                lis[i].style.background = 'green';
+            };
+            lis[i].color = lis[i].style.background; // 给当前元素增加自定义属性，属性值是当前元素的背景颜色
+
+            lis[i].onmouseover = function(){
+                // 鼠标划入
+                this.style.background = 'yellow';
+            }
+            lis[i].onmouseout = function(){
+                // 鼠标划出
+                this.style.background = this.color
+                // 把当前元素之前的背景色在赋值给他
+
+            }
+
+        }
+    </script>
+</body>
+</html>

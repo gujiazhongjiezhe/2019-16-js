@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        数组的方法：
+        push、unshift、pop、shift、splice、sort、reverse、slice、concat、join、indexOf、lastIndexOf、includes、forEach、map,
+
+        1、方法的含义
+        2、方法的参数
+        3、方法的返回值
+        4、原数组是否发生变化
+         */
+
+        // push：向数组末尾增加值
+        // unshift:向数组开头增加
+        // pop：删除数组末尾一项
+        // shift:删除数组开头一项
+
+        // splice：数组的增删改
+        // let ary = [1,2,3,4];
+        // splice(n):从索引n删除到末尾
+        // ary.splice(1)
+        // splice(n,m):从索引1开始，删除m个
+        // ary.splice(1,1)
+        // splice(n,m,x):从索引n开始，删除m个，用x替换
+        // ary.splice(1,2,9)
+        // solice(n,0,x):从索引n开始，删除0个，把x放到n的前边
+        // ary.splice(1,0,9)
+        // console.log(ary)
+
+        // slice:截取
+        // slice(n):从索引n开始，截取到末尾
+        // slice(n,m):从索引n开始，截取到索引m，不包括m对应的那一项
+
+        // let ary = [1,2,3,4,5];
+        // // console.log(ary.slice(1,3))
+        // console.log(ary.slice(1))
+        // console.log(ary.slice()) // 克隆
+
+
+        // join：把数组以特定的分隔符转换为字符串
+        // let ary  = [1,2,3,4];
+        // console.log(ary.join())
+
+        // sort:数组排序
+        // reverse：数组倒叙
+        // 他俩都会改变原数组
+
+        // let ary = [36,12,67,32];
+        // console.log(ary.sort(function(a,b){
+        //     return b-a
+        // }))
+
+        // let ary = [2,3,4,1];
+        // console.log(ary.sort())
+        // console.log(ary.reverse()) // 倒叙
+
+        // indexOf：检测某个值在数组中第一次出现的位置
+        // indexOf(n,m):n是被检测的值，m是开始检测的位置
+        // let ary= [1,2,3,4,1,2,3,4];
+        // console.log(ary.indexOf(1,2))
+
+        // lastIndexOf：检测某个值在数组中最后一次出现的位置
+        // lastIndexOf(n,m):n是被检测的值，m是检测结束的位置
+        // console.log(ary.lastIndexOf(4,6))
+
+        // concat:数组的拼接
+        // let ary = [1,2];
+        // // ary.push([3,4])
+        // console.log(ary.concat([3,4],99))
+        // // console.log(ary)
+
+            // includes:检测当前值在数组里有没有，如果有就返回true，没有返回false
+
+            // let ary = [1,2,3];
+            // console.log(ary.includes(9)) // false
+
+            // forEach:遍历数组,没有返回值
+            // let ary = [1,2,3,4,5];
+            // ary.forEach(function(item,index){
+            //     // 数组有多少项，次函数就会执行多少次
+            //     // item是数组的每一项
+            //     // index是数组每一项的做引
+            //     console.log(item,index)
+            // })
+
+            // map：遍历数组，映射数组
+            // let ary = [1,2,3,4,5];
+            // console.log(ary.map(function(item,index){
+            //     console.log(item,index)
+            //     return item+1
+            // }))
+
+
+
+
+    </script>
+</body>
+</html>

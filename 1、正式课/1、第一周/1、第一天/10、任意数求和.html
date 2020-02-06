@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        任意数求和
+
+        // 
+         */
+         function sum(){
+                // arguments // 实参的集合[是一个类数组]，而且他和形参存在映射关系
+                let ss = 0;
+                for (var i = 0; i < arguments.length; i++) {
+                    let num = Number(arguments[i]); // 把每一个实参转数字
+                    if(!isNaN(num)){ // 判断当前值是不是NaN
+                        ss+=num;
+                    }
+                }
+                return ss
+
+         }
+         console.log(sum(true, null,undefined,1))
+    </script>
+</body>
+</html>

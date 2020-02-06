@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        变量提升：
+        变量提升是浏览器的一个机制
+        在当前作用域中，在代码执行之前，浏览器会对带var和带funtion的变量进行提前的声明和定义，带var只声明(创建变量)不定义，带function既声明又定义(赋值);
+
+         */
+
+        //  console.log(a); // un
+        //  var a = 12;
+        //  console.log(a); // 12
+
+        // console.log(a); // un
+        // console.log(b); // 报错
+        // var a = b = c = 100; // var a = 100;b = 100; c = 100;
+
+
+        /* 
+            a
+            b
+            c = 100
+        */
+        // console.log(a); // un
+        // console.log(b); // un
+        // console.log(c); // un
+        // var a,b,c = 100; // var a;var b; var c = 100;
+        // console.log(a); // un
+        // console.log(b); // un
+        // console.log(c); // 100
+
+
+        /* 
+        fn = f
+         */
+        // fn();
+        // function fn(){
+        //     /* 
+        //     形成私有作用域
+        //     相参赋值
+        //     变量提升
+        //     代码执行
+        //      */
+
+        //      /* 
+        //      num = 12
+        //       */
+        //     console.log(num); // un
+        //     var num = 12;
+        // }
+        // console.log(num) // 报错
+
+
+        // var name = 'xiaoHong';
+        // function fn(name) {
+        //     console.log(name);
+        //     function name(){};
+        //     console.log(name);
+        // }
+        // fn(name);
+
+        /* 
+          fn =   console.log(3)
+        */
+        // fn();  // 5
+        // function fn() {console.log(1)};
+        // fn();  // 5
+        // function fn() {console.log(2)};
+        // fn();  // 5
+        // var fn = function () {console.log(3)};
+        // fn(); // 3
+        // function fn() {console.log(4)};
+        // fn(); // 3
+        // function fn() {console.log(5)};
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        数组的排序：
+        冒泡排序：数组的每一项两两进行比较，如果前一项大于后一项，就交换位置
+         */
+        //  let ary = [12,23,11,34,10,9];
+
+        //  function bubble(ary){
+        //      // 控制的是执行的轮数
+        //     for (var i = 0; i < ary.length-1; i++) {
+        //         for (var j = 0; j < ary.length-1-i; j++) {
+        //            if(ary[j]<ary[j+1]){
+        //                // 两两交换位置
+        //                var temp = ary[j];
+        //                ary[j] = ary[j+1];
+        //                ary[j+1] = temp;
+        //            }
+        //         }
+        //     }
+        //     return ary
+        //  }
+        //  console.log(bubble(ary))
+
+        // 数组的插入排序：
+            // 1、先抓取第一张牌放到手里
+            // 2、继续抓取桌面的每一张牌，然后那当前抓取的牌和手里的牌从右往左依次做比较，如果抓到的牌比手里的牌大了，就把抓到的牌放到哪张牌的后面，并且停止比较
+            // 3、如果你当前抓的牌比你手里的都小，直接把这张牌放到你手里的最左边
+            let ary = [12,23,11,34,10,9];
+            function insert(ary){
+                // 先创建一个空数组。用来存放手里的牌
+                let handAry = [];
+                // 抓取第一张牌放到手里
+                handAry.push(ary[0]);
+
+                // 此循环就是依次抓取桌面上的每一张牌
+                for (var i = 1; i < ary.length; i++) {
+                   var gardCard = ary[i]; // 代表你抓的每一张牌
+                    // [1,2,3,4]
+                   for (var j = handAry.length-1; j >=0; j--) {
+                      var next = handAry[j]; // 代表你手里的每一张牌
+                      if(gardCard>next){
+                          handAry.splice(j+1,0,gardCard);
+                          break;
+                      }
+                      if(j===0){
+                          // 如果此条件成立，那说明你抓的牌比手里的牌都小，就直接把这上牌放到数组的最左边
+                          handAry.unshift(gardCard)
+                      }
+                   }
+
+                }
+                return handAry
+
+            }
+            console.log(insert(ary))
+
+    </script>
+</body>
+</html>

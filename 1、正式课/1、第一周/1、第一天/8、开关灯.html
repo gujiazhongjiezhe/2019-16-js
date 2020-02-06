@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            margin-left: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" style="background: red;"></div>
+    <script>
+        /* 
+        1、想操作谁就获取谁
+        2、给相应的元素绑定相应的事件
+        3、在事件里做你想做的事
+         */
+
+         let box = document.querySelectorAll('#box')[0];
+         console.log(box)
+         // red-->green-->yellow-->red...
+         box.onclick = function(){
+            let color = box.style.background;
+            // if(color == 'red'){
+            //     box.style.background = 'green'
+            // }
+            // else if(color == 'green'){
+            //     box.style.background = 'yellow'
+            // }
+            // else {
+            //     box.style.background = 'red'
+            // }
+            switch(color){
+                case 'red':
+                    box.style.background = 'green';
+                    break;
+                case 'green':
+                    box.style.background = 'yellow';
+                    break;
+                default:
+                    box.style.background = 'red';
+
+            }
+         }
+
+    </script>
+</body>
+</html>

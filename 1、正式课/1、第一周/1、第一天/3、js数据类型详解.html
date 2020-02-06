@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        number: 
+            + 有效数字：2,1，-1,3.6，+6
+            + NaN：(not a number)代表非有效数字，但是number数据类型的
+
+        把其他数据类型转数字：
+            基本数据类型：
+                字符串：
+                    只要字符串中出现了非有效数字，那结果就是NaN
+                    如果字符串左右有空格，会默认把空格省略
+                    空字符串转数字是0
+                boolean：
+                    true是1，false是0
+                null：0
+                undefined：NaN
+            引用数据类型：
+                先把值默认转化(隐式类型转换)为字符串，在把字符串转化为数字
+                    object转数字：
+                        object转字符串是 '[OBject object]'
+                        可以得到所有的普通对象转数字都是NaN
+                    数组转数字：
+                        他是把数组里的每一项都去转字符串，然后把每一个字符串从左往右加上数组的逗号拼接起来，
+                        然后在把这个字符串转数字
+
+         */
+
+        //  console.log(Number('3.1415926')) // 3.1415926
+        //  console.log(Number('3.1415926s')) // NaN
+        //  console.log(Number(true)) // 1
+        //  console.log(Number(false)) // 0
+        //  console.log(Number(null)) // 0
+        //  console.log(Number(undefined)) // NaN
+
+        //  console.log(Number({name:1})) // NaN
+        //  console.log(Number({})) // NaN
+
+        //  console.log(Number([2,3])); // '2'+ ',' + '3' =>'2,3' =>NaN
+        //  console.log(Number([3])) // '3'=>3
+        //  console.log(Number([{}])) //  '[OBject object]' =>NaN
+        //  console.log(Number([])) // ''=>0
+
+        // parseInt和parseFloat:把字符串转数字
+        // - 从左往右依次查找有效数字，直到找到非有效数字为止，把之前找到的数字返回出去(parseFloat可以识别一位小数点，parseInt不可以)
+
+        // console.log(parseInt('314')) // 314
+        // console.log(parseInt('3.14')) // 3
+        // console.log(parseFloat('314')) // 314
+        // console.log(parseFloat('3.14')) // 3.14
+        // console.log(parseFloat('3.14.15')) // 3.14
+        // console.log(parseInt('s')) // NaN
+        // console.log(parseFloat('s123')) // NaN
+        // console.log(parseInt(true)) // 'true' =>NaN
+
+        // isNaN：检测当前的值是否是一个非有效数字，如果是，就返回true，反之就返回flase
+        // 如果检测的值是有效数字，就返回false，反之返回true
+
+        // 如果检测的值不是number数据类型的，要先转换为number数据类型在检测
+
+        // console.log(isNaN(23)) // false
+        // console.log(isNaN(NaN)) // true
+        // console.log(isNaN(true)) // 1=>false
+        // console.log(isNaN(null)) // 0=>false
+        // console.log(isNaN(undefined)) // NaN =>true
+
+        // NaN：他和谁都不相等，包括自己
+        // console.log(1 == 1) // true
+        // console.log(NaN == NaN) // false
+
+        /* 
+        string:
+            "",'',``包起来的都是字符串
+        
+
+        把其他数据类型转字符串：val.toString()
+        基本数据类型转字符串：
+             基本数据类型转字符串是直接加引号
+             null和undefined不能直接调用toString方法
+
+        引用数据类型转字符串：
+            普通对象： '[Object object]';
+            数组：把数组的每一项都去调用toString方法，然后把每一个字符串连同数组的逗号从左往右一次拼接起来
+             
+         */
+
+        //  console.log(true.toString()) // 'true';
+        //  console.log(null.toString()) // 报错
+        //  console.log(null+'') // 'null' // 利用拼接把null转字符串
+
+        // 四则运算：
+        //     在js里也可以进行数学中的四则运算
+        // 如果进行运算的值不是number数据类型的，要先把他转化为number在进行运算，
+        // 如果在运算过程中出现了NaN，那运算的结果就是NaN
+
+        // console.log(1+1) // 2
+        // console.log(true+true) // 1+1 =>2
+        // console.log(false+null) // 0
+        // console.log(true+undefined) // 1+NaN // NaN
+        // console.log(3.14*666/12*undefined) // NaN
+
+        // 字符串拼接：
+            // 如果引号和加号相遇了，那就不在是正常的运算，就是字符串拼接了
+            // 基本值是直接拼接，不在进行数据类型转换
+            // 引用值和加号相遇，照样进行数据类型转换，转换为字符串
+
+        // console.log(1+'1'+true) // '11true'
+        // console.log([]+1) // ''+1 // '1';
+        // console.log([]+{}) // ''+{} // ''+'[Object object]' // '[Object object]'
+
+
+        // boolean:
+        // true false
+        //把其他数据类型转化为布尔数据类型
+            // Boolean
+            // 把其他数据类型转布尔有且只有undefined、null、NaN、0、 ''、false是false，其余的全是true
+
+            // console.log(Boolean('3')) // true
+            // console.log(Boolean(0)) // false
+            // console.log(Boolean(1)) // true
+        
+        // !:把其他数据类型转布尔，然后在取反
+        // console.log(!true) // false
+        // console.log(![]) // false
+        // console.log(!undefined) // true
+
+        // !!:把其他数据类型转布尔，然后取反在取反,跟Boolean等价
+            // console.log(!!0) // false
+            // console.log(!!1) // true
+
+        // 普通对象：
+        // let person = {
+        //     name:'xiaoMIng',
+        //     sge:18,
+        //     sex:'boy',
+        //     3:'xx'
+        // }
+        // let obj = {
+
+        // }
+
+        // console.log(person.name) // 'xiaoMIng'
+        // console.log(person['name']) // 'xiaoMIng'
+        // console.log(person[3])
+        // person.ss = '666'; // 新增键值对
+        // person.name = 'liMing'; // 如果新增的属性名对象里有，那就是修改
+
+        // 删除
+            // 假删除：对象名.属性名 = null;
+                //  person.age = null; // 属性名还是在的
+            // 真删除：delete 对象名.属性名
+                // delete person.name; // 属性名和属性值都删掉
+
+
+
+                
+        // 数组：数组也是对象的一种，是特殊的一种Object类型
+            // let ary = [];
+            // let ary1 = [true,1,false,'3'];
+            // 数组的每一项的属性名是浏览器天生自带的，从0开始，依次递增，代表每一项的位置
+            // 数组天生自带一个length属性，属性值是数组的长度[代表数组一共有多少项]
+
+            let ary = [true,false];
+            // 数组末尾增加一项：
+            // ary.属性名 = 属性值
+            // ary[2] = '333'; // [true,false,'333'];
+            // ary[ary.length] = '333';
+
+            // 数组开头增加
+
+            // 删除数组末尾一项
+                // ary.length = 2; // [true,false];
+                // ary.lenth = 0; // []
+
+                /* 
+                删除数组后两项
+                let ary = [true, false, null];
+                ary.length = 1 // [true];
+                 */
+
+
+
+
+    </script>
+</body>
+</html>

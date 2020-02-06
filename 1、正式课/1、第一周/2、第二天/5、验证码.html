@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <span id="show"></span ><button id="button">看不清</button>
+    <input type="text" id="input">
+    <script>
+        let show = document.getElementById('show');
+        let button = document.getElementById('button');
+        let input = document.getElementById('input');
+
+
+        function fn(){
+            let str = 'qwertyuio123456789ZXCVBNM';
+            console.log(str.length-1)
+            let value = '';
+            for (var i = 0; i < 4; i++) {
+               let index = Math.round(Math.random()*(str.length-1));
+               value+=str[index];
+            }
+            show.innerHTML = value
+        }
+        fn()
+        button.onclick = fn
+    </script>
+</body>
+</html>

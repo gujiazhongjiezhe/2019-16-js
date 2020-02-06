@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        =:赋值
+        ==：比较(会进行数据类型的转换，如果相等返回true，不相等返回false)
+        ===：绝对比较(不会进行数据类型的转换)
+         */
+         /* 
+         数字
+         字符串
+         布尔
+         null
+         undefined
+
+         普通对象
+         数组
+
+         数字 == 字符串：两边都转数字在进行比较
+         数字 == 字符串：两边都转数字在进行比较
+         数字 == 布尔：两边都转数字在进行比较
+         字符串 == 布尔：两边都转数字在进行比较
+         null == null // true
+         undefined == undefined // true
+         null == undefined // true
+         NaN和谁都不想等
+
+         数字 == 对象：两边都转数字在进行比较
+         布尔 == 对象：两边都转数字在进行比较
+         字符串 == 对象：两边都转字符串进行比较[字符串比较的是ASCll码]
+         对象 == 对象：比较的是空间地址
+         
+          */
+          /* 
+          字符串 == 对象：两边都转字符串进行比较[字符串比较的是ASCll码]
+          其余的都是转数字进行比较
+
+            null == null // true
+            undefined == undefined // true
+            null == undefined // true
+            NaN和谁都不想等
+           */
+          
+          console.log('1' === 1) // false
+          console.log([] === []) // false
+          console.log(null == undefined) // true
+          console.log(null === undefined) // false
+    </script>
+</body>
+</html>

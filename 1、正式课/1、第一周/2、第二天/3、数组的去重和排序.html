@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        模板字符串：``
+         */
+    //     let m = 10
+    //     //  let str = '123'
+    //      let str = `123${m}`
+    //      console.log(str)
+
+    // 数组的去重
+    // let ary = [23,23,23,34,34,23];
+    // 双for循环去重
+
+    // function unique(ary){
+    //     // 循环数组的每一项，让数组的每一项和他后面的值一一做比较，如果和数组的当前项相同了，就把那一项在原数组里删除
+    //     for (var i = 0; i < ary.length-1; i++) {
+    //         var cur = ary[i]
+    //         for (var j = 1+i; j < ary.length; j++) {
+    //            var next = ary[j]
+    //            if(cur == next){
+    //                ary.splice(j,1);
+    //                j--
+    //            }
+    //         }
+    //     }
+    //     return ary
+    // }
+    // console.log(unique(ary))
+
+    //===============================
+    // 利用对象的属性名不重复的特点实现去重
+    // let ary = [23,23,23,34,34,23];
+    // function unique(ary){
+    //     let obj = {};
+    //     for (var i = 0; i < ary.length; i++) {
+    //        var cur = ary[i];
+    //        obj[cur] = ary[i];
+    //     }
+    //     let newAry = [];
+    //     for(var key in obj){
+    //         newAry.push(obj[key])
+    //     }
+    //     return newAry
+    // }
+    // console.log(unique(ary))
+
+    // 利用对象的属性名如果存在就不是undefined的特点进行去重
+
+    // function unique(ary){
+    //     let obj = {};
+    //     for (var i = 0; i < ary.length; i++) {
+    //        if(obj[ary[i]] !== undefined){
+    //            ary[i] = ary[ary.length-1];
+    //            ary.length--;
+    //            i--;
+    //        }
+    //        else {
+    //            obj[ary[i]] = ary[i]
+    //        }
+    //     }
+    //     return ary
+    // }
+    // console.log(unique(ary))
+     </script>
+</body>
+</html>
