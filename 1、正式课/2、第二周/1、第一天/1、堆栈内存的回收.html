@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        堆栈内存：
+            堆内存：存储引用值
+         */
+        let obj = {}
+        obj = null;
+        //  当堆内存的空间地址不被占用的时候就销毁了
+
+
+        // 谷歌浏览器的内存回收机制：谷歌浏览器会每隔一段时间，就会检测一次，检测当前作用域有没有不被占用的内存空间，如果有就立即把他销毁(回收)
+
+        // let obj = {};
+        // let a = obj
+        // a = null
+
+        // IE和火狐浏览器：采用的计数的规则，如果你的内存空间每被占用一次，浏览器默认就会给当前内存加1，内存每释放一次，浏览器就会默认给当前内存减1，如果浏览器发现某个内存的计数为0，就把其回收(销毁)
+
+
+        // 栈内存的销毁：
+        // 1、全局栈内存和私有栈内存
+        // 全局栈内存的销毁：
+        // 当我们打开一个页面，形成全局的栈内存，为代码执行形提供环境，他一般不销毁，
+        // 只有关闭当前页面，才会销毁全局的栈内存
+        // 私有栈内存的销毁：
+        // 1、销毁
+        // 2、不销毁
+        // 3、不立即销毁
+
+        // 1、销毁：
+        // function fn(){
+        //     console.log(111);
+        // }
+        // fn();
+        // fn();
+        // fn();
+        // fn();
+
+        // 1、不销毁
+        // 1、在函数执行形成的私有私有栈内存里创建一个引用值
+        // 2、这个引用的值的空间地址被外界所接收
+
+        // function fn(){
+        //     /* 
+        //     形成私有栈内存
+        //      */
+        //     let obj = {name:1};
+        //     return obj // return的是空间地址
+        // }
+
+        // let a = fn(); // 空间地址
+
+        /* 
+        
+        
+         */
+        // let num = 1; // {}  1
+        // function fn(){
+        //     /* 
+
+        //      */
+        //     num = 1
+        // }
+        // fn();
+
+        // // num = 1;
+
+        // 3、不立即销毁
+
+        // function fn(){
+
+        //     return function (){
+        //         console.log(1)
+        //     }
+        // }
+
+        // fn()()
+
+        // 大函数在小函数执行完成之前是不能销毁的，他得等到小函数执行完成之后才能销毁
+
+        // 闭包：函数执行形成不销毁的作用域，他可以保护里边的变量不受外界所干扰，还可以保存这个变量
+
+        // ----------------------------------------------
+        // function fn() {
+
+        //     var n = 0; // 1 2
+        //     function f() {
+        //         var b = 13;
+        //         n++;
+        //         console.log(n); // 2
+        //     };
+        //     f();
+        //     return f;
+        // };
+        // var r = fn();
+        // r();
+
+
+        /* 
+        i = 5
+        fn = f
+        f
+         */
+        // var i = 5;
+        // function fn(i) {
+        //     /* 
+        //     i = 1 2 3
+        //      */
+        //     return function (n) { 
+        //         console.log(n + (++i)); // 7+3
+        //     }
+        // }
+        // var f = fn(1); // aaafff000
+        // f(2); // 4
+        // fn(3)(4); // 8
+        // fn(5)(6); // 12
+        // f(7); // 10
+        // console.log(i); // 5
+
+
+        /* 
+        num = 1
+        obj = {}
+        f = aaafff000
+
+        */
+        // var num = 1;
+        // var obj = {
+        //     num: 10,
+        //     fn: (function (num) { 
+        //        /* 
+        //        num = 1 2 3
+        //         */
+        //         var num = 2;
+        //         return function (n) { 
+        //             console.log(n * (num++)); // n*2
+        //         }
+        //     })(num) // 1
+        // }
+        // var f = obj.fn; 
+        // console.log(f === obj.fn) // true
+        // f(10); // 20
+        // f(20); //
+        // obj.fn(30);
+        // obj.fn(40);
+
+
+        /* 
+        a = 9 // 0 1 0 1 2
+        fn = f
+        f
+        m
+        x
+            */
+        var a = 9; //
+        function fn() {
+            /* 
+            
+             */
+            a = 0;
+            return function (b) { 
+                /* 
+                b = 5
+                 */
+                return b + a++; // 5+1
+            }
+        }
+        var f = fn(); // aaafff000
+        var m = f(5); // 
+        alert(m); // 5
+        var n = fn()(5);
+        alert(n); // 5 
+        var x = f(5);
+        alert(x); // 6
+        alert(a); // 2
+
+       
+    </script>
+</body>
+
+</html>

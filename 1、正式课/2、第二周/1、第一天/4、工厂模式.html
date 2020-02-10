@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        工厂模式：
+        把实现统一个功能的代码封装到一个函数里，以后想实现这个功能，就直接调用这个函数就好了
+        高内聚（提高代码的复用率）
+        低耦合（减少页面重复的代码）
+         */
+
+        function createInfo(name,age){
+            let guoJi = 'China';
+            
+            return {
+                name:name,
+                age:age,
+                guoJi:guoJi
+            }
+        }
+
+        let person1 = createInfo('zhouZHaoJun', 18);
+        let person2 = createInfo('chenLei', 19);
+        let person3 = createInfo('huoHongWei', 20);
+        console.log(person1,person2,person3)
+    </script>
+</body>
+</html>
