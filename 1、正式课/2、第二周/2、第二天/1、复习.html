@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            堆栈内存：
+               堆内存：存储引用值的 
+               堆内存的销毁：
+               let obj = {};
+               obj = null;
+         */
+        //  谷歌浏览器：每隔一段时间就会检测一次，当前作用域有没有没有被占用的空间地址，如果有，就直接把其销毁
+
+        // IE和火狐：采用计数的规则：如果谁的空间地址呗占用一次那就默认加1，如果少占用一次，就默认减1，如果浏览器发现哪个堆内存的计数为0，那就把其回收
+
+        /* 
+        栈内存：存储，提供环境
+            存储基本值和变量
+            提供环境用来运行代码
+            咱们的栈内存不能存储太多的东西
+
+         */
+        //  栈内存：
+        //     1、不销毁
+        //     2、销毁
+        //     3、不立即销毁
+
+        // 1、在当前栈内存中生成一个引用值
+        // 2、这个引用值的空间地址被外界所接收
+        // function fn(){
+        //     return {name:1} // aaafff000
+        // }
+        // let obj = fn()
+
+        // obj = null;
+
+        // let num = 1; // {}  aaafff000
+        // function fn(){
+        //     // num不是私有变量
+        //     num = {}
+        // }
+        // fn();
+
+        // console.log(num)
+
+        function fn() {
+            return function () {
+                console.log(1)
+            }
+        }
+        fn()()
+        // 不立即销毁
+        // 大函数的栈内存要等到小函数执行完成之后再销毁
+
+        // 函数执行形成不销毁的作用域，他可以保护里边的变量不受外界所干扰，而且还可以保存里边的变量
+
+        // let obj = (function () {
+        //     return {
+
+        //     }
+        // })()
+
+        // this:this是js里的关键字，有特殊的意义，
+            // this就是函数的执行主体，谁执行的函数，函数里的this就是谁
+
+        /* 
+        1、在全局作用域下，this是window
+        2、函数里的this，要看执行函数前有没有点，如果有点，点前面是谁，函数里的this就是谁，如果没有点，那函数里的this就是window
+        3、自执行函数里的this是winodw
+        4、回调函数里的this是window
+        5、给元素绑定事件行为，那事件里的this就是当前元素本身
+        6、箭头函数没有this，如果要在箭头函数里使用this，那就会往上一级作用域查找，如果上一级还没有，就直接在往上查找，直到找到全局作用域为止，那this就是window
+         */
+            
+            btn.onclick = function(){
+                console.log(this)
+            }
+    </script>
+</body>
+
+</html>

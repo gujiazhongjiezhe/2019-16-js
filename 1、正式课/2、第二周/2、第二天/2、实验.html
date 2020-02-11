@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // function f5() {
+    //     /* 
+    //     ff = function
+    //      */
+    //     f = ff(); // window.f = ff() window.f = false
+    //     return f; // false 
+    //     function ff() {
+
+    //         return "f" in window; // false
+    //     };
+    // } 
+    // console.log(f5()); // false
+
+
+    // function fn(){
+    //     // f = 5
+    //     console.log(f)
+    // }
+    // fn()
+    // console.log(window.f)
+
+    function g1() { // aaafff000
+        this.g="gg"; // window.g = 'gg';
+    };
+    var obj4= {
+        g1:g1, // aaafff000
+        gg:function () { 
+
+            g1(); // aaafff000
+            },
+        g:'gg' // 新增的
+    };
+    obj4.g1();// obj4.g = 'gg'
+    obj4.gg();// window.g = 'gg';
+    console.log(obj4);
+    console.log("g" in window); // true
+    </script>
+</body>
+</html>
