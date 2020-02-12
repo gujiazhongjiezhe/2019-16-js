@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        构造函数：
+            创建自定义类
+         */
+        //  function Fn(name,age){
+        //      this.name = name;
+        //      this.age = age;
+        //     //  return {}
+
+
+        //      // 实例的私有属性
+        //  }
+
+        //  let f1 = new Fn('jiangguan',18); // 构造函数运行模式
+        //  console.log(f1 instanceof Fn) // true
+        //  Fn() // 普通函数运行模式
+        //  console.log(f1) // {name:'jiangguan', age:18}
+         // 实例都是对象数据类型的
+         // 类是函数数据类型的，但是函数不一定都是类
+         // 构造函数里的this就是当前正在创建的实例
+
+         // 构造函数解决了实例的私有属性问题
+
+
+        //  Number // js的内置类
+        // let num = new Number(3.1415926); // 构造函数运行模式
+        // Number(true) // 1 // 普通函数运行
+
+
+         /* 
+         构造函数和普通函数之间的区别：
+            1、运行商的区别：
+                1、普通函数运行：形成私有作用域-->形参赋值-->变量提升-->代码执行-->作用域是否销毁
+                2、构造函数运行：形成私有作用域-->形参赋值-->变量提升-->默认生成空对象-->让当前作用域的this指向这个空对象-->代码执行-->默认把当前this return出去-->作用域是否销毁
+            2、执行上区别：
+                1、普通函数执行直接加小括号
+                2、构造函数执行要在函数执行前加new ，而且如果执行时，不需要传递实参，可以省略执行小括号
+            3、在构造函数里如果手动return一个基本值，不会改变构造函数的返回值，但是如果你手动return一个引用值，就会改变构造函数的返回值(此时的返回值已经不是当前类的实例了)，所以不要轻易手动return引用值
+          */
+
+
+        
+            /* 
+            1、instanceof:检测当前实例是否属于某个类
+            2、实例 instanceof 类  如果当前实例属于这个类就返回true，反之返回false
+            3、不能够检测基本值，如果你非要检测基本值，那就要那构造函数模式去创建实例
+             */
+
+            //  console.log([] instanceof Array) // true
+
+            /* 
+            创建实例的两种方式
+            1、字面量方式
+            2、构造函数方式
+             */
+
+            // let num = 1;
+            // let num1 = new Number(3);
+
+            // function fn(){
+
+            // }
+            // Number
+            // console.log(fn instanceof Function)
+            // console.log(Number instanceof Function)
+            // console.log(Function instanceof Function)
+    </script>
+</body>
+</html>
