@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        函数的三种角色(基类原型图)
+        原型的拓展：hasPubProperty:检测当前属性是否是公有属性
+            你封装方法的时候你自己器的名字被跟人家的一样，myPush
+
+            构造函数里的this就是当前的实例
+            公有方法里的this一般都是当前实例
+         */
+
+        //  let ary = [1,2,3];
+        //  ary.push('s');
+         // push里的this就是ary
+         Array.prototype.push() // this是数组的原型
+
+         /* 
+         1、全局作用域下的this是window(在严格模式下是undefined)
+         2、函数里的this，看执行函数前有没有点，如果有点，点前面是谁那函数里的this就是谁，如果没有点，那函数里的this是window
+         3、给元素绑定事件行为，那事件里的this就是当前被绑定的元素本身
+         4、自执行函数里的this就是window
+         5、回调函数里的this是window
+         6、箭头函数没有this
+         7、构造函数里的this就是当前实例
+         8、公有方法里的this一般情况下是当前实例
+          */
+
+        // function Fn(){
+        //     this.name = 1;
+        //     return this;
+        // }
+        // let f1 = new Fn;
+        // console.log(f1 instanceof Fn) 
+
+        // 函数的三种角色：
+            // 1、普通函数
+            // 2、构造函数
+            // 3、普通对象
+
+            // 函数数据类型：
+            //     普通函数
+            //     构造函数(类)
+            // 对象：
+            //     普通对象
+            //     数组
+            //     Math
+            //     Date的实例
+            //     正则
+            //     原型
+            //     函数
+
+            function fn(name,age){
+                
+            }
+            console.dir(fn)
+            // length:函数形参的个数
+            // name：字符串格式的函数的名字
+    </script>
+</body>
+</html>
