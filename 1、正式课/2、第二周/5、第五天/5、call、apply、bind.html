@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        call、apply、bind：这三个方法都是改变函数的this指向的
+         */
+
+        //  function fn(a,b){
+        //      console.log(this,a,b) // obj 1 2
+        //      return 'ss'
+        //  }
+        //  let obj = {name:1};
+
+        //  obj.fn = fn;
+        //  obj.fn();
+        //  delete obj.fn
+    //   console.log(fn.call(obj,1,2) ) // call里边的this是fn   'ss'
+
+      /* 
+      在非严格模式下，如果call传undefined、null、不传。那fn的this都指向window
+      在严格模式下，如果传undefined或者不传，那fn的this指向undefined，如果传null，那fn的this指向null
+       */
+
+
+        function myCall(context,...arg){
+            // context-->obj    this-->fn
+            context = context || window; // 如果不传参、传null、传undefined，那this指向window
+            let res = null
+            context.fn = this;
+           res = context.fn(...arg); // this()
+            delete context.fn;
+            return res;
+        }
+       Function.prototype.myCall = myCall;
+
+       function fn(a,b){
+           console.log(this,a,b);
+           return 'ss'
+       }
+       let obj = {name:1}
+    //    console.log(fn.myCall(obj,1,2))
+
+    // fn.apply(obj,[1,2])
+
+       
+        //  obj.fn = fn;
+        //  obj.fn();
+        //  delete obj.fn
+
+        // fn = fn.bind(obj);
+        // fn(1,2);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            width: 800px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            position: relative;
+            top: 1px;
+        }
+
+        ul li {
+            width: 200px;
+            margin-right: 10px;
+            border: 1px solid orangered;
+            line-height: 30px;
+            font-size: 20px;
+        }
+
+        #box div {
+            width: 800px;
+            border: 1px solid red;
+            height: 500px;
+            line-height: 500px;
+            font-size: 50px;
+            display: none;
+        }
+
+        #box div.active {
+            display: block;
+        }
+
+        ul li.active {
+            border-bottom-color: white
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul id="navList">
+            <li class="active">哪吒</li>
+            <li>金吒</li>
+            <li>木吒</li>
+        </ul>
+        <div class="active">三儿子</div>
+        <div>大儿子</div>
+        <div>二儿子</div>
+    </div>
+    <script>
+        let navList = document.querySelectorAll('#navList li');
+        let tabList = document.querySelectorAll('#box div');
+
+        // 利用增加自定义属性
+        // for (var i = 0; i < navList.length; i++) {
+        //     navList[i].myIndex = i;
+        //     navList[i].onclick = function () {
+        //         selected(this.myIndex) // 传递相对应的索引
+        //     }
+        // }
+
+
+        // 利用块级作用域
+        // for (let i = 0; i < navList.length; i++) {
+        //     navList[i].onclick = function () {
+        //         selected(i) // 传递相对应的索引
+        //     }
+        // }
+
+        /*      {
+                 let i = 0;
+                  navList[0].onclick = function () {
+                     selected(i) // 传递相对应的索引
+                 }
+
+             }
+
+             {
+                 let i = 1;
+                  navList[1].onclick = function () {
+                     selected(i) // 传递相对应的索引
+                 }
+
+             }
+
+             {
+                 let i = 2;
+                  navList[2].onclick = function () {
+                     selected(i) // 传递相对应的索引
+                 }
+
+             } */
+
+        // 利用闭包机制
+        // for (var i = 0; i < navList.length; i++) {
+        //     navList[i].onclick = (function (index) {
+        //         return function () {
+        //             selected(index)
+        //         }
+        //     })(i)
+        // }
+
+   /*      当i=0时
+        navList[0].onclick = (function (index) { // 0
+                return function () {
+                    selected(index)
+                }
+            })(i) 
+
+
+        当i=1时
+        navList[1].onclick = (function (index) { // 1
+                return function () {
+                    selected(index)
+                }
+            })(i)
+
+
+        当i=2时
+        navList[2].onclick = (function (index) { // 2
+                return function () {
+                    selected(index)
+                }
+            })(i)
+            */
+
+
+
+
+    // 利用attribute实现
+        // for (var i = 0; i < navList.length; i++) {
+        //     navList[i].setAttribute('myIndex',i);
+        //     navList[i].onclick = function () {
+        //         selected(this.getAttribute('myIndex')) // 传递相对应的索引
+        //     }
+        // }
+
+
+        // function selected(index) {
+        //     for (let i = 0; i < navList.length; i++) {
+        //         navList[i].className = '';
+        //         tabList[i].className = '';
+        //     }
+        //     navList[index].className = 'active';
+        //     tabList[index].className = 'active';
+        // }
+    </script>
+</body>
+
+</html>

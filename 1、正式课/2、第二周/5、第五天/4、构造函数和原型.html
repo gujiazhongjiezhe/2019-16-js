@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        单例模式：把描述同一个事物特征的信息存储到同一个命名空间下
+        高级单例模式：
+        工厂模式：
+
+         */
+        // (function(){
+        //     var name = 1
+        //     a  =10
+        // })()
+
+        // (function(){
+        //     var name = 1;
+        //     a = 8
+        // })()
+
+        /* 
+        构造函数：
+        研究面向对象，研究的就是类的继承、封装、多态
+         */
+         
+         function Fn(){
+            this.a = 1;
+            // this.say = function(){}
+         }
+         Fn.prototype.say = function(){
+
+         }
+
+         let f1 = new Fn;
+         let f2 = new Fn;
+         console.log(f1) // {a:1}
+         console.log(f2)//  {a:1}
+        //  实例是对象数据类型的
+        // 构造函数(类)是函数数据类型的
+        // 构造函数解决的是实例的私有属性问题
+        // 原型模式解决的就是实例的公有属性问题
+
+
+
+
+        //  Number('1')
+        //  let num = new Number(1)
+        //  console.log()
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        全局作用域：为代码执行提供环境
+            打开一个页面就会形成一个全局的作用域还会形成一个全局的大对象(window)这个对象和全局作用域是相通的
+            全局变量：在全局作用域下创建的变量就是全局变量
+
+            1、var和function创建的全局变量会给window增加键值对(这个过程发生在变量提升阶段)，但是let和const不会
+            2、var和function存在变量提升，但是let和const不会
+            3、const创建的常量在创建的时候必须赋值
+        私有作用域：
+            函数执行的时候产生私有作用域
+            块级作用域
+
+            函数的定义：
+                1、开辟堆内存，生成16进制的空间地址
+                2、把函数里的代码以字符串的格式存储进堆内存中
+                3、把空间地址赋值给函数变量
+            函数执行：
+                1、形成私有作用域
+                2、形参赋值
+                3、变量提升
+                4、代码执行
+                5、作用域是否销毁
+            私有作用域里的代码在外界是拿不到的
+            函数执行会形成一个不销毁的作用域，那这个作用域就可以保护里边的代码不受外界干扰，只要这个作用域不销毁，那还可以保存变量
+
+            作用域链：
+                你在函数里使用一个变量，先看自己私有的有没有，如果有，就直接用，如果没有，那就往上一级作用域查找，那如果上一级作用域还没有，那就上上一级的上一级查找，直到找到全局作用域为止，如果全局作用域还没有，那就是报错了
+         */
+        /* 
+        a
+        window.a
+         */
+        //  console.log('a' in window)
+        //  let a = 10;
+
+        // if(true){
+        //     let a  = 16;
+        //     var b = 17;
+        //     // 在大阔号里如果出现了let或者const，那这个大括号就成了块级作用域(除了对象那个大括号)
+        // }
+
+        // console.log(a)
+        // console.log(b)
+        // {
+        //     let s  = 18;
+        // }
+        // console.log(s) // 报错
+
+
+        //------------------------------------
+        // 在当前作用域，代码执行之前，浏览器会对带var的和带function进行提前的声明和定义，带var的只声明不定义，带function的既声明又定义
+        /* 
+            num = 18
+            str = 'erYa'
+            fn2 = f
+        */
+        // console.log(num, str); // undefined undefined
+        // var num = 18; // 全局变量
+        // var str = "erYa";// "xiaoHua" // 全局变量
+
+        // function fn2() {
+        /* 
+        形成私有作用域
+        形参赋值
+        变量提升
+        代码执行
+        作用域是否销毁
+        num = 19 14   // 私有变量
+         */
+        //     console.log(str, num); // "erYa" un
+        //     num = 19; // 修改的是私有的
+        //     str = "xiaoHua";
+        //     var num = 14;
+        //     console.log(str, num); // "xiaoHua" 14
+        // }
+        // fn2();
+        // console.log(str, num); //'xiaoHua' 18 
+
+//-----------------------------------------------
+        /* 
+        a = 12
+        b = 12
+        fn = f
+        */
+        // console.log(a) // un
+        // var a = 12,
+        //     b = 12;  // 13 // var a = 12;var b = 12;
+
+        // function fn() {
+        //     /* 
+        //     a = 13
+        //      */
+        //     console.log(a, b); // un 12
+        //     var a = b = 13; // var a = 13;b = 13
+        //     console.log(a, b);// 13 13
+        // }
+        // fn();
+        // console.log(a, b); // 12 13
+
+        // 变量提升的特殊情况
+    // 1、变量提升只发生在等号的左边
+        // console.log(fn) // un
+        // var fn = function(){} // 函数表达式
+
+     // 2、不管条件是否成立，都要进行变量提升
+
+        /* 
+        a
+         */
+        // console.log(a); // un
+        // if(false){
+        //     var a = 12;
+        // }
+        // console.log(a); // un
+
+        /* 
+        fn = f
+         */
+        // console.log(fn); // un
+        // if(true){
+        //     // 在新版本浏览器里，带function只声明不定义，但是条件一旦成立，做的第一件事就是给函数赋值
+        //     console.log(fn()) // 1
+        //     function fn(){
+        //         console.log(1)
+        //     }
+        // }
+
+    // 3、自执行函数没有变量提升
+
+        //   (function(){
+        //       console.log(1)
+        //   })()
+        
+
+    // 4、虽然return下边的代码不在执行，但是也要进行变量提升
+        // function fn(){
+        //     /* 
+        //     a
+        //      */
+        //     console.log(a); // un
+        //     return '哈哈';
+        //     var a = 12;
+        // }
+        // fn()
+
+        /* 
+        a
+        fn = f
+         */
+        // var a = '12'; // un
+        // function fn(a){
+        //     /* 
+        //     a = un
+        //     b
+        //      */
+        //     console.log(a,b); // un un
+        //     this.b = b; // window.b = un
+        //     return 
+        //     var b = 12;
+        // }
+        // a = fn(); // a = un
+        // console.log(a,b); // un un
+
+        /* 
+        堆栈内存的销毁
+        堆内存：
+        let obj = {};
+        let s = obj;
+        obj = null;
+        s = 1;
+
+        栈内存的销毁
+        1、销毁
+        2、不销毁
+        3、不立即销毁
+         */
+
+        /* 
+        不销毁
+            1、在当前作用域生成一个堆内存(16进制的空间地址)
+            2、这个堆内存的空间地址被外界所占用
+        */
+
+        // function fn(){
+        //     /* 
+        //     a = 1
+        //     f = fun
+        //      */
+        //     var a = 1 // 2 3
+        //     function f(){
+        //         console.log(a++) // 1 2
+        //     }
+        //     f();
+        //     return f // af0
+        // }
+
+        // var s = fn(); // af0
+        // s(); // 
+
+
+        // function fn(){
+
+        //     return function (){ // af0
+        //         return 1
+        //     }
+        // }
+
+        // let f = fn()(); // af0()  //1
+        // console.log(f) // 1
+        // 大函数得等到小函数回字形完成之后再销毁
+
+
+    /* 
+        num = 100
+        obj = {}
+        f
+    */
+    //  var num = 100; // 1 2 1 2
+    //     var obj = {
+    //         num: 2,
+    //         fn: function () {
+    //             /* 
+                
+    //              */
+    //             num = 1;
+    //             console.log(this); // obj window
+    //             (function (num) {
+    //                 /* 
+    //                 num = 1
+    //                  */
+    //                 console.log(num + this.num++); // 1+1
+    //             })(this.num)
+    //         }
+    //     }
+    //     obj.fn(); // 3
+    //     var f = obj.fn; // af0
+    //     f(); // 2
+    //     console.log(num) // 2
+
+    /* 
+    this就是js里关键字，他有特殊的意义，代表函数的执行主体，就说或函数里的this，执行函数前的点前面是说，那函数里的this就是谁
+
+    1、全局作用域里的this是window
+    2、函数里的this，看执行函数前有没有点，如果有点，那点前面是谁，函数里的this就是谁，如果没有点，那函数里的this就是window
+    3、自执行函数里的this是window
+    4、回调函数里的this是window
+    5、箭头函数没有this
+    6、构造函数里的this是当前实例
+    7、实例原型上的公有方法里的this一般是当前实例
+    8、给元素绑定事件行为，那事件里的this就是当前被绑定的元素本身
+
+
+     */
+    //  setInterval(function(){
+    //      console.log(this)
+    //  },1000)
+
+    // function fn(a){
+    //     a()
+    // }
+    // fn(function(){
+    //     console.log(this)
+    // })
+    // let ary = [1,2];
+    // ary.push()
+
+    var name = 0;
+    let obj = {
+        name:1 // '哈哈'
+    }
+    obj.fn = ()=> {
+        /* 
+        
+         */
+         console.log(this) // obj
+        var name = 2;
+        return ()=> { // af0
+            this.name = '哈哈'; // obj.name = '哈哈'
+        }
+    }
+    let f = obj.fn(); // af0
+    f();
+    console.log(name,obj.name) // 0 '哈哈'
+
+    </script>
+</body>
+
+</html>
