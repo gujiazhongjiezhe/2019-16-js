@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" />
+    <input type="button" />
+    <input type="button" />
+    <script>
+        let inputs = document.getElementsByTagName('input');
+        let ary = ['red', 'green', 'orange']
+        // for (let i = 0; i < inputs.length; i++) {
+        //     inputs[i].onclick = function(){
+        //         document.body.style.backgroundColor = ary[i]
+        //     }
+        // }
+
+        // for (var i = 0; i < inputs.length; i++) {
+        //     inputs[i].index = i;
+        //     inputs[i].onclick = function () {
+        //         document.body.style.backgroundColor = ary[this.index]
+        //     }
+        // }
+
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].onclick = (function(index){
+                return function(){
+                    document.body.style.backgroundColor = ary[index]
+                }
+            })(i)
+        }
+    </script>
+</body>
+
+</html>
