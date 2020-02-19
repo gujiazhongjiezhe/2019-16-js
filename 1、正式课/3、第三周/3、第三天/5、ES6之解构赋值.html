@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        解构赋值：
+        在保证左右结构一样的前提下，把右边的值可以赋值给左边的变量
+         */
+
+    //   let  {name,age}  =  {name:1,age:2};
+    //   // 在当前作用域下创建两个变量，并且把右边对应的值赋值给左边的变量
+    //   console.log(name,age)
+
+    // let {name,age:{s:{p}} }= {name:1,age:{r:9,s:{p:8}}};
+    // console.log(p)
+
+    // let {name,age,ss} = {name:1,age:2};
+    // console.log(name,age,ss)
+
+    // let obj = {name:'dingZhenKang',friends:{s:'1',w:{r:9}}};
+    // let {name,friends:{s,w:{r}}} = obj
+
+    // let name = obj.name;
+    // let s = obj.friends.s;
+    // console.log(name,s,r)
+    // name,s,r
+
+    // 赋默认值
+    // let {age,name = 9,ss = 6} = {name:1,age:2};
+    // console.log(name,ss,age)
+
+    // 数组的结构赋值
+    // 数组的结构赋值是按照顺序来的
+
+    // let ary = [1,2,3,4,5,6];
+    // let [n,m] = ary;
+    // console.log(n,m) // 1 2
+
+    // let ary = [1,2,3,4,5,6];
+    // let [n,,,,,m] = ary;
+    // console.log(n,m) // 1 6
+
+    // let ary = [1,2,3,4,[6,8]];
+    // // 去结构3和8用n和m
+    // let [,,n,,[,m]] = ary;
+    // console.log(n,m)
+
+    // let obj = {
+    //     name:'xiaoMing',
+    //     friends:['1','2','3','4']
+    // };
+    // let {name,friends:[,,,m]} = obj;
+    // console.log(name,m)
+
+    // let {age:ss} = {name:1,age:2};
+    // // 创建一个ss变量，并且把name属性名对应的属性值结构给他
+    // console.log(ss)
+
+
+//     // 交换两个变量的值
+//     var x = 1;
+//     var y = 2;
+
+//    [y,x] = [x,y] // [1,2]
+//    console.log(x,y)
+
+
+
+// function fn({name,age} = item){
+//     console.log(name,age) // 1 2
+// }
+// fn({name:1,age:2})
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

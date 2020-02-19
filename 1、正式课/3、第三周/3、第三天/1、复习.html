@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="box"></ul>
+    <script>
+        /* 
+        数据渲染
+        json数据格式
+        商城排序
+         */
+
+        let ary = [{
+            age: 1
+        }, {
+            age: 2
+        }, {
+            age: 3
+        }];
+        let box = document.getElementById('box');
+
+        // for (var i = 0; i < ary.length; i++) {
+        //    let li = document.createElement('li');
+        //    li.innerHTML = ary[i].age;
+        //    box.appendChild(li);
+        // }
+        // 操作了三次dom
+
+
+
+        // let frg = document.createDocumentFragment(); // 存放js元素的容器
+        // for (var i = 0; i < ary.length; i++) {
+        //     let li = document.createElement('li');
+        //     li.innerHTML = ary[i].age;
+        //     li.className = 'ss'
+        //     frg.appendChild(li);
+        // }
+        // box.appendChild(frg); // 操作了一次dom
+        // console.log(frg)
+
+
+
+        // let htmlStr = '';
+        // for (var i = 0; i < ary.length; i++) {
+        //    htmlStr+='<li>'+ary[i].age+'</li>'
+        // }
+        // box.innerHTML = htmlStr
+
+
+
+
+        // let htmlStr = ``;  (ES6)
+        // for (var i = 0; i < ary.length; i++) {
+        //    htmlStr+=`
+        //    <li>${ary[i].age}</li>
+        //    `
+        // }
+        // box.innerHTML = htmlStr
+    </script>
+</body>
+
+</html>

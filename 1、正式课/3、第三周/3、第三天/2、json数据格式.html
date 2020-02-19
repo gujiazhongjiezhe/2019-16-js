@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+    json数据格式
+    后台返回给前端的数据格式
+
+    JSON格式的字符串
+    JSON格式的对象
+     */
+
+        //  let obj = {"name":11};
+
+        //  let str = '{"name":11}';
+        //  JSON.parse() // 把JSON格式的字符串转化为JSON格式的对象
+        //  JSON.stringify() // 把JSON格式的对象转化为JSON格式的字符串
+
+        // let obj1 = JSON.parse(str);
+        // console.log(obj1)
+
+        //-------------------------------------------
+        // 深克隆 浅克隆
+        // 浅克隆相对于引用值来说克隆的是空间地址
+
+        // let obj = {
+        //     name:1,
+        //     age:{ss:1}
+        // }
+        // let newObj = {...obj};
+        // newObj.age.ss = 66;
+        // console.log(newObj)
+
+        // // 深克隆
+        // let obj = {
+        //     name: 1,
+        //     age: { ss: 1}
+        // };
+        // let newObj = JSON.parse(JSON.stringify(obj));
+        // newObj.age.ss = 66;
+        // console.log(newObj)
+        // console.log(obj)
+
+        
+    </script>
+</body>
+
+</html>

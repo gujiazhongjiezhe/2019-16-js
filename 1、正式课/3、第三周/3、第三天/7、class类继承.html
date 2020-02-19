@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        原型继承：继承公有和私有属性
+        中间类继承：公有属性
+        call继承：私有属性
+        寄生混合继承：继承公有和私有属性
+        Object.create()
+        class类继承：继承公有和私有
+         */
+         class A{
+             constructor(m){
+                 this.a = m
+             }
+             say(){
+                 console.log('哈哈')
+             }
+         }
+
+         class B extends A{
+            constructor(){
+                super(333) // 让类B的实例继承类A的私有属性
+                this.s = 10;
+            }
+         }
+
+         let f = new B;
+         console.log(f) // {s:10,a:333}
+         f.say();
+
+         // f-->B.prototype-->A.prototype-->Object.prototype
+
+         
+    </script>
+</body>
+</html>
