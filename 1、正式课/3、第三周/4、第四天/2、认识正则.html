@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       /* 
+       专门服务于字符串的
+       1、字符串也有length
+       2、字符串也有索引(下标)
+       3、那单引号、双引号、反引号包起来的东西就是字符串
+       4、字符串的方法
+        */
+        // let str = 'asd';
+        // console.log(str[100]) // undefined
+
+        /* 
+        slice、substr、substring、toUpperCase、toLowerCase、charAt、charCodeAt、trim、trimLeft、trimRight、indexOf、lastIndexOf、includes、concat、split、replace
+
+        push、unshift、pop、shift、splice、join、slice、reverse、sort、indexOf、lastIndexOf、includes、forEach、map
+        
+         */
+        //  let str = 'asasas'; // 想把字符串里的s替换为w
+
+        // //  str = str.replace('s','w').replace('s','w').replace('s','w')
+        // str = str.replace(/s/g,'w')
+        //  console.log(str)
+         
+
+         /* 
+         正则：就是处理字符串的一个规则
+            test：匹配
+            exec：捕获
+         正则就是js的一个内置类 Regexp
+            1、字面量方式创建(不是一个标准的实例)
+            2、构造函数创建方式
+          */
+
+        //   let reg = /^\d{2}$/; // 0到9之间的数字出现两次
+        //   console.log(reg.test('5e5'))
+
+        let reg = /\d/; // 匹配0到9之间的一个数字
+        console.log(reg.test('2'))
+
+   </script> 
+</body>
+</html>

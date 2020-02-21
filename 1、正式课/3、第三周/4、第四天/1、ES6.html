@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            ES6:
+                1、let和const
+                2、Array.from/Array.of
+                3、拓展运算符
+                4、结构赋值
+                5、箭头函数
+                6、Set/has/delete/add/size/clear
+                7、for of
+                8、OBject.create/Object.values/Object.keys
+         */
+
+         /* 
+         let和const
+
+         let创建的变量不能够给window增加键值对
+         不能重复创建同一个变量
+         const是创建常量(常量所代表的值是不允许被改变的)
+         没有变量提升
+
+          */
+
+          /* 
+          展开收缩运算符(拓展剩余)...
+
+          浅克隆
+          合并对象
+           */
+        //    let obj = {name:1,ss:{}};
+        //    let newObj = {...obj,age:2} // 浅克隆
+
+        //    let ary = [1,2];
+        //    let ary1 = [2,3];
+        //    let newAry = [...ary,...ary1]
+
+        // function fn(context,...w){ 
+        //     console.log(context,w) // 1,[]
+        // }
+        // fn(1)
+
+        // let {name:w,friends:[,,s]} = {name:'jiangguan',age:18,friends:['xiaohong','xiaoming','libai']};
+        // console.log(w,s);
+
+        // 赋值默认值
+        // let {ss = 1} = {name:1,age:2,ss:9};
+        // console.log(ss)
+
+        // 结构数组的时候一定要注意，一定要按照顺序结构
+        // let  {age,name} = {name:1,age:2};l
+        // let [,m] = [1,2]
+
+            // function fn(obj){
+            //   let  {time,hot,title}=obj;
+            //     console.log(time,hot,title)
+            // }
+            // fn({time:'2019-09-09',title:'华为 P10',hot:500})
+
+            /* 
+            箭头函数：
+                1、如果只有一个形参，可以生略小括号
+                2、如果只有return一行代码，可以生略return和大括号
+                3、没有arguments
+                4、箭头函数没有this
+                5、箭头函数不能作为构造函数
+                6、如果形参有默认值，那小括号不能省略
+             */
+            //  let fn = ()=>{
+            //      console.log(this)
+            //  }
+
+            // console.log(fn.call) 
+
+            // let fn = m=>({name:1});
+            // console.log(fn())
+
+            /* 
+            Set数据结构，他是一个构造函数，而且Set里面的值都是唯一的
+             */
+
+            // let ss = new Set([1,2,3,4,1,2,3]);
+            // ss.add(9);
+            // ss.delete(1);
+            // // ss.clear();
+            // console.log(ss.size)
+
+            // console.log(ss) // {1,2,3,4}
+            // console.log([...ss])
+
+            function fn(){
+                console.log(Array.from(arguments)) // 类数组转数组
+                console.log(Array.of(1,2,3,4,5))
+            }
+            fn(1,2,3,4);
+
+            // console.log(Object.create({name:1}))
+            let obj = {name:1,age:2};
+            // console.log(Object.keys(obj))
+            // console.log(Object.values(obj))
+
+            let ary = [];
+            for(let key in obj){
+                ary.push(obj[key])
+            }
+            console.log(ary)
+
+
+
+    </script>
+</body>
+</html>
