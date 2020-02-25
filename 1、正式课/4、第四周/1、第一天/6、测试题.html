@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        测试题
+         */
+        // function Fn(n, m) {
+        //     n = n || 0;
+        //     m = m || 0;
+        //     this.x = n;
+        //     this.y = m;
+        //     this.getX = function () {
+        //         console.log(this.x);
+        //     };
+        //     return n + m;
+        // };
+        // Fn.prototype.sum = function () {
+        //     console.log(this.x + this.y);
+        // };
+        // Fn.prototype = { // 没有constructor
+        //     getX: function () {
+        //         this.x += 1; // 原型.x+=1 // 原型.x = 原型.x+1
+        //         console.log(this.x);
+        //     },
+        //     getY: function () { // af0
+        //         this.y -= 1;
+        //         console.log(this.y);
+        //     },
+        //     // x:NaN
+        //     // y:NaN
+        // };
+        // let f1 = new Fn(10, 20); // {x:10,y:20,getX:f}
+        // let f2 = new Fn; // {x:0,y:0,getX:f}  // y的值已经成为-1
+        // console.log(f1.getX === f2.getX); // false
+        // console.log(f1.getY === f2.getY); // true
+        // console.log(f1.__proto__.getY === Fn.prototype.getY); // true
+        // console.log(Fn.prototype.getX === f2.getX); // false
+        // console.log(f1.constructor); // Object
+        // f1.getX(); // 10
+        // Fn.prototype.getX(); // NaN
+        // f2.getY(); // -1
+        // Fn.prototype.getY(); // NaN
+        // f1.sum(); // undefined() // 报错
+        // f1.sum
+
+        // function fn(){
+
+        //     console.log(ss) // 报错
+        // }
+        // fn()
+
+        // let obj = {name:1};
+        // console.log(obj.s) // un
+        //------------------------------------------------
+
+        // var name = 'WINDOW'; // 'B'
+
+        // function A() {
+        //     console.log(1, this.name);
+        //     name = this.name;
+        // };
+
+        // function B() {
+        //     // this-->window
+        //     name = this.name;
+        //     console.log(2, this.name);
+        // };
+        // A.call(B, 10); // 1  'B'
+        // A.call.call.call(B); // 2 'B'
+        // Function.prototype.call(B); // 啥也不输出
+        // Function.prototype.call.call.call(B);// 2 'B'
+
+        // function myCall(context){
+        //     // context-->传递进来的参数   this-->当前实例
+        //     context = context || window;
+
+        //     context.fn = this;
+        //     context.fn()
+
+        /* 
+        context-->B  this-->call
+        context.fn = this;    B.fn = call;
+        context.fn() //  B.fn()-->call()
+
+        第二次call执行
+        context-->window  this-->B
+
+         context.fn = this;  window.fn = B;
+         context.fn()   // window.fn()-->B()
+         */
+
+        /* 
+         Function.prototype.call(B);
+
+         context-->B  this-->Function.prototype
+
+        context.fn = this   B.fn = 原型
+        context.fn()  --> B.fn()-->原型()
+         */
+
+        /* 
+        Function.prototype.call.call.call(B);
+          context-->B  this-->call
+          context.fn = this  B.fn = call
+           context.fn()  -->B.fn()-->call()
+
+           第二次执行call
+           context-->window  this-->B
+
+           context.fn = this   window.fn = B;
+           context.fn() -->window.fn()-->B()
+         */
+        // }
+
+        // function C(){
+
+        // }
+        // console.dir(C)
+        //-------------------------------------------------
+        // var name = "WINDOW";
+
+        // function fn() {
+        //     console.log(this.name);
+        // }
+        // var obj = {
+        //     name: "OBJ",
+        //     fn: () => {
+        //         console.log(this.name);
+        //     }
+        // };
+        // fn(); // "WINDOW"
+        // obj.fn(); // "WINDOW"
+        // fn.call(obj);// "OBJ"
+        // window.onload = function () { //页面加载完成，事件就会触发
+        //     fn();// "WINDOW"
+        //     obj.fn(); // "WINDOW"
+        // };
+        //    fn.bind(obj); // bind是预处理this
+        //    bind函数的返回值是一个改变this之后的新函数
+
+        //---------------------------------------------------------------
+
+        /* 
+        print = alert(2)
+        Fn = f
+         */
+        // var print = function () {
+        //     alert(1);
+        // };
+
+        // function Fn() {
+        //     print = function () {
+        //         alert(2);
+        //     };
+        //     return this;
+        // };
+
+        // function print() {
+        //     alert(3);
+        // };
+        // Fn.prototype.print = function () {
+        //     alert(4);
+        // };
+        // Fn.print = function () { // af0
+        //     alert(5);
+        // };
+
+        // print(); // 1
+        // Fn.print(); // 5
+        // Fn().print(); // 先执行Fn()-->f   f.print() // 2
+        // new Fn.print(); // new af0() // 5
+        // new Fn().print(); // new Fn()-->f  f.print() // 4
+        //------------------------------------------------------
+
+        let ary = [12, 23, 12, 13, 13, 12, 23, 14, 8];
+
+        function unique() {
+            let obj = {};
+            for (var i = 0; i < this.length; i++) {
+                if (obj[this[i]] !== undefined) {
+                    // 属性名存在
+                    this[i] = this[this.length - 1];
+                    this.length--;
+                    i--;
+
+                } else {
+                    obj[this[i]] = this[i]
+                }
+            }
+            return this
+        }
+        Array.prototype.unique = unique;
+        ary.unique().sort((a, b) => a - b); //=> 最后的ary等于[8,12,13,14,23]
+        console.log(ary)
+    </script>
+</body>
+
+</html>

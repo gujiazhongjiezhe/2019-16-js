@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        
+         */
+         let url = 'http://www.baidu.com?name=erYa&age=18&sex=gril#index';
+         let reg = /([^?=#&]+)=([^?=#&]+)/g;
+         let obj = {};
+         url.replace(reg,function(){
+            let [,key,value] = arguments;
+            obj[key] = value;
+        })
+        url.replace(/#([^?=#&]+)/g,function(){
+            obj.hash = arguments[1]
+        });
+
+        console.log(obj)
+
+    </script>
+</body>
+</html>

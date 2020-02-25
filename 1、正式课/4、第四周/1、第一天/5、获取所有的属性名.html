@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        
+         */
+        // let obj = {
+        //     a: {
+        //         b: 1,
+        //         c: {
+        //             d: {r:1}
+        //         }
+        //     },
+        //     m: 0
+        // };
+
+        // let ary = [];
+
+        // function getKey(obj) {
+        //     for (let key in obj) {
+        //         ary.push(key);
+        //         if (typeof obj[key] === 'object') {
+        //             getKey(obj[key])
+        //         }
+        //     }
+        // }
+        // getKey(obj)
+        // console.log(ary)
+
+
+        var obj = {
+            p:[{s:1}],
+        n: {
+            x:1,
+            a: [
+                {b: 1, c: [{d: 1}, {e: 1}]},
+                {f: 1},3
+            ]
+        },
+        m:0
+    };
+
+    let ary = [];
+    function getKey(obj){
+        if(obj instanceof Array){
+            obj.forEach((item)=>{
+                push(item);
+            });
+        }else {
+            push(obj);
+        }
+        return ary;
+    };
+
+    function push(str){
+        for(let key in str){
+            ary.push(key);
+            if(typeof str[key] == 'object'){
+                getKey(str[key])
+            }
+        }
+    }
+
+    console.log(getKey(obj));
+    console.log(ary)
+    </script>
+</body>
+
+</html>

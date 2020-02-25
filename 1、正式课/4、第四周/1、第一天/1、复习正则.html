@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        exec(正则原型是上的方法)、match、replace(字符串原型上的方法)
+         */
+        //  match
+        let str = 'w1w2w3w4w5wwwww';
+        let reg = /\d/g;
+        // console.log(str.match(reg))
+
+       let newStr =  str.replace(reg,function(item,index,input){
+            console.log(item,index,input)
+            console.log(arguments)
+            return 's'
+
+        })
+        console.log(newStr)
+
+
+
+    </script>
+</body>
+</html>

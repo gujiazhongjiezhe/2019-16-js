@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #goBack {
+            width: 200px;
+            height: 200px;
+            background: #f70;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 200px;
+            color: white;
+            font-size: 20px;
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            opacity: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <img src="./1.png" alt="">
+        <img src="./1.png" alt="">
+        <img src="./1.png" alt="">
+        <img src="./1.png" alt="">
+        <img src="./1.png" alt="">
+        <img src="./1.png" alt="">
+        <div id="goBack">回到顶部</div>
+    </div>
+    <script src="./utils.js"></script>
+    <script>
+        let goBack = document.getElementById('goBack');
+        goBack.onclick = function () {
+            utils.win('scrollTop', 0);
+            // 你不能让他直接回到顶部，显得太突兀了，让他一点一点回到顶部
+        }
+
+        let winH = utils.win('clientHeight');
+        window.onscroll = function () {
+            let winT = utils.win('scrollTop');
+            // 当浏览器滚动条卷去的高度大于等于当前屏幕(可视窗口)的高度时，就让回到顶部小圆圈显示
+            if (winT >= winH) {
+                // 让回到顶部显示
+                goBack.style.opacity = 1;
+            } else {
+                // 让回到顶部消失 
+                goBack.style.opacity = 0;
+            }
+        }
+    </script>
+</body>
+
+</html>
