@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" style="width:200px"></div>
+    <script>
+        var box = document.getElementById('box');
+        // console.log(getComputedStyle(box).width);
+        console.log(box.currentStyle.width)
+        
+        // clientWidth：宽度+左右的padding
+        // clientHeight：宽度+上下的padding
+        // clientTop：上边框的宽度
+        // clientLeft：左边框的宽度
+
+        // offsetWidth: clientWidth+左右border
+        // offsetHeight：clientHeight：宽度+上下border
+
+        // offsetParent：当前元素的父级参照物(谁有position定位谁就是他的父级参照物)
+        // body的父级参照物是null
+        // offsetLeft：当前元素距离父级参照物的左偏移量  当前元素的左外边框到父级参照物的左内边框
+        // offsetTop：当前元素距离父级参照物的上偏移量  当前元素的上外边框到父级参照物的上内边框
+
+        
+        // scrollHeight：如果当前元素内容不溢出，那就等于clientHeight，如果溢出那就等于上padding+溢出的真实内容
+        // scrollWidth：如果当前元素内容不溢出，那就等于clientWidth：如果溢出那就等于左padding+溢出的真实内容
+
+        // scrollTop：当前元素滚定条纵向卷去的高度
+        // scrollLeft：当前元素滚动条横向卷去的宽度
+        // 这两个是可读可写属性，其余的都是只读属性
+    </script>
+</body>
+</html>

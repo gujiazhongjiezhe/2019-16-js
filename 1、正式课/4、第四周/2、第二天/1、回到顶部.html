@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #goBack {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: #f40;
+            color: white;
+            font-size: 30px;
+            position: fixed;
+            bottom:20px;
+            right: 20px;
+            text-align: center;
+            line-height: 200px;
+            cursor: pointer;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img src="./1.png" alt="">
+        <img src="./1.png" alt="">
+        <img src="./1.png" alt="">
+        <img src="./1.png" alt="">
+        <img src="./1.png" alt="">
+        <div id="goBack">回到顶部</div>
+    </div>
+    <script src="./utils.js"></script>
+    <script>
+        let goBack = document.getElementById('goBack');
+
+        goBack.onclick = function(){
+          let winT = utils.win('scrollTop'); // 100
+          let cur = winT/50; // 把滚动条卷去的高度分为50份  // 2
+          var timer = setInterval(function(){
+            winT -=cur;
+            if(winT<=0){
+                clearInterval(timer)
+            }
+            utils.win('scrollTop',winT);
+          },20);
+        }
+        let winH = utils.win('clientHeight');
+        window.onscroll = function(){
+            let winT = utils.win('scrollTop');
+            if(winT>=winH){
+                goBack.style.opacity = 1;
+            }
+            else {
+                goBack.style.opacity = 0;
+            }
+        }
+    </script>
+</body>
+</html>
