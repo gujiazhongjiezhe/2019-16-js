@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        jq的方法在jq的原型上和自己身上
+        $('#box').eq()
+        $.ajax()
+        // 创建的是init的实例
+
+        var JQurey = function(){
+            return new jQurey.fn.init()
+        }
+        var init = jQurey.fn.init = function(){
+
+        }
+        jQuery.fn = jQuery.prototype = {};
+        init.prototype = jQuery.fn; // 原型
+
+        window.$ = window.jQuery = jQuery;
+        jQuery.ajax = function(){}
+        // 1.xxx
+        // 2.xxx
+        // 3.xxx
+      //  1.3.3.1
+      // 0.0.1
+      // 0.0.1
+      // 0.1.0
+      // 1.0.0
+
+        // [1,2].slice().splice().pop().concat()
+    </script>
+</body>
+</html>

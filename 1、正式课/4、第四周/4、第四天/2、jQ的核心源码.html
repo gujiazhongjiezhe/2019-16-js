@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <div id="box"></div>
+    <script>
+        /* 
+        jq的核心源码
+        */
+
+        (function (global, factory) {
+            // global-->window
+            // factory-->function
+
+            // if (typeof module === "object" && typeof module.exports === "object") {
+            //     module.exports = global.document ?
+            //         factory(global, true) :
+            //         function (w) {
+            //             if (!w.document) {
+            //                 throw new Error("jQuery requires a window with a document");
+            //             }
+            //             return factory(w);
+            //         };
+            // } else {
+            factory(global);
+            // }
+        }(typeof window !== "undefined" ? window : this, function (window, noGlobal) {
+            // window-->window   noGlobal-->un
+
+            var deletedIds = [];
+            var slice = deletedIds.slice;
+            var concat = deletedIds.concat;
+            var push = deletedIds.push;
+            var indexOf = deletedIds.indexOf;
+            var class2type = {};
+            var toString = class2type.toString;
+            var hasOwn = class2type.hasOwnProperty;
+            var support = {};
+            var version = "1.11.3";
+
+
+            var jQuery = function (selector, context) { // '#box'
+                    return new jQuery.fn.init(selector, context);
+                    // return init的实例
+                    // 如果直接new jQuery执行，那就会死递归
+                };
+                // let obj = {};
+                // jQuery.fn = {};
+                // jQuery.prototype = {}
+            jQuery.fn = jQuery.prototype = {
+                // 重定向之后的原型没有constructor，为了高度还原原生的原型，就给他手动加了constructor
+                // jq原型里的方法一般是jq的实例去调用
+                jquery: version,
+                constructor: jQuery,
+                toArray: function () {
+                    return slice.call(this);
+                },
+            }
+
+           
+            var init = jQuery.fn.init = function( selector, context ) {
+            };
+            init.prototype = jQuery.fn;
+            // 把jqUery的原型赋值给init的原型
+
+            jQuery.extend = jQuery.fn.extend = function() {} // 这个函数是他们更新代码的一个入口，每一次更新的时候直接把方法一实参的形式传递给jQuery.extend就行了
+            window.jQuery = window.$ = jQuery;
+            // 给window增加键值对 
+        }));
+
+
+        // jq的方法在jQuery的自己身上和他的原型上放着呢，
+
+        $('#box') //  init的实例
+        // init的实例
+        // jQuery('#box');
+        $('li').first()
+
+       console.log($('box')[0]) // [div]
+
+       console.log($.ajax)
+       console.log(jQuery.ajax)
+       jQurey.type()
+
+    </script>
+</body>
+
+</html>

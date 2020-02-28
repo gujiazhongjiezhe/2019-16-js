@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        定时器：
+        Promise
+
+        同步异步  原型  作用域
+
+        setTImeout: 到了一定的时间只执行一次
+        setInterval：每隔一段时间就会回执行一次
+        浏览器的最小识别时间： 谷歌 5~6ms  火狐10~12ms  IE 13~15ms
+        定时器的返回值：代表当前页面中定时器的个数
+        当前代码运行到定时器那一行时，会记录一个开始的时间
+
+         */
+        //   setTimeout(function(){
+        //     console.log(1)
+        //   },2000);
+        // //   clearTimeout(1)
+        // console.log(2)
+
+
+        // function fn() {
+        //     var a = setTimeout(function () {}, 1000);
+        //     console.log(a); // 2
+        // }
+
+        // var timer = setTimeout(function (a) { // 1
+        //     // 过了2000ms会让这个函数运行一次；
+        //     console.log(a);
+        //     return 100;
+        // }, 1000, 3)
+        // clearTimeout(timer);
+        // fn();
+        // console.log(timer); // 1
+
+        // // 2 1
+
+        /* 
+        当浏览器解析js代码的时候，他会先把同步的代码执行完成，然后在执行异步的代码
+        // 浏览器是多线程 他可以执行好多个任务
+
+        定时器  ajax 事件 Promise async wait
+
+        1、当代码执行的时候，当同步代码执行完毕才会执行异步的代码
+
+        2、当js执行的时候分为主任务队列和等待任务队列；主任务队列是同步的，等待任务队列是异步的
+        只有主任务队列的代码执行完成之后才会去执行等待任务队列的代码
+
+         */
+
+        // setTimeout(function () {
+        //     console.log(100);
+        // }, 15);
+        // console.time()
+        // for (var i = 0; i < 10000000; i++) { } // 234ms
+        // console.timeEnd()
+        // setTimeout(function () {
+        //     console.log(400);
+        // }, 14);
+
+
+        // setTimeout(function () {
+        //     // 其实setTimeout本身是一个同步的函数，他里边的回调函数是异步的
+        //     console.log(100);
+        // }, 20);
+        // console.log(300);
+        // // for(var i=0;i<10000000;i++){} // 234ms
+        // setTimeout(function () {
+        //     console.log(400);
+        // }, 19);
+        // console.log(200);
+
+        // 300 200 100 400
+
+
+        // for (var i = 0; i < 3; i++) {
+        //     setTimeout(function () {
+        //         console.log(i);
+        //     }, 100);
+        // }
+        // 3 3 3
+    </script>
+</body>
+
+</html>
