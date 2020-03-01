@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+    正则的应用 queryUrlParams
+     */
+        //     let url = 'http://www.baidu.com?name=xiaoHua&age=18&sex=gril#index';
+
+        //     function queryUrlParams(key){
+        //         // this-->当前url
+        //         let reg = /([^?=&#]+)=([^?=&#]+)/g;
+        //         let obj = {};
+        //         this.replace(reg,function(){
+        //             let [,key,value] = arguments;
+        //             obj[key] = value;
+        //         })
+        //         this.replace(/#([^?=&#]+)/g,function(){obj['hash'] = arguments[1]});
+        //         return obj[key]
+        //     }
+        //     String.prototype.queryUrlParams = queryUrlParams; // 把方法放到原型上
+        // //    console.log(url.queryUrlParams()) 
+
+        // console.log(url.queryUrlParams('name')) 
+
+        // replace:替换
+        // let str = 'w23ww34ww45ww';
+        // let reg = /\d{2}/g;
+        // str =  str.replace(reg,function(){
+        //     console.log(arguments)
+        //     return 'ss';
+        // })
+        // console.log(str)
+
+
+        // 格式化时间字符串
+
+        let time = '2020-2-29 10:12:58'
+        // '2020年02月29号 10时12分58秒'
+
+        // function formatTime(template = '{0}年{1}月{2}日 {3}时{4}分{5}秒') {
+        //     // this-->当前实例
+        //     let dataAry = this.match(/\d+/g);
+        //     console.log(dataAry);
+        //     // ["2020", "2", "29"]
+        //     // let template = '{0}年{1}月{2}日 {3}时{4}分{5}秒';
+        //     template = template.replace(/\{(\d)\}/g, function (item, index) {
+        //         let time = dataAry[index] || '00'; // 如果获取不到对应的时间就走默认的 '00'
+        //         time = time.length < 2 ? '0'+ time:time; // 不足两位补零
+        //         return time;
+        //     });
+        //     return template;
+        // }
+
+        // String.prototype.formatTime = formatTime;
+        // console.log(time.formatTime('{0}年 {3}时{4}分'));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            练习：
+            */
+        // var str = '345';
+        // var str1 = '123678345987654';
+        // // //    找到str1中str第一次出现位置的索引
+        // function index(a, b) {
+        //     for (var i = 0; i < b.length-a.length+1; i++) {
+        //         var str = ''; // ''
+        //         if (b[i] === a[0]) {
+        //             // i=2
+        //             for (var j = 0; j < a.length; j++) {
+        //                 str += b[i + j]
+        //             }
+        //             if (str === a) {
+        //                 return i
+        //             }
+        //         }
+        //     }
+        //     return -1;
+
+        // }
+        // console.log(index(str, str1))
+
+
+        // var str = 'r';
+        // var str1 = '123678345987654';
+
+        // function indexChexk(str) {
+        //     let reg = new RegExp(str); /3/
+        //     if (reg.test(this)) {
+        //         return reg.exec(this).index;
+        //     };
+        //     return -1;
+        // }
+        // String.prototype.indexChexk = indexChexk;
+        // let indexOne = str1.indexChexk(str);
+        // console.log(indexOne)
+
+
+        // let ary = [1,2,[4,5,[6]]];
+
+        let res = [];
+        function ss(ary){
+            for (var i = 0; i < ary.length; i++) {
+               let item = ary[i];
+               if(Array.isArray(item)){
+                   // 如果条件成立说明此项是数组
+                   ss(item)
+               }
+               else {
+                res.push(item) 
+               }
+            }
+            return res
+        }
+
+       console.log(ss(ary)) 
+        // console.log(res)
+    </script>
+
+</body>
+
+</html>

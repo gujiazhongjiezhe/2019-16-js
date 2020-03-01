@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            font-size: 30px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">eyfjksdbcsajbvhdbvkjsadbvsajbclkjsbvusadbkvjsbvcadsvjkasdvashd</div>
+    <script>
+        /* 
+        js盒子模型
+        width border margin padding
+         */
+         /* 
+         1、clientWidth ：当前元素可视区域的宽度  width+左右padding
+         2、clientHeight ：当前元素可视区域的高度 height+上下padding
+         3、clientTop ：当前元素的上边框
+         4、clientLeft ： 当前元素的左边框
+
+         5、offsetWidth ：当前元素的总宽度 clientWidth +左右border
+         6、offsetHeight ：当前元素的总高度 clientHeight +上下border
+         7、offsetParent ：父级参照物
+         8、offsetLeft ：相对父级参照物的左偏移量  当前元素的外边框距离父级参照物的内边框
+         9、offsetTop ：相对父级参照物的上偏移量
+
+         10、scrollWidth： 如果内容不溢出，那就是clientWidth，如果溢出那就是左padding+真实内容的宽度
+         11、scrollHeight： 如果内容不溢出，那就是clientHeight，如果溢出那就是上padding+真实内容的高度
+
+         // 以下两个是可读可写属性
+         12、scrollTop：当前元素滚动条纵向卷去的高度
+         13、scrollLeft：当前元素滚动条横向卷去的宽度
+          */
+        //   console.log(box.scrollWidth)
+
+        /* 
+        getComputedStyle：获取元素的计算属性(不兼容IE)
+        currentStyle：专门针对IE浏览器获取样式属性的(在谷歌浏览器不能使用)
+        onscroll：监听元素滚动条滚动事件
+        */
+        // getComputedStyle(元素).width
+        // getComputedStyle(元素).borderBottomColor
+
+        // 元素.currentStyle.width
+        window.onscroll = function(){
+            // 20ms  100ms
+        }
+        
+    </script>
+</body>
+</html>
