@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        let box = document.getElementById('box');
+        let duration = 3000;// 总时间  1000
+        let maxL = document.documentElement.clientWidth - box.offsetWidth;
+        // 运动的总距离
+        // 8000px
+
+        box.onclick = function () {
+            console.time()
+            let timer = setInterval(() => {
+                let curL = parseFloat(getComputedStyle(box).left);
+                curL += maxL/3000*17;
+                if(curL>=maxL){
+                    clearInterval(timer);
+                    console.timeEnd()
+                }
+
+                box.style.left = curL + 'px';
+            }, 10);
+        }
+    </script>
+</body>
+
+</html>
