@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">可以点击</div>
+    <script>
+        /* 
+        事件绑定
+         */
+        var box = document.getElementById('box');
+
+        function fn1() {
+            console.log(1)
+            console.log(this === window)
+        }
+
+        function fn2() {
+            console.log(2)
+        }
+        //  box.onclick = fn1;
+        //  box.onclick = fn2;
+        // DOM0级事件绑定：只能给元素的同一个事件行为绑定一个方法，如果绑定多个，那后面的会把前面的进行覆盖
+
+        // DOM2级事件绑定：他可以给元素的同一个事件行为绑定多个不同的方法，
+        //  但是他不能够给元素的同一个事件行为绑定相同的方法
+        //  addEventListener :增加事件监听者
+        // removeEventListener：事件移除(移除的时候得严格保证参数一模一样)
+        // 元素.addEventListener(事件类型[没有on],函数,布尔值)
+        // false:冒泡阶段执行；true：捕获阶段执行
+        //  box.addEventListener('click',fn1,false);
+        //  box.addEventListener('click',fn2,true);
+
+
+
+        // 但是他不能够给元素的同一个事件绑定相同的方法
+        // box.addEventListener('click', fn1, false);
+        // box.addEventListener('click', fn1, false); // 
+
+
+        // removeEventListener：事件移除(移除的时候得严格保证参数一模一样)
+        //  box.addEventListener('click',fn1,false);
+        //  box.removeEventListener('click',fn1,false);
+        //  box.removeEventListener('click',fn1,true); // 移除失败,因为参数不一样
+
+        // attachEvent // 专门在IE8级以下使用的
+        box.attachEvent('onclick',fn1)
+        box.attachEvent('onclick',fn1)
+
+
+    </script>
+</body>
+
+</html>

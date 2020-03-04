@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #outer {
+            width: 200px;
+            height: 200px;
+            background: red;
+            margin: 800px auto;
+        }
+        #box {
+            width: 100px;
+            height: 100px;
+            background: green;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+
+        <div id="box">123</div>
+    </div>
+    <script>
+        let outer = document.getElementById('outer');
+        // 事件对象：当用户通过键盘、鼠标去操作或者触发元素的事件行为时，浏览器会将一些默认的事件信息传递给函数的第一个参数
+
+        outer.onclick = function(e){
+            // console.log(e) // 事件对象
+            console.log('outer')
+            // 1、clientX：当前鼠标点击的位置距离可视窗口左边的距离
+            // 2、clientY：当前鼠标点击的位置距离可视窗口上边的距离
+
+            // 3、offsetX：当前鼠标点击的位置距离盒子的左边框的距离
+            // 4、offsetY：当前鼠标点击的位置距离盒子的上边框的距离
+
+            // 5、pageX：当前鼠标点击的位置距离页面(body)左边框的距离
+            // 6、pageY：当前鼠标点击的位置距离页面(body)上边框的距离
+            
+            // 7、target：事件源，事件到底在哪个元素身上触发的，那事件源就是谁
+            // 8、type：事件类型('click')
+            // e.cancelBubble :阻止事件的默认冒泡传播 (e.cancelBubble = true)
+            // e.stopPropagation:阻止事件的默认冒泡传播(e.stopPropagation())
+            // 事件的冒泡机制：当触发子元素的事件时，由于事件存在冒泡的机制，会依次触发祖先元素身上的对应的事件行为  
+        }
+        box.onclick = function(e){
+            console.log('box')
+            // e.cancelBubble = true;
+            // e.stopPropagation()
+        }
+    </script>
+</body>
+</html>

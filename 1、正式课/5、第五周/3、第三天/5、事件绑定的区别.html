@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">111</div>
+    <script>
+        let box = document.getElementById('box');
+
+        function fn1(){
+            console.log(1)
+            console.log(this)
+        }
+        function fn2(){
+            console.log(2)
+        }
+        // 现在主流的项目都已经不兼容IE8了
+        box.addEventListener('click',fn1,false);
+        box.addEventListener('click',fn2,false);
+        // addEventListener:
+            // 1、先绑定的谁就先输出谁
+            // 2、被绑定函数里的this就是当前元素本身
+            // 3、给元素的同一个事件行为不能够绑定相同的函数
+
+
+        // box.attachEvent('onclick',fn1)
+        // box.attachEvent('onclick',fn2)
+        // attachEvent:
+            // 1、绑定和输出是倒着的
+            // 2、被绑定函数里的this时候window
+            // 3、给元素额同一个事件行为能够绑定相同的函数
+
+
+    </script>
+</body>
+</html>

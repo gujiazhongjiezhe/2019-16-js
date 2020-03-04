@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background: orangered;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+
+    <script>
+        // 当用户按下按键时，咱们去通过keyCode去判断当前按下的按键是啥，从而改变盒子的位置
+        // 上：38  下：40  左：37  右39
+        let box = document.getElementById('box');
+        window.onkeydown = function (e) {
+            console.log(e.keyCode)
+            let a = getComputedStyle(box);
+            console.log(a)
+            switch (e.keyCode) {
+                case 37: // 按键左
+                    box.style.left = parseFloat(a.left) - 10 + 'px';
+                    break;
+                case 39: // 按键右
+                    box.style.left = parseFloat(a.left) + 10 + 'px';
+                    break;
+                case 38: // 按键上
+                    box.style.top = parseFloat(a.top) - 10 + 'px';
+                    break;
+                case 40: // 按键下
+                    box.style.top = parseFloat(a.top) + 10 + 'px';
+                    break;
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul{
+            width: 400px;
+            margin: 100px auto;
+            border: 1px solid red;
+            text-align: center;
+        }
+        li {
+            width: 100%;
+            border-bottom:1px solid black
+        }
+    </style>
+</head>
+<body>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        // 在页面有三个元素，
+        // 我鼠标划上 第一个元素让控制台输出红色
+        // 我鼠标划上 第二个元素让控制台输出绿色
+        // 我鼠标划上 第三个元素让控制台输出黄色
+        let box = document.getElementById('box');
+        // 事件委托：主要利用冒泡传播机制，给最外层的盒子绑定点击事件，根据事件源的不同，进行判断你要进行的需求
+        box.onmouseover = function(e){
+            console.log(e.target)
+            if(e.target.innerHTML === '1'){
+                console.log('红色')
+            }else if(e.target.innerHTML === '2'){
+                console.log('绿色')
+            }else if(e.target.innerHTML === '3'){
+                console.log('黄色')
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+        // let lis = document.getElementsByTagName('li');
+        // for (var i = 0; i < lis.length; i++) {
+        //     if(i == 0){
+        //         lis[i].onmouseenter = function(){
+        //             console.log('红色')
+        //         }
+        //     }
+        //     else if(i === 1){
+        //         lis[i].onmouseenter = function(){
+        //             console.log('绿色')
+        //         } 
+        //     }
+        //     else{
+        //         lis[i].onmouseenter = function(){
+        //             console.log('黄色')
+        //         } 
+        //     }
+        // }
+
+    </script>
+</body>
+</html>

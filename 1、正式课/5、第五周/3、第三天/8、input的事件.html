@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="input">
+    <div id="box">123</div>
+    <script>
+        var input = document.getElementById('input');
+
+        /* 
+        1、onfocus：获取焦点(得到光标)
+        2、onblur：失去焦点(失去光标)
+        3、onchange：input的内容发生改变而且失去焦点后才会触发
+        4、oninput：内容一旦发生改变就会触发
+        5、onkeydown：当键盘按下时触发的事件(获取的是上一次的值)
+        6、onkeyup：当键盘抬起时触发的事件(获取的是最新的值)
+         */
+
+        // input.onfocus = function () {
+        //     console.log('获取焦点')
+        // }
+        // input.onblur = function () {
+        //     console.log('失去焦点')
+        // }
+        // input.onchange = function () {
+        //     console.log(this.value, 'onchange')
+        // }
+        // input.oninput = function () {
+        //     console.log(this.value, 'oninput')
+        // }
+        // input.onkeydown = function () {
+        //     console.log(this.value, 'onkeydown')
+        // }
+        // input.onkeyup = function (e) {
+        //     console.log(e.keyCode) // 获取键盘按键对应的keyCode码
+        //     console.log(this.value, 'onkeyup')
+        // }
+        //  box.onblur = function(){
+        //      console.log('失去焦点')
+        //  }
+
+        input.onkeyup = function (e) {
+            console.log(e.keyCode) // 获取键盘按键对应的keyCode码
+            console.log(this.value, 'onkeyup')
+        }
+        // 上：38，下：40，左37，右：39
+
+    </script>
+</body>
+
+</html>
