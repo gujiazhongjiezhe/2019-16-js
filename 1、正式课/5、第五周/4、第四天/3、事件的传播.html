@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        事件的传播
+         */
+        //  dom0级绑定使得事件默认存在冒泡传播机制
+        // 从里往外执行-->冒泡
+
+        // dom2级绑定的事件： 捕获阶段-->目标阶段-->冒泡阶段
+        // 目标阶段：先绑定的谁就先执行谁
+
+        // box.addEventListener('click',fn1,true) // 捕获阶段执行
+        // box.addEventListener('click',fn1,false) // 冒泡阶段执行
+
+        // 事件委托：主要利用的就是冒泡的传播机制，给最外层的盒子绑定相应的事件，根据事件源的不同，从而进行判断到底是谁触发的此事件，
+    </script>
+</body>
+</html>

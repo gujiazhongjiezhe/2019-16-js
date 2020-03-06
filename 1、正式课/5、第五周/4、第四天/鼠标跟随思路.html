@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            background: lightskyblue;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        #box div {
+            width: 30px;
+            height: 30px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+
+        /* 
+        1、鼠标划入蓝盒子动态创建一个小盒子 onmouseenter
+        2、鼠标在蓝盒子里移动时： onmousemove
+            1、鼠标每移动一次就把当前鼠标距蓝盒子左边框的位置设置给小盒子的left值
+            2、鼠标每移动一次就把当前鼠标距蓝盒子上边框的位置设置给小盒子的top值
+        3、鼠标输出蓝盒子删除生成的小盒子 onmouseleave
+        
+         */
+
+    </script>
+</body>
+
+</html>

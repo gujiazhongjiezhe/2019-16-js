@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 免费课就是系统的学习前端的基础知识
+        // 学习前端的基础知识  -->  提升自己的编程思想
+        // let arr = [1,2,3,4,[8],5,[[10]],6] // 数组的扁平化
+        // console.log(arr.join(',').split(',').map(function(item){
+        //     return Number(item)
+        // }));
+        // 数组 []
+
+        // let a = [];
+        // function flat(ary){
+        //     for (var i = 0; i < ary.length; i++) {
+        //         let cur = ary[i];
+        //         if(cur instanceof Array){
+        //             flat(cur)
+        //         }
+        //         else {
+        //             a.push(cur)
+        //         }
+        //     }
+        // }
+        // flat(arr)
+
+        // win offset
+
+        // 免费课第一周
+        // 数据类型 操作语句：循环  条件判断语句  function
+
+        // 数据类型：基本数据类型和引用数据类型(按值操作，按址操作)
+
+        // Number：有效数字，NaN(NaN和自己不相等，他不是一个有效数字，但是是Number数据类型的)
+        // 1、Number：把其他数据类型转数字，返回值是一个数字
+        // 2、parseInt：提取字符串中的有效数字，从左往右依次检查，直到遇到非有效数字为止，把找到的数字返回出去，(不能识别小数点)
+        // 3、parseFloat：(在parseInt基础之上可以识别小数点)
+        // 4、isNaN：判断当前值是否是一个非有效数字，如果是返回true，反之返回false
+        // (如果检测的值是一个有效数字那就返回false，反之返回true)
+        // 5、toFixed：保留小数点位数，返回值是一个字符串
+
+        // let num = 3.1495926;
+        // num.toFixed(2)
+        // let num1 = 3.1415936
+        //    console.log(isNaN(Number(num1.toFixed(2)) + 100)) // false
+
+        // String:
+        // 把单引号、双引号、反引号包起来的都是字符串
+        // 1、有length
+        // 2、有索引
+        // 3、进行运算：-*/:如果运算的时候不是数字，他会把内容转化为数字在进行运算
+        // true - false = 1
+        // '1' + 1 = '11' // 字符串拼接 在运算的过程中如果加号和引号相遇了那就是字符串拼接
+        let a = true + undefined + '10' + false; // 'NaN10'+ false =>'NaN10false'
+        /// 在运算中遇到NaN，那运算结果就是NaN
+        let b = null + 10 + [] + undefined + 'zhufeng' + {};
+        // '10'+undefined + 'zhufeng' =>'10undefinedzhufeng'+{}==>'10undefinedzhufeng' + '[object Object]'==>'10undefinedzhufeng[object Object]'
+        // console.log(a, b)
+        // 10+[]  =>10+''=>'10';
+
+        //  字符串的方法：charAt，charCodeAt、slice(n,m)  substr substring replace split toUpperCase toLowerCase  indexOf  lastIndexOf trim  trimLeft trimRight concat includes
+
+        // let str = '1234516718';
+        // console.log(str.indexOf('1',7)) // 检测开始的位置的索引  // 8
+        // console.log(str.lastIndexOf('1',2)) // 检测结束位置的索引 // 0
+
+        // 布尔  true false
+        // Boolean:把其他数据类型转布尔：有且只有5个(NaN/undefined/0/null/'')转布尔是false
+        // !:把其他数据类型转布尔然后取反   !! 把其他数据类型转布尔然后取反 在取反(和Boolean等价)
+        // if(转布尔){
+
+        // }
+        // if (!Number('3px')) { // !NaN
+        //     console.log('哈哈')
+        // }
+
+        // null和undefined
+        // let a = null;
+        // a = '1'
+        // let box = document.getElementById('box') // null
+        // 1、获取对象中属性名对应的属性值获取不到，那就是un
+        // 2、函数中实参不给形参赋值，那这个形参就是un
+        // 3、函数中没有return，那函数的执行结果就是un
+        // 4、变量只声明不赋值，那他的值就是un
+
+        // 通过id名获取元素，获取不到就是null
+        // 通过正则捕获，捕获不到就是null
+        // 获取元素节点获取不到就是null
+
+
+        // 对象(引用值，存储的是空间地址)
+        // let name = 'asd'
+        // let a = 'a';
+        // let obj = {a:1,b:2,c:name,y:[],x:{},legnth:5};
+        // // 对象的增删改
+        // console.log(obj.a)
+        // console.log(obj['a'])
+        // console.log(obj[a]) // a是变量
+
+        // obj['c'] = 100; // 修改
+        // obj['w'] = 100; // 新增
+
+        // // 删除
+        // // 假删除
+        // obj['c'] = null; // 假删除
+        // delete obj['c'] // 真删除
+
+
+        // 数组
+        // let ary = [1,2,34,5,6];
+        // 数组的属性名从零开始依次递增，可以代表每一项值的位置【索引】
+        // 有length
+        // ary.length--; // 删除数组最后一项
+        // ary.length = 0; 清空数组
+
+        //    (sort  reverse  push pop unshift shift splice) indexOf lastIndexOf slice concat join includes
+        // forEach  map
+
+        // ary.map(function(item,index){
+        //     return 1
+        // })
+        // 1、find：从左往右循环数组的每一项直到找到符合条件的那一项为止，把这一项返回出去，如果找不到，就返回un
+
+        // let ary = [1, 2, 3, 4, 5, 6, 7];
+        // let res = ary.find(function(item,index){
+        //     console.log(item) // 1 2 3 4 5
+        //     return item>4
+        // })
+        // console.log(res) // 5
+
+        // 2、filter：过滤  从左往右循环数组的每一项 如果回调函数返回的是true，就把这一项放到新数组里，如果都是false，那就返回空数组
+
+        // let res = ary.filter(function (item, index) {
+        //     console.log(item)
+        //     return item > 5
+        // });
+        // console.log(res)
+
+        // 3、every:输出的是判断为false则马上跳出循环并return成false   // 找fasle
+        // let arr = [1,2,3,4,5,];
+        // let res = arr.every(function(item,index){
+        //     console.log(item)
+        //     return item<3
+        // })
+        // console.log(res)
+
+        // 全选 [true,true,true,false,true]
+
+        // 4、some 输出的是判断为true则马上跳出循环并return成true // 找true【和every相反】
+
+        // let arr = [1, 2, 3, 4, 5, ];
+        // let res = arr.some(function (item, index) {
+        //     console.log(item) // 1
+        //     return item < 3
+        // })
+        // console.log(res) // true
+
+        // 5、reduce：收敛：一般用于求和
+
+        // let arr = [12,3,40,100,88];
+        // let total = arr.reduce(function(prev,next){
+        //     console.log(prev,next)
+        //     // prev // 代表上一次回调函数的返回值
+        //     // next // 代表当前项
+        //     // 0 12  
+        //     // 12 3
+        //     // 15 40
+        //     return prev+next 
+        // },0)
+        // console.log(total)
+
+        // let arr = [{
+        //     price: 5,
+        //     count: 3,
+        //     name: '苹果' // 15
+        // }, {
+        //     price: 3,
+        //     count: 3,
+        //     name: '橘子' // 9
+        // }, {
+        //     price: 2,
+        //     count: 5,
+        //     name: '香蕉' // 10
+        // }];
+        // let total = arr.reduce(function(prev,next){
+        //     console.log(prev,next)
+        //     return  prev + next.price* next.count // 15
+        //     //return   0 + 15    {} + 9  
+        //     //return   15 + 9
+        //     //return   24+ 10
+        // },0)
+        // console.log(total)
+
+        //     let arr = ['1', '2', '3'];
+        //    let res =  arr.reduce(function(prev,next){
+        //         return prev+next
+        //     })
+        //     console.log(res) // '123'
+
+        // 函数、Math、Date、DOM操作、数组的去重、排序
+
+        // Math：如果你传不是数字，那会默认转成数字
+        // Math.max：取最大值
+        // Math.min：去最小值
+        // Math.round:四舍五入
+        // Math.random:获取0到1之间的随机小数
+        // Math.floor:向下取整
+        // Math.ceil：向上取整
+        // Math.abs:去绝对值
+        // Math.pow:开平方
+        // Math.sqrt:取幂
+
+        // Math.PI:圆周率周派
+        // 获取n到m之间的随机整数
+        // Math.round(Math.random()*(m-n)+n)
+        // 获取3到6之间的随机整数
+
+        // Math.round(Math.random()*(3)+3)      [0-1] [3-6]   0.4
+
+        // Date:函数
+            // let time = new Date()
+            // time.getFullYear()
+            // time.getMonth()  // 默认获取的是0到11，代表1到12月分
+            // time.getDate() // 日
+            // time.getDay() // 星期  // 默认获取的是0到6  (0是星期日)
+
+            // time.getHours
+            // time.getMinutes
+            // time.getSeconds
+            // time.getMilliseconds
+
+            // time.getTime() // 时间戳
+            // Date.now() // 时间戳
+
+        DOM
+        
+        // DOM的节点和属性
+        // 节点名      nodeType     nodeName            nodeValue
+        // 元素节点       1        大写的标签名             null
+        // 文本节点       3          #text               文本的内容
+        // 注释节点       8        #comment              注释的内容
+        // document      9        #document                null
+
+        // 动态操作DOM的方法
+        // document.createElement: 动态创建元素
+        // appendChild
+        // removeChild
+        // insertBefore
+        // replaceChild
+        // cloneNode
+
+        // setAttribute
+        // getAttribute
+        // removeAttribute
+
+        // classList
+        // classList.add/remove/replace
+
+
+
+    </script>
+</body>
+
+</html>
