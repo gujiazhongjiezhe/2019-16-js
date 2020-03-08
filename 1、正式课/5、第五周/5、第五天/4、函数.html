@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 函数：普通函数 普通对象 构造函数
+        // 函数也是引用值，也是存储到堆内存中，也有空间地址
+
+        // function fn(m) {
+        //     // m是私有变量
+        //     // 如果实参不给形参赋值，那形参的是就是un
+        //     let s = 100
+        //     // arguments:实参集合 和形参存在一一映射的关系
+        //     return s; // return的值是函数的执行结果，可以阻断代码向下运行
+        //     //  : return的一定是一个值
+        // }
+        // console.log(fn(10))
+        // console.log(s)
+
+        // 函数定义和执行
+        // 定义：
+        // 1、开辟一个堆内存，生成一个16机制的空间地址
+        // 2、把函数里的代码以字符串的格式存储进这个堆内存中
+        // 3、把16进制的空间地址给函数名
+
+        // 函数的执行：
+        //     1、形成私有作用域
+        //     2、形参赋值
+        //     3、变量提升
+        //     4、代码执行
+        //     5、作用域是否销毁
+
+        // 匿名函数：函数表达式、自执行函数
+
+        // 自执行函数
+        // (function(){})()  
+        // (function(){console.log(1)}())
+        // ~function(){}()
+        // +function(){}()
+        // -function(){}()
+        // !function(){}()
+
+        let fn = function(){} // 函数表达式
+        let s = ()=>{
+            /* 
+            1、没有this
+            2、没有arguments
+            3、不能作为构造函数
+            4、不能做跟generator函数
+            */
+        }
+     
+        function fn(n){
+            return n
+        }
+        let fn = n=>n;
+        // 封装  win offset  move
+    </script>
+</body>
+
+</html>

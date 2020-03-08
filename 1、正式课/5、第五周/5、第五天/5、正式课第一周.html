@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        正式课第一周 
+        git  作用域  变量提升 this 面向对象
+
+        */
+        /* 
+        git config --global user.name ''
+        git config --global user.email ''
+
+        git init
+        git add . 
+        git commit -m '注释'
+        git pull
+        git push
+
+        git remote -v
+        git remote add origin 仓库地址
+        git remote remove origin
+
+        git clone
+        */
+
+        /* 
+        全局作用域：打开一个页面
+             全局变量，window(相通的)
+        私有作用域：
+             函数执行形成私有作用域
+         私有变量：形参也是私有变量
+
+         变量提升：(var和function)
+         var：只声明不定义
+         function：既声明又定义
+
+         变量提升的几种特殊情况：
+             1、条件语句中的function只声明不定义,条件一单成立，马上给函数赋值
+             2、等号右边没有变量提升
+             3、自执行函数没有变量提升
+             4、函数里，return下面的代码虽然不执行，但是要进行变量提升
+             5、let和大括号会形成块级作用域
+        */
+        //   if(){
+        //       function fn()
+        //   }
+
+        // 闭包、作用域链、上一级作用域、作用域是否销毁
+
+        // 闭包：保存和保护、尽量少用闭包，避免形成内存泄漏
+        // 作用域链：一级一级向上查找的机制
+        // 上一级作用域：函数在哪创建的，他的上一级作用域就是谁，跟在哪执行的没有关系
+
+        // 作用域是否销毁：
+
+        // 销毁：不产生引用值，
+        // 不立即销毁：
+        // 不销毁:1、产生一个引用值，2、这个引用值的空间地址被外界所接收
+        // let num = 1;
+        // function fn(){
+        //     let s = 100;
+        //     num = function(){
+        //         console.log(s)
+        //     }
+        // }
+        // fn();
+        // num();
+
+        //     function fn(){
+        //         return function(){
+
+        //         }
+        //     }
+
+        //    let s = fn()() // 不立即销毁
+
+
+        // var name = "WINDOW",
+        //     obj = {
+        //         name: "OBJ",
+        //         fn: (() => {
+        //             /* 
+
+        //             */
+        //             console.log(this.name); // "WINDOW"
+        //             return function () {
+        //                 console.log(this.name);
+        //             }
+        //         })()
+        //     },
+        //     fn = () => {
+        //         console.log(this.name);
+        //     };
+        // fn(); // "WINDOW"
+        // obj.fn(); // "OBJ"
+        // fn.call(obj); // "WINDOW"
+
+        // 作用域是否销毁
+        // 1、立即销毁
+        // 2、不立即销毁
+        // 3、不销毁 
+        // 1、在用于里产生一个引用值
+        // 2、这和引用值的空间地址被界所占用
+
+        // let num = 1;
+        // function fn(){
+        //     let s = 100
+        //     num = function(){
+        //         console.log(s)
+        //     }
+        // }
+        // fn()
+        // num()
+        // console.log(num) // aaafff000
+        // 闭包：就是桥梁，大函数和小函数的连接的桥梁
+
+        //         function fn() {
+        //             let s = 100;
+        //             function f() {
+        //                 s += 1;
+        //                 console.log(s);
+
+        //             };
+        //            f();
+        //             return f;
+        //         }
+
+        //         let res = fn(); 
+        //         res()
+        // //--------------------------------------------------
+        //         function fn() {
+        //             let s = 100; // 101
+        //             function f() {
+        //                 s += 1;
+        //                 console.log(s); // 101
+
+        //             };
+        //            f =  f(); // un
+        //             return f;
+        //         }
+
+        //         let res = fn(); // un
+        //         res() //报错
+
+        /* 
+            this的几种情况
+            1、全局下的this是window(如果在严格模式下全局下的this是un)
+            2、给元素的事件绑定函数，那函数里的this就是当前本绑定的元素本身，
+            3、函数里的this，看函数执行前有没有点，如果有点，那点前面是谁，函数里的this就是谁，如果没有点，那函数里的this就是window
+            4、自执行函数函数this是window
+            5、回调函数里的this一般是window
+            6、箭头函数没有this
+            7、构造函数里的this是当前实例
+            8、call、apply、bind 可以改变this指向
+        */
+
+        //     function fn(){
+        //         console.log(this)
+        //     }
+        //     let obj = {
+        //         fn:fn
+        //     };
+        //    fn()
+        //    obj.fn()
+
+        // function fn(a){
+        //     let obj = {
+        //         f:a
+        //     }
+        //     obj.f()
+        // }
+
+        // fn(function(){
+        //     console.log(this)
+        // })
+
+
+
+        //---------------------------------------------------
+        // 单例模式 高级单例模式 工厂模式  构造函数模式  面向对象 原型
+        // let person = {
+        //     name: 1,
+        //     age: 2
+        // };
+        // let person2 = {
+        //     name: 1,
+        //     age: function(){
+
+        //     }
+        // }
+
+
+        // let utils = (function () {
+        //     function fn(){
+
+        //     }
+        //     return {
+        //         fn
+        //     }
+
+        // })()
+
+        // 工厂模式
+        // function fn(name,age){
+        //     return {
+        //         name,
+        //         age
+        //     }
+        // }
+        // let person1 = fn('xiaoHua',18);
+        // let person2 = fn('xiaoMing',19);
+
+        // 构造函数模式
+        // function Fn(n,m) {
+        //     this.n = n;
+        //     this.m = m;
+
+        // }
+
+        // let f1 = new Fn(10,20); // 自定义类
+        // Fn()
+        // 形成私有组用域--》形参赋值--》变量提升--》代码执行--》作用域是否销毁
+        // 形成私有作用域--》形参赋值--》变量提升--》默认生成一个空对象--》把当前作用域的this指向了这个空对象--》代码执行--》默认把this return出去--》作用域是否销毁
+
+        // 构造函数执行时如果不需要传递实参可以删除执行小括号
+        // 在构造函数里如果手动return基本值，不会影响构造函数的返回值，如果return 引用值，就会破坏人家的返回值(return 的就不是当前类的实例了)
+
+        // function Fn(n,m) {
+        //     this.n = n;
+        //     this.m = m;
+        //     // return this;
+        //     // 构造函数里的this是当前实例
+
+        //     return {}
+
+        // }
+
+        // let f1 = new Fn; // 自定义类
+        // console.log(f1)
+        // console.log(f1 instanceof Fn) // t
+
+        // 实例都是对象数据类型的(实例化的对象)
+        // 自定义类是函数数据类型的
+
+        /* 
+        原型的三句话：
+            1、每一个函数天生自带prototype属性，其属性值是一个对象，里边存储的是当前类的实例的公有属性。他也叫原型
+            2、每一个原型天生自带constructor属性，其属性值指向当前的类
+            3、每一个对象天生自带__ptoto__其属性值指向当前所属类的原型
+        */
+            // function Fn(){
+
+            // }
+            // let f = new Fn;
+            // console.log(f.__proto__.__proto__.__proto__)
+            // 研究实例、类、对象之间的关系和属性
+
+            // 原型的拓展
+            // function hasPub (){
+            //     // this-->当前调用的实例
+            // }
+
+            // Object.prototype.hasPub = hasPub;
+    </script>
+</body>
+
+</html>

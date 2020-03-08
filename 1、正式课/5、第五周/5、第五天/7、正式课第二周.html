@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+- 1、函数的三种角色
+- 2、类继承
+- 3、call、apply、bind
+- 4、es6基础
+    + 1、箭头函数
+    + 2、结构赋值
+    + 3、扩展剩余运算符
+    + 4、class类和继承
+- 5、DOM的回流和重绘
+- 6、商城排序
+        */
+
+        /* 
+        函数的三种角色：
+            1、普通对象
+                name：字符串格式的函数名字
+                length：函数形参的个数
+                prototype
+
+            2、普通函数
+
+            3、构造函数
+        
+        */
+    //    Number()
+
+    /* 
+    类继承
+    1、原型继承：继承公有和私有
+    2、中间继承：公有
+    3、call继承：私有
+    4、寄生混合继承：继承公有和私有
+    */
+
+    // function A(){
+    //     this.a =10;
+    // }
+    // A.prototype.say = function(){
+
+    // }
+    // function B(){
+
+    // }
+    // B.prototype = new A; //让类B的袁小宁指向了类A的实例
+    // let f1 = new B;
+    // console.log(f1.a)
+    // f1-->A的实例-->A.prototyoe-->Object.prototype
+
+    // 中间类继承
+    // function fn(){
+    //     // arguments.push(9)
+    //     arguments.__proto__ = Array.prototype;
+    //     arguments.push(9)
+    // }
+    // fn(1,2,3,4,5)
+
+    // function A(){
+    //     this.a = 100;
+    // }
+    // function B(){
+    //     this.x = 20;
+    //     // this-->当前类B的实例
+    //     A.call(this)
+    // }
+    // let f1 = new B;
+    // console.log(f1)
+
+    // Object.create() // 创建一个空对象，而且create的第一个参数就是空对象的__proto__指向
+
+    // function A(){
+    //     this.a = 10;
+    // }
+    // A.prototype.say = function(){
+
+    // }
+    // function B(){
+    //     this.b = 20;
+    //     A.call(this)
+    // }
+    // // B.prototype = Object.create(A.prototype)
+    // B.prototype = A.prototype;
+
+    // let f1 = new B; // {a:10,b:20}
+    // // f1-->{w:10}-->A.prototype-->Object.prototype
+    // f1-->A.prototype-->Object.prototype
+
+
+    // f1.__proto__.w = 10
+
+    // call、apply、bind
+
+    // 都是改变this的指向的
+    // call和apply会让函数执行并且改变其this执行
+
+    // bind是预处理this，并不会让函数立即执行，他的返回值是改变完this之后的函数
+//     function myCall(context,...arg){
+//         // this-->fn;    context-->obj
+//         context = context || window;
+//         let res = null;
+//         context.fn = this;
+//        res =  context.fn(...arg);
+//         delete context.fn
+//         return res;
+//     }
+//     Function.prototype.myCall = myCall;
+//     let obj = {name:1};
+//     function fn(){
+//         console.log(this)
+//         return 1
+//     }
+//    console.log(fn.myCall(obj)) 
+
+    function myBind(context){
+        // this-->fn;
+        // context-->obj;
+        return ()=>{
+           this.call(context)
+            // fn.call(obj)
+        }
+    }
+    Function.prototype.myBind = myBind;
+    let obj = {name:1};
+    function fn(){
+        console.log(this)
+    }
+
+    fn = fn.myBind(obj);
+    fn()
+
+
+
+ 
+    </script>
+</body>
+
+</html>
