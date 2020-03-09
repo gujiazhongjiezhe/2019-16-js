@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box,
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #box1 {
+            top: 300px
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="box1"></div>
+    <script>
+        // 利用面向对象去封装拖拽
+        let box = document.getElementById('box');
+        let box1 = document.getElementById('box1');
+
+        function Drag(ele) {
+            // ele-->当前元素  this-->当前实例
+            this.ele = ele; // 把元素放到当前实例自己身上
+            ele.onmousedown = this.down.bind(this); // 给当前元素绑定鼠标按下事件，并且把事件函数里的this改为了当前实例
+        };
+        Drag.prototype.down = function (e) {
+            // this--> 元素    实例
+            // 1、记录鼠标和盒子起始的位置
+            this.x = e.clientX;
+            this.y = e.clientY;
+
+            this.l = parseFloat(getComputedStyle(this.ele).left);
+            this.t = parseFloat(getComputedStyle(this.ele).top);
+            document.onmousemove = this.move.bind(this); // 给document绑定鼠标移动事件，而且把事件函数里的this改为当前实例
+            document.onmouseup = this.up;
+        };
+        Drag.prototype.move = function (e) {
+            // this-->实例
+            
+            let changeX = e.clientX - this.x + this.l;
+            let changeY = e.clientY - this.y + this.t;
+
+            this.ele.style.left = changeX + 'px';
+            this.ele.style.top = changeY + 'px';
+        };
+        Drag.prototype.up = function () {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        };
+
+        console.log(new Drag(box));
+        console.log(new Drag(box1));
+    </script>
+</body>
+
+</html>

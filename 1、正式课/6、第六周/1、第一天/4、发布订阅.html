@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        // 发布订阅：就是一种编程思想
+        // 自定义事件模式
+        // 观察者
+
+        // 当你点击关注时，当商品低于某个价格时，就通知你
+        // 发布订阅：先进行订阅，把你要执行的方法存储到某个事件池中(数组)，当条件成立事，进行发布的操作，遍历事件池中的所有方法，这些方法依次执行
+
+        // 在promise 在vue react DOM2级事件绑定
+
+
+
+        // 自定义事件：addEventListener
+        // box.addEventListener()
+        removeEventListener
+
+        // 下课之后 你们要 泡面 写作业 睡觉
+
+        function fn1() {
+            console.log('泡面')
+        }
+
+        function fn2() {
+            console.log('写作业')
+        }
+
+        function fn3() {
+            console.log('睡觉')
+        }
+
+        // 睡觉之后做的事
+        function fn4() {
+            console.log('做梦')
+        }
+
+        function fn5() {
+            console.log('玩手机')
+        }
+
+        function fn6() {
+            console.log('梦游')
+        }
+
+        // 订阅
+        function on(curEle, type, fn) {
+            if (!curEle[type]) {
+                // 当第一次进来时，给curEle的type属性名赋值一个空数组，当on第二次执行时，这个条件就不会成立了
+                curEle[type] = [];
+            }
+            let ary = curEle[type];
+            // 把函数增加到事件池中
+            // some：找 true，
+            // [fn1,fn2]
+            // 为了防止重复添加一个函数，在添加之前得判断一下，当前方法在事件池里有么有，如果有，就不添加，如果没有再添加
+            let isHas = ary.some(function(item){
+                return item === fn 
+            })
+            if(!isHas){
+               ary.push(fn); 
+            }
+            
+        }
+
+        // 取消订阅
+        function off(curEle, type, fn) {
+            // 找到对应的时间池，然后把对应的方法从事件池中移除
+            // let ary = curEle[type];
+            // let index = ary.indexOf(fn);
+            // ary.splice(index, 1,null)
+
+
+            // let ary = curEle[type];
+            // for (var i = 0; i < ary.length; i++) {
+            //     if(fn === ary[i]){
+            //         // ary.splice(i,1);
+            //         // i--;
+            //         ary[i] = null; // 不会造成数组的塌陷
+            //     }
+            // }
+
+            let ary = curEle[type];
+            // filter:过滤
+            // [fn1,fn2,fn3]
+            curEle[type] = ary.filter((item) => {
+                return item !== fn;
+            });
+        }
+
+
+        // 发布：拿到事件池中所有的方法，让其依次执行
+        function emit(curEle, type) {
+            let ary = curEle[type];
+            for (var i = 0; i < ary.length; i++) {
+                if (typeof ary[i] === 'function') {
+                    ary[i]() // 循环事件池中的方法让其执行
+                }
+
+            }
+        }
+
+        // 订阅的是放学之后做的事
+        on(box, 'fangXue', fn1);
+        on(box, 'fangXue', fn2);
+        on(box, 'fangXue', fn2);
+
+        // 睡觉之后做的事
+        on(box, 'sleeping', fn4);
+        on(box, 'sleeping', fn5);
+        on(box, 'sleeping', fn6);
+
+        off(box, 'fangXue', fn1); // 取消订阅
+
+
+        // 2秒之后执行放学类型的事件
+        setTimeout(function () {
+            emit(box, 'fangXue');
+        }, 3000);
+
+
+        // 5秒之后执行睡觉类型的事件
+        setTimeout(function () {
+            emit(box, 'sleeping');
+        }, 5000);
+
+
+        console.dir(box)
+        // 咱们的promise的then方法中的函数就是订阅到对应的事件池里了，(有啷个事件池，一个是成功的，一个是失败的)，当promise的resolve或者reject执行的时候，就发布对应的事件池里的方法
+    </script>
+</body>
+
+</html>

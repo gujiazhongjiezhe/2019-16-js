@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            background: greenyellow;
+            position: absolute;
+
+        }
+
+        h3 {
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            color: white;
+            background: cyan;
+            cursor: move;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="box">
+        <h3 id="title">钢铁侠</h3>
+    </div>
+    <script>
+        let box = document.getElementById('box');
+        let title = document.getElementById('title');
+        let left = (document.documentElement.clientWidth - box.offsetWidth) / 2;
+        let t = (document.documentElement.clientHeight - box.offsetHeight) / 2;
+        box.style.left = left + 'px';
+        box.style.top = t + 'px';
+        // 当鼠标在title上按下的时候在拖拽，盒子就移动
+
+        // 鼠标按下事件
+        title.onmousedown = function (e) {
+            // 1、当鼠标按下时，给盒子绑定onmousemove方法
+            // this-->title
+
+            // 2、当鼠标按下时，记录鼠标起始的位置
+            this.curL = e.clientX; // 当鼠标按下时，箭头的左位置
+            this.curT = e.clientY; // 当鼠标按下时，箭头的上位置
+
+            // 3、记录鼠标按下时，记录盒子的起始位置
+            this.l = parseFloat(box.style.left)
+            this.t = parseFloat(box.style.top)
+
+            title.onmousemove = move;
+            title.onmouseup = up;
+        }
+
+        // 鼠标移动事件
+        function move(e) {
+            // 1、当鼠标移动时，要不断的设置box的left和top
+            // this-->title
+
+            // 盒子最新的位置：鼠标移动的距离 + 盒子起始的位置
+            let changeX = e.clientX - this.curL + this.l;
+            let changeY = e.clientY - this.curT + this.t;
+
+            box.style.left = changeX + 'px';
+            box.style.top = changeY + 'px';
+        }
+
+        // 鼠标抬起事件
+        function up(){
+            title.onmousemove = null;
+            title.onmouseup = null;
+        }
+    </script>
+</body>
+
+</html>
