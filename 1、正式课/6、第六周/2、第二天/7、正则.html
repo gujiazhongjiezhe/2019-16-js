@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        元字符和修饰符
+
+        修饰符：
+            i：不区分大小写
+            m：多行匹配
+            g：全局匹配
+
+        元字符：量词元字符、普通元字符、特殊元字符
+            量词元字符：
+                *:0到多次
+                +：1到多次
+                ？：0次到1次
+                {n}：出现n次
+                {n,}：至少出现n次
+                {n,m}：出现n到m次
+
+            特殊元字符
+                \:转义字符
+                .：任意字符
+                ^:开头
+                $：结尾
+                \d:0到9之间的数字
+                \w:数字字母下划线
+                \b:单词边界
+
+                x|y:x或者y之间的任意一个
+                [a-z]:a到z之间任意一个字符(他是一个范围)
+                [2-9a-zA-Z]
+                [^a-z]
+
+                ():分组
+                (?:):只匹配不捕获
+                (?=):正向预查
+                (?!):负向预查
+
+            普通元字符：
+                a
+                b
+                c
+                d
+                f
+                t
+                w
+         */
+         /* 
+         匹配有效数字
+         1、数字开头可以是+-，只能出现一次 [+-]?
+         2、有可能是1位数，也有可能是多为数  1位数 \d  多为数  [1-9]\d+
+         3、小数   (\.\d+)?
+          */
+          let reg = /^[+-]?(\d|[1-9]\d+)(\.\d+)?$/;
+        //   3.0.5
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding:0;
+            margin: 0;
+        }
+        #box {
+            width: 100px;
+            height: 100px;
+            /* margin-top: 100px; */
+            padding: 10px;
+            border:10px solid green; 
+            background: red;
+            /* border-radius: 10px 20px 30px 40px; */
+            box-sizing:initial;
+            box-shadow: 10px 10px 1px 1px yellow;
+        }
+        #box1 {
+            width: 200px;
+            height: 200px;
+            margin-top: 200px;
+            background: url(./0.jpg) no-repeat;
+            border:10px dashed red;
+            padding:10px;
+            /* background-size:cover; */
+            /* background-size: 100%; */
+            background-clip: content-box;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="box1"></div>
+    <script>
+        /* 
+        border-radius: 圆角  50%;
+            value: 像素 百分比
+            两个值：1、左上和右下  2、右上和左下
+            四个值：左上-->右上-->右下-->左下
+        
+        box-sizing:怪异盒模型
+            border-box: 宽度和高度是包含padding和border
+            content-box:宽度和高度不包含padding和border
+            inherit:继承父级的
+            initial:默认值
+            unset：
+
+        box-shadow:盒子阴影
+            box-shadow: 10px         10px      5px      10px   orangered    inset;
+            //         向右偏移量   向下变异量  模糊半径  大小       颜色       内阴影
+
+        text-shadow:文本阴影
+
+        background-size:
+            contain:能够显示全部图片，以最小的比例
+            cover:按照盒子最大的边上去适应，有可能使图片显示的不完全
+            100% 100%:让图片完全适应盒子的宽高
+        background-clip:
+            border-box:超出border的部分被裁剪
+            padding-box:超出padding的部分被裁剪
+            content-box:超出content的部分被裁剪
+         */
+
+    </script>
+</body>
+</html>

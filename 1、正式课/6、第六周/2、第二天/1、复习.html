@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box,#box1 {
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+        #box1 {
+            top:300px
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="box1"></div>
+    <script>
+        function Drag(ele){
+            // this-->实例
+            this.ele = ele; // 把当前元素放到实例身上
+            ele.onmousedown = this.down.bind(this);
+            // call、appyl、bind
+            
+
+        };
+        Drag.prototype.down = function(e){
+            // this-->实例
+            this.x = e.clientX;
+            this.y = e.clientY;
+
+            this.l = parseFloat(getComputedStyle(this.ele).left)
+            this.t = parseFloat(getComputedStyle(this.ele).top)
+            document.onmousemove = this.move.bind(this);
+            document.onmouseup = this.up.bind(this);
+        }
+        Drag.prototype.move = function(e){
+            // this--> 实例
+            // 不断的设置盒子的left和top值
+
+            // 盒子的最新位置：当前鼠标移动的距离+ 盒子之前的位置
+                //      鼠标当前的位置 -  鼠标起始的位置
+            let changeX = e.clientX - this.x + this.l;
+            let changeY = e.clientY - this.y + this.t;
+            this.ele.style.left = changeX +'px';
+            this.ele.style.top = changeY + 'px';
+        }
+        Drag.prototype.up = function(){
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+        new Drag(box);
+        new Drag(box1);
+    </script>
+</body>
+</html>

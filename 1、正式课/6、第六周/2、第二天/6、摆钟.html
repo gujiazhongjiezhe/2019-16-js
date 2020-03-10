@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            width: 150px;
+            height: 450px;
+            margin: 500px auto;
+            background: url(./clock.png) no-repeat;
+            background-size: 100% 100%;
+            /* animation: move 3s linear infinite; */
+            animation: ss 3s linear infinite alternate;
+            transform-origin: top center;
+        }
+
+        /*  @keyframes 自定义动画 */
+        /* @keyframes move {
+            0%{
+                transform: rotate(0deg);
+            }
+            25%{
+                transform: rotate(45deg);
+            }
+            50%{
+                transform: rotate(0deg);
+            }
+            75%{
+                transform: rotate(-45deg);
+            }
+            100%{
+                transform: rotate(0deg);
+            }
+
+        } */
+
+        @keyframes ss {
+            0%{
+                transform: rotate(0deg);
+            }
+            25%{
+                transform: rotate(100deg);
+            }
+            50%{
+                transform: rotate(200deg);
+            }
+           
+          
+            100%{
+                transform: rotate(360deg);
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        // animation: name duration timing-function delay iteration-count direction;
+
+        // name: 需要绑定的keyframe名称（其中规定了位置从哪儿到哪儿）
+        // duration: 规定整个过程花费时间。（单位：s/ms）
+        // timing-function: 整个过程的速度曲线（先快后慢ease-out、先慢后快ease-in、匀速linear等）
+        // delay: 动画开始之前的延迟。（单位：s/ms）
+        // iteration-count： 动画循环次数。（无限infinite、自定义次数n）
+        // direction： 是否轮流反方向播放。（normal正常播放、alternate轮流反方向播放）
+    </script>
+</body>
+
+</html>

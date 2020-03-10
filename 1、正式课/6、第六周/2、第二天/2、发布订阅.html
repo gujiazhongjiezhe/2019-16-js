@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+        发布订阅：就是一种思想
+        自定义事件模式
+        观察者模式
+        off on emit
+        先执行订阅，把要执行的方法存储到一个事件池中，当某个条件成立时，进行发布的操作，在发布时。去遍历事件池中所有的方法，依次让其执行
+
+        promise vue react  dom2级事件
+         */
+        let obj = {};
+         // 放学别走
+         function fn1(){
+             console.log('泡面')
+         }
+
+         function fn2(){
+             console.log('写作业')
+         }
+
+        //  '睡觉' 
+
+         // 订阅
+         function on(curEle,type,fn){
+            if(!curEle[type]){
+                curEle[type] = [];
+            }
+            let ary = curEle[type];
+            let isHas = ary.some(function(item){
+                return item === fn
+            })
+            if(!isHas){
+                ary.push(fn) 
+            }
+         }
+         function off(curEle,type,fn){
+            let ary = curEle[type];
+
+            // filter :过滤
+            curEle[type] = ary.filter(function(item){
+                return item !== fn
+            })
+
+         }
+         function emit(curEle,type){
+            let ary = curEle[type]; // 数组 事件池
+            for (var i = 0; i < ary.length; i++) {
+                if(typeof ary[i] === 'function'){
+                    ary[i]()
+                }
+               
+            }
+         }
+         on(obj,'fangXue',fn1);
+         on(obj,'fangXue',fn2);
+         on(obj,'fangXue',fn2);
+         off(obj,'fangXue',fn1)
+
+         setTimeout(function(){
+            emit(obj,'fangXue')
+         },2000)
+         console.log(obj)
+    </script>
+</body>
+</html>
