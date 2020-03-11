@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #box {
+            width: 200px;
+            height: 200px;
+            background: greenyellow;
+            font-size: 20px;
+        }
+
+        @media screen and (min-width: 1000px) {
+            /* min-width: 1000px */
+            /* 当屏幕超过1000px时，该处的样式生效 */
+            #box {
+                background: red;
+            }
+
+        }
+
+        @media all and (max-width: 800px)  and (min-width: 600px){
+            /*  当屏幕大于600px和小于800px的时候改处的样式生效*/
+            #box {
+                color: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="box">111111111</div>
+    <script>
+        // 960 1080 1280 1440
+        // 在1200px以上盒子是红色，如果在1200px以下，盒子是黑色
+
+        // @media screen and (max-width:800px){
+        //         #box {
+        //             background: hotpink;
+        //         }
+        // }
+    </script>
+</body>
+</html>

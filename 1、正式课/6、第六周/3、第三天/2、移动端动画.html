@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            /* 设置动画的总时长 */
+            /* transition-duration: 2s; */
+            /* 设置动画运动的效果 */
+            /* transition-timing-function: linear; */
+            /* 谁具有动画的属性 */
+            /* transition-property: all; */
+            /* 冬至执行延迟的时间 */
+            /* transition-delay: 2s; */
+
+            /* 过度动画 */
+            transition: all linear 2s ; 
+        }
+        #box:hover{
+            transform: translate(100px,200px) rotate(360deg) scale(2);
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+</body>
+</html>

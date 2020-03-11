@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        html,body {
+            width: 100%;
+            height: 100%;
+        }
+        #box {
+            /* width:800px; */
+            width: 100%;
+        }
+        div {
+            width: 25%;
+            float: left;
+            height: 100px;
+            background: red;
+        }
+        p {
+            width: 10%;
+            height: 10px;
+            background: greenyellow;
+        }
+        #s {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="box">
+            <div>
+                <p>这个小盒子的宽度是相对于他的父级元素来说的</p>
+            </div>
+            <div></div>
+            <div></div>
+            <div></div>
+    </div> -->
+    <div id="s"></div>
+ 
+    <script>
+    /* 
+    响应式布局  1080*1920    div：width：100px  10个div
+                800*900
+            不管是移动端还是pc，每一个屏幕的分辨率都不相同，页面的宽度就不一样，如果你开发的时候在pc端盒子时1200px，如果现在你在960像素的屏幕上去显示这个盒子，就会出现滚动条了
+        */
+        // 百分比的好处：当你屏幕的宽度变化的时候，那元素的宽度也会跟着变化
+        // 响应式布局：
+        // 1、百分比布局(流式布局)
+
+
+    </script>
+</body>
+</html>

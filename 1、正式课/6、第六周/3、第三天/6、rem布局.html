@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function reset(){ 
+            let winW = document.documentElement.clientWidth; // 用户当前屏幕的宽度
+            document.documentElement.style.fontSize = 100*winW/750 + 'px'
+        }
+        // 屏幕的大小发生变化之后，此事件就会被触发
+        window.onresize = reset;
+        window.onload = function(){
+            // 当页面加载完成之后触发
+        }
+        reset();
+    </script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        html {
+            font-size: 100px;
+            /* 1rem === 100px */
+        }
+        div{
+            width: .75rem;
+            height: .75rem;
+            background: red;
+            float: left;
+            font-size: .16rem;
+
+        }
+    </style>
+</head>
+<body>
+    <div>2</div>
+    <div>2</div>
+    <div>2</div>
+    <div>2</div>
+    <div>2</div>
+    <div>2</div>
+    <div>2</div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        /* 
+        rem布局：给每一个盒子根据当前屏幕的宽度计算出一个新的宽度，来适应整体的布局
+
+        当前屏幕宽度750px      有一个元素宽100px   
+                  375px                  50px 
+
+        1rem就相当于HTML的fontSize属性值，rem是一个相对的值 如果屏幕的大小改变了，计算出当前屏幕下最新的htnl的fontSize值
+        */
+        // 屏幕         元素宽度      html的fontsize
+//设计稿  750px         75px           100px                .75rem       1rem === 100px
+        // 375px        37.5px         x =50                .75rem
+        // 100px                         x                  .75rem
+
+        // 750/375 === 100px/x
+
+        // x === 100*375/750
+        // x === 100*100/750
+        // let winW = document.documentElement.clientWidth; // 用户当前屏幕的宽度
+        // // x === 100*winW/750 + 'px'
+
+        // function reset(){
+            
+        //     let winW = document.documentElement.clientWidth; // 用户当前屏幕的宽度
+        //     document.documentElement.style.fontSize = 100*winW/750 + 'px'
+        // }
+        // // 让屏幕的带小发生变化之后，此事件就会被触发
+        // window.onresize = reset;
+        // reset();
+
+    </script>
+</body>
+</html>
