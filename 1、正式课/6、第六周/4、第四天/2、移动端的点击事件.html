@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script src="./fastclick.js"></script>
+    <script>
+        window.addEventListener('load',function(){
+            FastClick.attach(document.body)
+        });
+        let box = document.querySelector('#box');
+        // 移动端有onclick事件，但是有300ms延迟，在移动端中点击盒子完以后，会等待300ms，浏览器需要判断一下，是否还有下一次点击，如果在300ms之内有下一次点击，那就是双击事件，就不会触发click，如果没有下一次点击，那就是单机事件，click事件执行
+        box.onclick = function(){
+            console.log(111)
+        }
+
+        // 解除移动算的延迟
+
+        // zepto:移动端的类库(可以把它当做移动版的jq)
+        // $('#box').tap(function(){
+            
+        // })
+
+    </script>
+</body>
+</html>

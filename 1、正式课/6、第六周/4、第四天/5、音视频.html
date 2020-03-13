@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <audio src="./img/myDream.m4a" id="music" controls></audio>
+    <button id="btn1">播放</button>
+    <button id="btn2">暂停</button>
+    <script>
+    /* 
+    语义化，超文本的标记语言：可以显示图片，视频，音频
+
+    audio，video
+     */
+    //  controls:显示控制条
+    // play():播放
+    // pause()：暂停
+    // paused：他是属性名，如果现在是处于播放状态，那他的值就是false，如果是处于暂停状态，那他的值就是true
+    // duration:音频的总时长
+    // currentTime：当前已经播放的时间
+    // canplay：当音乐加载完毕之后，这个事件就会触发
+        let music = document.getElementById('music');
+        music.addEventListener('canplay',function(){
+            console.log(music.duration)
+            console.dir(music)
+        })
+        window.addEventListener('load',function(){
+            console.log(music.duration)
+        })
+        btn1.onclick = function(){
+            music.play();
+            console.log(music.paused)
+        }
+        btn2.onclick = function(){
+            music.pause();
+             console.log(music.paused)
+        }
+    </script>
+</body>
+</html>

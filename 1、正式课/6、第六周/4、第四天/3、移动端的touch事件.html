@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+       // touch  ：ontouchstart   ontouchmove  ontouchend （touch只存在于移动端） onclick
+
+       let box = document.querySelector('#box');
+       box.addEventListener('click',function(){
+           console.log(1)
+       })
+       box.addEventListener('touchstart',function(){
+           console.log(2)
+       })
+       box.addEventListener('touchmove',function(){
+           console.log(3)
+       })
+       box.addEventListener('touchend',function(){
+           console.log(4)
+       })
+
+       // onclick是最后执行的   ontouchstart-->ontouchmove-->ontouchend-->onclick
+       // 如果ontouchmove一旦触发，那onclick就不会触发了
+
+    //    FastClick的原理：把元素绑定的点击事件，改造给了body的ontouchend事件，但元素触发时，会直接冒泡到body的ontouchend事件，执行，那click做的事就在body的ontouchend事件里做就行了，然后在把元素的onclick禁止掉就行了
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html {
+            font-size: 100px;
+        }
+        @media screen and (min-width: 600px) {
+            
+        }
+        box {
+          width: 0.5rem;  
+        }
+    </style>
+</head>
+<body>
+    <script>
+        /* 
+        3D动画xyz
+        响应式布局：
+            1、流式布局(百分比布局)    px rem em   100%
+            2、媒体查询：
+            2.5、flex布局 12，给容器设置6个，给项目设置6个  flex：1
+            3、rem布局
+                1rem等于html的fontSize值
+                50px;
+                设计稿宽度         fontSize      
+                750px    80px       100px         0.8rem
+                375px    40px        x           0.8rem
+
+                750x ==== 375*100;
+                x === 375*100/750
+         */
+         function computedFont(){
+             let winW = document.documentElement.clientWidth;
+             document.documentElement.clientWidth.style.fontSize = winW*100/750 + 'px'
+         }
+         computedFont();
+         window.addEventListener('resize', computedFont);
+    </script>
+</body>
+</html>
