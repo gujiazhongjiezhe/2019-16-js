@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        let box = document.getElementById('box');
+        // ontouchstart ontouchmove ontouchend ontouchcancel
+
+        box.ontouchstart =function(e){
+            console.log(e)
+            e.touches
+            length:代表触摸的手指头的个数
+
+            // 移动端的事件信息都在touches对象里存储着，而且支持多个事件信息，
+            clientX
+            clientY
+
+            pageX
+            pageY
+        }
+    
+    // FastClick的原理：给元素绑定点击事件，改造给了body的touchend事件了，元素触发事件时，会冒泡到body身上的，然后触发body的touchend事件，由于touch事件不存在延迟，所以直接让body的touch执行点击事件的函数了(然后在把元素的click事件禁止掉)
+    </script>
+</body>
+</html>

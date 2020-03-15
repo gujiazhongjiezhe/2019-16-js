@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        发布订阅：是一种思想
+
+
+        发布订阅：先进行订阅，把你要执行的方法存储到某个事件池中(数组)，当条件成立事，进行发布的操作，遍历事件池中的所有方法，这些方法依次执行
+        + 在promise、vue、react、事件绑定里都有应用
+        on off emit
+
+        */
+        let obj = {};
+
+        function on(curEle, type, fn) {
+            if (!curEle[type]) {
+                curEle[type] = [];
+            }
+            curEle[type].push(fn);
+        }
+
+        function off(curEle, type, fn) {
+            let ary = curEle[type]; // 事件池子
+            for (var i = 0; i < ary.length; i++) {
+                if (ary[i] === fn) {
+                    ary.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+
+        function emit(curEle, type) {
+            let ary = curEle[type];
+            for (var i = 0; i < ary.length; i++) {
+                ary[i]()
+            }
+        }
+
+        // 放学之后
+        function fn1() {
+            console.log('泡面')
+        }
+
+        function fn2() {
+            console.log('泡脚')
+        }
+
+        function fn3() {
+            console.log('写作业')
+        }
+
+        on(obj, 'fangXue', fn1)
+        on(obj, 'fangXue', fn2)
+        on(obj, 'fangXue', fn3)
+        off(obj, 'fangXue', fn1)
+       
+        setTimeout(function () {
+             emit(obj, 'fangXue')
+        }, 3000);
+    </script>
+</body>
+
+</html>
