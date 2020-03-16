@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .container {
+            /* width: 800px; */
+            height: 300px;
+            background: rgba(255, 0, 0, 0.151);
+        }
+
+        .row {}
+
+        .row div {
+            height: 100px;
+            background: rgba(172, 255, 47, 0.281);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- 每一行最多12份 -->
+            <!-- <div class="col-sm-6 col-xs-4 col-md-12">1</div> -->
+            <!-- <div class="col-sm-6 col-xs-4 col-md-12">2</div>
+            <div class="col-sm-6 col-xs-4 col-md-12">2</div> -->
+            <!-- <div class="col-sm-4"></div>
+            <div class="col-sm-4 ">
+                <div class="row">
+                    <div class="col-sm-8" style="height: 20px; background: red;">3</div>
+                </div>
+            </div> -->
+            <div class="col-sm-2 col-sm-push-2 h6"><u>1</u></div>
+            <div class="col-sm-2 col-sm-pull-2 text-right">2</div>
+        </div>
+    </div>
+
+    <!-- <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <td class="active">...</td>
+                <td class="success">...</td>
+                <td class="warning">...</td>
+                <td class="danger">...</td>
+                <td class="info">...</td>
+            </tr>
+        </table>
+    </div> -->
+    <!-- <button class="btn btn-info btn-lg btn-block" disabled="disabled">按钮</button>
+    <div class="text-primary hidden">eeeeee</div> -->
+    <!-- <p class="text-success">..csacascsacs.</p>
+    <p class="bg-info">...</p>
+    <p class="bg-warning">...</p>
+    <p class="bg-danger">...</p> -->
+    <!-- <div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+            aria-valuemax="100" style="width: 80%;">
+            <!-- <span class="sr-only">60% Complete</span> -->60%
+        </div>
+    </div> -->
+    <ul class="nav nav-tabs">
+        <li role="presentation" ><a href="#">Home</a></li>
+        <li role="presentation" class="active"><a href="#">Profile</a></li>
+        <li role="presentation"><a href="#">Messages</a></li>
+    </ul>
+    <script>
+        /* 
+        bootstrap:ui框架 让咱们的开发更加简单直接
+        看文档：在框架阶段是一个很重要的能力
+
+        栅格化布局每一行一共分为12份
+              col-xs                col-sm                col-md             col-lg
+        (max-width:768px)      (min-width:768px)    (min-width:992px)   (min-width:1200px)
+
+        支持嵌套
+        col-sm-offset-1:偏移(移动的是margin)
+         col-sm-push-1：往右移动
+         col-sm-pull-1：往移动
+        */
+    </script>
+</body>
+
+</html>

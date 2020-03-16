@@ -1,0 +1,104 @@
+// 变量：存在变量提升
+// 嵌套
+// less存在作用域
+
+@w:100px;
+@b:1px solid rgb(95, 68, 68);
+@color:red;
+
+// less支持嵌套
+// .box{
+//     width: @w;
+//     height: @w;
+//     background: red;
+//     border:@b;
+//     .box1 {
+//         border:@b;
+//     }
+// }
+
+// .box {
+//     color: @color;
+//     &:hover {
+//     // 让之前的颜色色值增加10%
+//       color:  darken(@color, -30%);
+//     }
+// }
+// @bgImg:'../img/';
+// @name:box;
+
+// .@{name} {
+//     width: @w;
+//     height: @w;
+//     background: url('@{bgImg}1.png');
+//     .box1 {
+//         background: url('@{bgImg}2.png');
+//     }
+// }
+
+// less存在作用域
+// .box {
+//     width: 200px;
+//     height: 200px;
+//     @w:50px;
+//     .box1 {
+//         width: @w;
+//         height: @w;
+//     }
+// }
+
+
+// &:连接符
+// .box {
+//     width: 200px;
+//     height: 200px;
+//     @w:50px;
+//     .box1 {
+//         width: @w;
+//         height: @w;
+//         &:hover {
+//             background: red;
+//         }
+//     }
+// }
+
+// 封装函数
+
+// .pub(@w:100px,@h:100px){
+//     width: @w;
+//     height: @h;
+//     border: 1px solid red;
+// }
+
+// .box {
+//     // .pub(200rem,300rem)
+//     // .pub
+//     // .pub(@h:500px)
+// }
+
+// 继承
+// .pub {
+//     color: springgreen;
+// }
+
+// .box {
+//    width: 100px;
+//    height: 100px;
+//    &:extend(.pub);
+//    .box1 {
+//        &:extend(.pub);
+//    }
+// }
+
+// 可以判断条件
+// .layout(@a) when(@a<100){
+//     color: springgreen;
+// }
+
+// .box {
+//     width: 100px;
+//     .layout(101)
+// }
+
+
+

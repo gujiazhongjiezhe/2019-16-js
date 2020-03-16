@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      /* 
+      1、在每一个页面都有全局的作用域，每一个页面之间不能够相互访问
+      2、什么情景下去应用这些存储
+      3、实现两个页面之间的数据通讯，如果一个页面需要另一个页面的数据，那么就可以采用localStorage或者sessionStoage进行存储
+      4、他是H5新增的API ：本地存储
+
+      localStorage sessionStorage  cookies
+      */  
+    //  localStorage：永久性存储，关闭浏览器或者关闭页面，他还会一直存在
+    //  sessionStorage:
+
+    // 1、设置本地存储,你要注意，本地存储时，浏览器会自动把值转换为字符串,所以你存储值的时候如果值是引用值先用JSON.stringify给他转换成字符串，然后在存储
+    // localStorage.setItem('a',111)
+    // localStorage.setItem('name',true)
+    // localStorage.setItem('b',JSON.stringify({a:1,b:2})) // '{a:1,b:2}'
+    // localStorage.setItem('ary',[1,2,3])
+
+    // 2、获取本地存储
+    // console.log(localStorage.getItem('ary'))
+
+    // 3、删除本地存储
+    // localStorage.removeItem('a')
+
+    // 4、清空本地存储
+    // localStorage.clear()
+
+
+    // sessionStorage:会话存储，只能自己的页面 可以访问，当你关闭页面时，会导致存储数据的丢失
+
+    // setItem  getItem removeItem clear
+
+    // less
+    </script>
+</body>
+</html>
