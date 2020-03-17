@@ -1,0 +1,33 @@
+// less是一个css的预编译语言
+// less只用于开发，在项目上线之前把less解析成css，最后上线的还是css
+// less让css具有了编程语言的特点
+
+// 全局安装 npm i less -g
+// 打开具有less的文件夹，执行lessc index.less  index1-1.css
+// 在vscode下载插件：Easy LESS
+
+// 变量 存在变量提升
+// 作用域
+// 函数
+// &:父级的类名
+@w:100px;
+@name:box;
+
+// .@{name} {
+//     width: @w;
+//     @w:200px;
+//     .box {
+//         width: @w;
+//     }
+// }
+
+.pub(@w:1px,@h:1px){
+    width: @w;
+    height: @h;
+    border: 1px solid red;
+}
+
+.box {
+    .pub
+    
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // readyState
+        // status状态
+        // xhr.status == 200 304 404 503
+
+        let xhr = new XMLHttpRequest;
+        xhr.open('get', 'ndex.html', true);
+        xhr.onreadystatechange = function () {
+            console.log(xhr.status)
+            console.log(xhr.readyState)
+            if (xhr.readyState === 4 && /^2\d{2}$/.test(xhr.status)) {
+
+            }
+        }
+        xhr.send()
+        /* 
+         200:请求成功
+         301：永久重定向，将当前的域名重定向到一个新的域名上
+         304：走缓存
+         307：临时重定向
+
+         400：请求的语法存在错误
+         401 ：  （未授权） 请求要求身份验证。 对于需要登录的网页，服务器可能返回此响应。
+         403：没有访问权限
+         404：路径错误
+         500：服务器内部错误
+         503：超负荷，当用户的访问量超过服务器所能承受的最大用户量；
+
+        
+        */
+    </script>
+</body>
+
+</html>

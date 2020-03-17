@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+        /* 
+        ajax的基础
+        ajax：async javascript and xml
+        async：异步
+        xml：可扩展性的标记语言
+
+        ajax：他就是前后端交互的一种技术
+
+        前后端不分离
+        10年：web前端开发工程师  网页制作：把html和css切图  那时候好多前端的功能都是后台写
+
+        // 前后端的比例：1:6-8
+        // 前后端不分离的项目，好多数据请求都是后台做处理，页面的性能比较低，随着js和jq的发展。越来越多的公司开始使用前后端分离的项目
+
+        // 前后端分离 1:3
+        // 前后端就要同时开发项目：数据交互；接口文档：url的请求方式、参数、后台返回的数据类型，数据格式
+
+        // 排序  省市级联动
+        // 公司：后台是领导。人家说了，只要前端能够做到的，我们后台肯定不做
+        前端重要性：
+
+        // 互联网公司   传统公司 
+
+
+        ajax:四部曲
+        axios用的是最多的(90%) fetch  $.ajax({})  原生的ajax
+
+        $.ajax({
+            url:"xxxxx",
+            type:'post',
+            data:{
+                uesrName:'张三',
+                password:'123456'
+            },
+            success:function(data){
+                if(data.status == 0){
+                    // 登录成功
+                }
+                else if(data.status === 1){
+                    // 用户为注册
+                }
+                else if(data.status === 2){
+                    // 用户密码错误
+                }
+            }
+            fail:function(){
+
+            }
+        })
+
+
+
+
+
+        */  
+    </script>
+</body>
+</html>
