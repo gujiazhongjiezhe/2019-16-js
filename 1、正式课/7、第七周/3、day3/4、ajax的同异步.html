@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        ajax的同异步
+
+        */
+        let xhr = new XMLHttpRequest;
+        xhr.open('get', 'index.json', true);
+        xhr.onreadystatechange = function () {
+            console.log(100)
+        }
+        xhr.send(); // 阻塞线程
+        console.log(200)
+    //   5s
+    //   3s
+    //   2s
+
+        //    1、异步：
+        //    一个页面有十几个请求，如果每一个请求都是独立的，那么一般都使用异步
+
+        // 2、同步：如果第一次请求回来的内容要作为下一次请求的参数，这时候第一个请求完成之后你才能发送第二个请求
+        // let da = null;
+        // $.ajax({
+        //     url:'xxx',
+        //     type:'get',
+        //     async:false, // 同步
+        //     success:function(data){
+        //         da = data
+        //     }
+        // });
+
+        // $.ajax({
+        //     url:'xxx2222',
+        //     type:'get',
+        //     data:da, // 请求参数
+        //     async:false, // 同步
+        //     success:function(data){
+
+        //     }
+        // });
+
+
+        // 登录  -->浏览记录
+         $.ajax({
+            url:'xxx',
+            type:'get',
+            async:true, // 同步
+            success:function(data){
+                $.ajax({
+                    url:'xx2',
+                    type:'get',
+                    async:false,
+                    data:data,
+                    success:function(){
+                        $.ajax({
+
+                        }) 
+                    }
+                })
+            }
+        });
+
+        
+
+        // promise :解决异步回调地域问题的，异步的代码以同步的方式给你展现出来
+
+
+        $.ajax() // 5s
+        $.ajax() // 3s
+        $.ajax() // 2s
+        // 能用异步就别用同步
+
+
+
+
+    </script>
+</body>
+
+</html>

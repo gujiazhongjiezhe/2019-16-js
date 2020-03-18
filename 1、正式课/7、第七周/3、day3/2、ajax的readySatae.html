@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Asynchronous JavaScript And XML
+        let xhr = new XMLHttpRequest;
+        xhr.open('get','index.json',true);
+        xhr.onreadystatechange = function(){
+            // if(){}
+            console.log(xhr.readyState)
+            console.log(xhr.status)
+        }
+        xhr.send(); // 
+        // 浏览器是多线程的
+
+        console.log(100)
+        /* 
+        0:创建了ajax实例
+        1：确定好了请求方式，请求路径，同异步
+        2：说明服务器已经接受到客户端发来的请求，并且把响应头给了客户端
+        3：客户端正在接受从服务端发来的数据
+        4：客户端已经全部接收到了数据
+        */
+
+        /* 
+        http常见的状态码
+
+        200：请求成功
+        301：永久重定向
+        304：有缓存
+        307：临时重定向
+        400：报文存在语法错误
+        401：请求需要验证
+        403：没有访问权限
+        404：路径错误
+        500：服务器未知的错误
+        503：服务器超负荷
+        504：请求超时
+        
+        */
+
+
+
+        // setTimeout(() => {
+        //     console.log(100)
+        // }, 2000);
+        // console.log(200);
+
+        // 考面包
+        //  喝奶
+    </script>
+</body>
+</html>

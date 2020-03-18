@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        promise的ajax
+        */
+
+        // let pro = new Promise(function (resolve, reject) {
+        //     resolve()
+        //     // reject()
+        // })
+        // pro.then(function () {
+        //     console.log(1)
+        //     // return new Promise(function(resolve, reject){ reject()})
+        // }).then(function () {
+        //     console.log(3)
+        // }).catch(function(){
+        //     console.log('失败')
+        // })
+
+        // 用户登录 --->获取用户订单信息
+        // 回调地域
+
+        // 第二个请求要等到第一个请求成功之后才能执行，这种无限次嵌套的请求就是回到地狱
+        // 将异步的回调以同步的形式展现出来
+        // $.ajax({
+        //     url:'/login',
+        //     data:{username:'张三',password:'123456'},
+        //     async:true,
+        //     type:'post',
+        //     success:function(data){
+        //         // data  {statusCode:0}
+        //         if(data.statusCode === 0){
+        //             $.ajax({
+        //                 url:'xxx',
+        //                 success:function(){
+
+        //                 }
+        //             })
+        //         }
+        //     }
+        // })
+
+        let getJSON = function (str) {
+            let promise = new Promise(function (reslove, reject) {
+                let xhr = new XMLHttpRequest;
+                xhr.open('get', str, false);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && /^2\d{2}$/.test(xhr.status)) {
+                        reslove(JSON.parse(xhr.responseText))
+                    } else if (xhr.readyState === 4){
+                        reject()
+                    }
+                }
+                xhr.send();
+                return promise
+            })
+        }
+
+
+        getJSON('/login').then(function (data) {
+            return getJSON('/getInfo')
+        })
+        axios('').then()
+
+
+
+
+
+
+        // getJSON('/login').then(function(data){
+            // 外层的geJSON实例状态发生变化之后，才会执行then里边的回调
+
+        //    return getJSON('/getInfo'); // 这个promise实例的状态会影响下一个then中的回调函数执行
+        // }).then(function(){
+    
+        // }).catch(function(){
+            // 如果有任意一个请求失败，就触发catch里的回调函数
+        //     console.log('出错了')
+        // })
+    </script>
+</body>
+
+</html>

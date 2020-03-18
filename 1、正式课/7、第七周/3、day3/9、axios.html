@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src='./node_modules/axios/dist/axios.js'></script>
+    <script>
+        /* 
+        https://www.jianshu.com/p/7a9fbcbb1114
+        基于promise用于浏览器和node.js的http客户端;用于前后端进行交互
+
+        axios的返回值是一个promise的实例
+        */
+        //  console.log(axios('index.json'))
+        //  axios('index.json').then(function(res){
+        //      console.log(res.data)
+        //  })
+
+        // axios.get:get请求，当请求成功以后，会执行then中的第一个回调函数
+        // axios.get('index.json').then(function(res){
+        //     // res：是请求成功的数据，但是这个res是被包裹的数据，真正的数据放到了res的data的属性名上
+        //     console.log(res.data)
+        // })
+
+        // axios.get('index.json',{params:{name:1,age:2}}).then(function(res){
+        //     // res：是请求成功的数据，但是这个res是被包裹的数据，真正的数据放到了res的data的属性名上
+        //     console.log(res.data)
+        // })
+
+        // post请求，注意传参和get是不一样的
+        // axios.post('index.json',{name:1,age:2}).then(function(res){
+        //     console.log(res.data)
+        // }).catch(function(){
+        //     console.log('请求失败')
+        // })
+
+
+        // axios.all:支持并发请求
+        // function getUserAccount() {
+        //     return axios.get('index.json',{params:{name:1}});
+        // }
+
+        // function getUserPermissions() {
+        //     return axios.get('index.json',{params:{name:2}});
+        // }
+
+        // axios.all([getUserAccount(), getUserPermissions()])
+        //     .then(axios.spread(function (acct, perms) {
+        //         console.log(acct, perms)
+        //         // Both requests are now complete
+        //     }));
+
+
+        // axios({
+        //     method: 'post',
+        //     url: '/user/12345',
+        //     data: {
+        //         firstName: 'Fred',
+        //         lastName: 'Flintstone'
+        //     }
+        // });
+
+        // 全局的配置
+        // axios.defaults.baseURL = 'https://api.example.com';
+        // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+        // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+        // axios.get('index.json')
+        // // axios.post('first.json')
+
+
+        // 创建实例时修改配置
+        // var instance = axios.create({
+        //     baseURL: 'https://api.example.com'
+        // });
+
+        // // 实例创建之后修改配置
+        // instance.defaults.headers.common['Authorization'] = 'AUTH_TOKEN';
+
+        // instance('index.json')
+        // // axios()
+
+        // 拦截器
+        // axios.interceptors.request.use(function (config) {
+        //     // Do something before request is sent
+        //     // 在请求之前会触发
+        //     console.log(config)
+        //     config.data = {
+        //             name: 1
+        //         },
+        //         config.method = 'post'
+
+        //     return config;
+        // });
+        
+        // 在请求之后就会被触发
+        axios.interceptors.response.use(function (response) {
+            // Do something with response data
+            console.log(response)
+            response.data = 1;
+            return response;
+        });
+        axios.get('index.json').then(function(res){
+            console.log(res.data)
+        });
+    </script>
+</body>
+
+</html>

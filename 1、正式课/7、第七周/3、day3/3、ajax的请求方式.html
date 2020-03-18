@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        ajax的请求方式
+        */
+       let  time = Date.now()
+        let xhr = new XMLHttpRequest;
+        xhr.open('post', 'index.json?time='+time, false);
+        xhr.onreadystatechange = function () {
+
+        }
+        xhr.send()
+
+        // 什么时候用get，什么时候用post
+
+        // 一般情况下前端想从后台拿数据的时候用get
+        // name: 'panhong'
+        // 前端想给后端发送数据的时候用post
+        // 删除  name:'panhong',delete:1
+
+        // 没有明显的界限
+
+        //    1、get：一般情况下用于获取数据(获取订单，获取用户信息)
+        //    1)、get请求传参是用过地址栏传参，直接频道url问号的后面
+        //    2)、各个浏览器对url的大小是有限制的，不可以无限传参 IE 4kb  谷歌8kb
+        //     3)、get请求直接将数据暴露在地址栏上，安全性比较差
+        //     4)、get默认是走缓存的，如果你不想走缓存，那就在url后面拼一个时间戳
+
+
+        //2、post：一般情况下用于向服务器发送数据(登录、注册、提交订单)
+        // 1)、post很惨地的参数直接放到请求体中，传递给服务器
+        // 2)、post数据没有大小要求
+        // 3)、数据存放在请求体中，安全系数高
+        // 4)、post不走缓存
+
+
+        // post
+
+        // delete
+        // head
+        // put
+    </script>
+</body>
+
+</html>
