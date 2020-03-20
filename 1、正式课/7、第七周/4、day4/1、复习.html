@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        设置请求头
+        前端和后端
+        请求头 请求体
+        响应头 响应体
+
+         */
+        //  let xhr = new XMLHttpRequest;
+        //  // 请求头必须在请求发送之前设置
+        
+        //  xhr.send()
+        //  xhr.setRequestHeader('key','value');
+
+        $.ajax({
+            url:'',
+            type: 'get',// 请求类型
+            async: true, // 是否同异步
+            data: {}, // 参数
+            cache: true, // 是都走缓存
+            contentType:'',
+            dataType: 'text', // 控制返回的数据的类型
+            success:function(data){
+                console.log(data)
+            },
+            error: function(){
+
+            },
+            complete:function(){
+
+            },
+            beforeSend:function(xhr){
+                xhr.setRequestHeader()
+            },
+            timeout: 2000,  // 5s
+        })
+        $.get('xxx',)
+        $.post()
+    </script>
+</body>
+</html>

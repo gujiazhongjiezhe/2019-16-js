@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        ajax :原生
+        axios: 第三方插件：他是ajax的进一步封装
+        fetch：原生
+         */
+        //  fetch不是ajax的进一步封装
+        //他是window上的一个方法，返回值是一个promise的实例
+        // console.log(window.fetch)
+
+        //使用fetch至少需要两个then
+        // console.log(fetch('index.json'))
+        // fetch('index.json').then(function(data){
+        //     console.log(data)
+        //     return data.json()
+        // }).then(function(data){
+        //     console.log(data)
+        // })
+
+        // fetch('index.json',{
+        //     method:'post',
+        //     body:JSON.stringify({
+        //         name:1,
+        //         age:2
+        //     }),
+        //     headers:{
+        //         "s":1
+        //     }
+        // })
+
+        // 缺点：
+        // 1、不能够接受跨域的cookie
+        // 2、不能够发送cookie
+    </script>
+</body>
+</html>

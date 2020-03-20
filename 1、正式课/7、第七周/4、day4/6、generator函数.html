@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 异步：steTimeout setInterval
+        // 事件绑定
+
+        //   ajax:同步异步都可以
+
+        // 买菜-->洗菜-->炒菜
+        // $.ajax({
+        //     async:true,
+        //     success:function(){
+
+        //     }
+        // })
+
+        // Promise的then
+
+        // let p = new Promise(function (resolve, reject) {
+        //     console.log(100);
+        //     // resolve(200);
+        //     // promise的状态一旦发生变化，就凝固了，不可能在变了
+        //     // reject();
+        //     console.log(e); // 代码如果出现错误，就是失败态
+        // });
+        // p.then(function () {
+        //     console.log(200)
+        // }).catch(function () { // 只要有一个状态是失败态，他就执行
+        //     console.log(500)
+        // }).finally(function () { // 不管成功失败，他都会执行
+        //     console.log(900)
+        // })
+        // console.log(300)
+        // 100 200 300
+        // 100 300 200
+
+        //100 300 200
+        // 100 300 500 900
+
+
+        // generator是一个状态机
+        // 1、function和函数名之间有一个*
+        // 2、函数体内部使用yield表达式，来定义函数体内部的状态
+        // 3、generator是分段执行的，yield是暂停的标记，next是回复执行
+
+        function* fn(){
+            console.log(100)
+            yield 'hellow'; // 1
+            console.log(200);
+            yield 'world'; // 2
+            console.log(300);
+            return 600;
+        }
+        let f = fn();
+        console.log(f) // 返回的是内部的状态 
+        console.log(f.next()) // {value:'hello',done:false}
+        console.log(f.next()) // {value:'world',done:false}
+        console.log(f.next()) // {value: 600, done: true}
+        console.log(f.next()) // {value:un,done:true}
+
+    </script>
+</body>
+
+</html>

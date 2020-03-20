@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./jquery-3.1.1.min.js"></script>
+    <script>
+        /* 
+        同域：你的协议、域名、端口号全部相同，这就是同域，
+        跨域：你的协议、域名、端口号有一个不相同，就是跨域
+
+        0-65535端口
+        项目1部署到3000端口下，项目2部署到3001端口下，从端口3000的项目去访问端口3001的项目，这种情况不能直接访问，这就是跨域现象
+    
+         */
+         // http://matchweb.sports.qq.com/kbs/calendar:8080?columnId=100000
+
+        //  ajax属于同源策略
+        // 浏览器是属于非同源策略
+        // script的src是非同源策略，但是利用他的特点进行跨域得需要后台的配合
+        // img,audio
+        
+         $.ajax({
+             url:'http://matchweb.sports.qq.com/kbs/calendar?columnId=100000',
+             success:function(data){
+                 // 请求失败，因为产生跨域
+                 console.log(data)
+             }
+         })
+         // 咱们就像在js中获取跨域的数据，怎么办
+         function get(data){
+             console.log(data)
+         }
+
+        //  JSONP的原理：利用了script的src是非同源策略的机制，请求的时候在地址的后面品拼接一个callback和对应的函数名，当后端将数据传递给客户端时，当前的callback回调函数会默认执行，并且护具会以实参形式传递给当前的回调函数
+
+        // 后台必须对JSONP请求作出特殊的处理
+        // 只能走get请求，不能够发送post请求
+        // cors跨域:前端什么都不做，
+        $.ajax({
+            url:'xxx',
+            dataType: 'jsonp',
+            success:function(data){
+
+            }
+        })
+    </script>
+    <script src="http://matchweb.sports.qq.com/kbs/calendar?columnId=100000&callback=get"></script>
+</body>
+</html>

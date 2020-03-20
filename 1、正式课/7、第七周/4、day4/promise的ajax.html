@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 用户登录   --> 用户商品信息 -->
+
+// 异步的回到地域
+        // $.ajax({
+        //     url:'xxx',
+        //     success:function(data){
+        //         if(data.statusData === 0){
+        //             // 用户登录成功
+        //             $.ajax({
+        //                 url:'xxx',
+        //                 success:function(data){
+        //                     // 用户商品信息
+        //                     $.ajax({
+        //                         url:'xxx',
+        //                         success:function(){
+
+        //                         }
+        //                     })
+        //                 }
+        //             })   
+        //         }
+        //     }
+        // })
+            // promise让异步的代码看起来同步化
+
+            let getJSON = function(url){
+                let p = new Promise(function(resolve,reject){
+                    $.ajax({
+                        url:url,
+                        success:function(data){
+                            resolve(data)
+                        },
+                        error:function(){
+                            reject()
+                        }
+                    })
+                });
+                return p
+            }
+
+            getJSON('xxx').then(function(data){
+                    // 进行第二次请求
+                    return getJSON('xxx')
+            }).tnen(function(){
+                // 第三次请求
+
+            })
+    </script>
+</body>
+</html>

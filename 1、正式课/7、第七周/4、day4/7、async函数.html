@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        水仙花
+        genertaor *=>async       yield=>await
+        他是generator的语法糖
+        await下面的代码就是异步的
+        */
+
+        // function fn1() {
+        //     console.log(100);
+        //     return 600
+        // }
+
+        // async function fn() {
+
+        //     // let s = await fn1();
+        //     await fn1();
+
+        //     // console.log(s)
+        //     console.log(200);
+        // }
+        // let res = fn();
+        // console.log(res);
+
+        // console.log(300)
+        // 100 300 600 200
+
+
+        // 你就可以把async函数看做一个promise，函数执行的返回值就是一个promise的实例(默认是成功态)
+        // await后面的代码就相当于then第一个函数里的异步代码
+
+        // let p = new Promise(function(res,rej){
+        //     res()
+        // })
+        // p.then(function(){
+        //     console.log(200);
+        // })
+        // console.log(300)
+
+
+        // function fn1() {
+        //     return new Promise(function (res, rej) {
+        //         res('下课了')
+        //     })
+        // }
+
+        // async function fn() {
+        //     let s = await fn1(); // 返回了一个promise的实例(成功态)
+        //     // 1、如果fn1中返回一个promise实例，那么await下面的代码就是fn1中返回promise实例的then中的成功回调函数里的代码
+        //     // 2、await函数的返回值s就是，就是promise中res传递的实参
+
+        //     console.log(s)
+        //     console.log(200)
+        // }
+        // fn();
+        // console.log(600)
+
+        // await fn1() ==>  fn1().then(function(s){
+        // console.log(s)
+        // console.log(200)
+        // })
+
+
+        // 异步的请求
+        // function getData(url){
+        //     return axios.get(url) // 返回一个promise的实例
+        // }
+
+        // async function fn(){
+        //     // 将异步的代码变为同步
+        //     let data = await getData('index.json'); // 假设拿到的数据是一个数组
+        //     // 拿到数据之后循环数组，编程字符串的标签，渲染到页面
+
+        //     // await下面的代码就相当于then成功回调函数里的代码
+        //     for (var i = 0; i < data.length; i++) {
+
+        //     }
+        // }
+        // fn()
+
+        // function timeout(ms) {
+        //     return new Promise((resolve) => {
+        //         setTimeout(resolve, ms);
+        //     });
+        // }
+
+        // async function asyncPrint(value, ms) {
+        //     await timeout(ms);
+
+        //     console.log(value);
+        // }
+
+        // asyncPrint('hello world', 50);
+        // 50ms之后输出 'hello world'
+
+        // setTimeout(function () {
+        //     console.log(300)
+        // }, 0);
+
+        // function fn1() {
+        //     console.log(100)
+        // }
+
+        // async function fn() {
+        //     await fn1();
+        //     console.log(200)
+        // }
+        // fn()
+        // console.log(600)
+
+
+        // 1 6 2 3
+
+        // 异步任务分为微任务和宏任务
+        // 当主任务队列的任务执行完成，就会去等待任务队列中，先把微任务放到主任务队列中执行，如果有多个微任务，就按照执行的顺序依次执行就好；当微任务执行完成，再去执行宏任务
+
+        //宏任务：定时器  ajax
+        //微任务   (async await)、promise中的then
+
+        function fn1() {
+            console.log(666);
+        }
+        setTimeout(function () {
+            console.log(800); // 宏1
+        }, 0)
+        console.log(900);
+        async function fn() {
+            console.log(999);
+            await fn1();
+            console.log(888); // 微2 
+        }
+        let p = new Promise(function (resolve, reject) {
+            console.log(200);
+            setTimeout(function () {
+                resolve();
+            }, 0)
+            // resolve(); 
+            console.log(300);
+        })
+        p.then(function () {
+            console.log(100); // 微1
+        });
+        fn();
+
+        // 900 200  300  100  999  888 800
+        // 900 200  300 999 666 100 888 800
+
+
+
+        // console.log('1'); 
+        // setTimeout(function () {
+        //     console.log('2'); 
+        //     new Promise(function (resolve) {
+        //         console.log('4');
+        //         resolve();
+        //     }).then(function () {
+        //         console.log('5'); 
+        //     });
+        // });
+        // new Promise(function (resolve) {
+        //     console.log('7'); 
+        //     resolve();
+        // }).then(function () {
+        //     console.log('8'); 
+        // });
+        // setTimeout(function () { 
+        //     console.log('9');
+        //     new Promise(function (resolve) {
+        //         console.log('11');
+        //         resolve();
+        //     }).then(function () {
+        //         console.log('12'); 
+        //     });
+        // });
+
+        async function async1() {
+            console.log('async1 start');
+            await async2();
+            console.log('async1 end');
+        }
+        async function async2() {
+            console.log('async2');
+        }
+        console.log('script start');
+        setTimeout(() => {
+            console.log('setTimeout');
+        }, 0);
+        async1();
+        new Promise(resolve => {
+            console.log('promise1');
+            resolve();
+        }).then(() => {
+            console.log('promise2');
+        });
+        console.log('script end');
+    </script>
+</body>
+
+</html>
