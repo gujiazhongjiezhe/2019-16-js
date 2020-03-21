@@ -1,0 +1,27 @@
+@name:1px;
+@s:'../img';
+
+
+// .box {
+//     // @name:10px;
+//     .box1 {
+//         background: red;
+//         width: @name;
+//         .box2 {
+//             background: orangered;
+//             width: @name;
+//         }
+//     }
+// }
+// .box .box1 {
+//     background: red;
+// }
+
+.box {
+    width: @name;
+    background: url('@{s}/1.png');
+    &:hover {
+        background: black;
+    }
+}
+

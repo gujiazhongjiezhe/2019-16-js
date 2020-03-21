@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        fetch：他就是window上的一个方法
+
+         */
+        //  fetch('index.json').then(function(res){
+        //     console.log(res)
+        //     return res.json()
+        //  }).then(function(data){
+        //     console.log(data)
+        //  })
+
+        // fetch('index.json',{
+        //     method:'post',
+        //     body:JSON.stringify({
+        //         name:1,
+        //         age:2
+        //     })
+        // })
+
+        // 缺点：不能够接收跨域的 cookie
+        // 不能够发送cookie
+
+
+        //--------------------------------------------
+        // jsonp
+        // 跨域：浏览器只能访问同域才的内容，如果协议、域名、端口号有一个不同，那就会产生跨域
+        // 同域：只要协议、域名、端口号一样，那就是同域
+
+        // 浏览器是非同源策略
+        // ajax:他是同源策略
+        // script的src是非同源策略
+        // img的src
+
+        // 跨域请求
+        // 项目1部署到了3000端口下，项目2部署到了3001端口下，我就要从项目1去访问项目2的接口
+
+        // jsonp完成跨域请求
+
+        // script的src是非同源策略
+        
+            // function fn(data){
+            //     console.log(data)
+            // }
+
+            // JSONP的原理：利用了script的src是非同源策略的机制，请求的时候在地址的后面拼接一个callback和对应的函数名，当后端将数据传递给客户端时，当前的callback回调函数会默认执行，并且会以实参形式传递给当前的回调函数
+
+            // 后台要做特殊的处理
+            // 只能走get请求，不能够走post
+
+            // cors
+            // 本地存储
+
+
+
+                //-----------------------------------------------------
+                // generator是分段执行的，yield是暂停的标记，next是恢复执行
+                // function* fn(){
+                //     console.log(10)
+                //     yield 'a';
+                //     console.log(20)
+                //     yield 'b';
+                //     return 100;
+                // }
+                // // geterstor函数就是一个状态机
+                // // fn()  -->是一个对象，存储的是当前generator的所有状态
+
+                // let f = fn()
+                // console.log(f)
+                // console.log(f.next()) // {value:'a', done:false}
+                // console.log(f.next()) // {value:'b', done:false}
+                // console.log(f.next()) // {value: 100,dine:true}
+
+                //--------------------------------------------------------------------
+                // async await
+                // genertaor *=>async       yield=>await
+
+                function getJSON(url){
+                    return axios.get(url) // 返回值是一个promise的实例
+                }
+
+                async function fn(){
+                    let data = await getJSON('index.json');
+                    // await函数的返回值就是上一个promsie实例中resolve的实参
+                    // await下面的代码就相当于promise实例的then第一个回调函数里的代码
+                    console.log(data)
+                }
+                fn()
+    </script>
+    <!-- <script src="http://www.baidu.com?callback=fn"></script> -->
+</body>
+</html>

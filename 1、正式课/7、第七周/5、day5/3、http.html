@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // +2.2: 在浏览器中输入一个url到底做了什么 +
+        //     1、 http请求阶段 +
+        //     1、 浏览器先解析这个域名， 然后发送DNS请求， 并解析出对应的IP地址 +
+        //     2、 建立客户端和服务器之间的TCP连接(进行三次握手) +
+        //     3、 客户端向服务端发起http请求(其中先发送请求头， 然后在发送请求体) +
+        //     2、 http服务器处理阶段 +
+        //     1、 服务器接收到客户端的http请求响应， 服务器根据请求的url找到对应的项目 +
+        //     2、 服务器找到之后， 服务器立即把一些响应信息放在响应头中， 通过http发送给客户端， 同时进行数据整理； +
+        //     3、 把整理出来的数据， 通过响应体发送给客户端 +
+        //     3、 http最终客户端相应阶段 +
+        //     1、 客户端首先接收到响应头， 按照相应头中的信息， 做好接收数据的准备 +
+        //     2、 客户端正式接收数据， 并且按照特定的格式进行解析 +
+        //     3、 关闭TCP连接，(四次挥手) 客户端和服务端要相互确认信息是否已经传输完 +
+        //     4、 带啊开始解析， 形成DOM树和CSS树， 最终形成render树， 渲染出整个页面
+    </script>
+</body>
+
+</html>
