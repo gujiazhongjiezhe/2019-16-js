@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./jquery.min.js"></script>
+    <script src="./jquery.cookie.js"></script>
+    <script>
+        // localStorage // 本地存储
+        // setItem  getItem  removeItem clear
+        // 1、如果没有登录，放在购物车，他是先把信息存储在本地，当你登录成功以后在把商品信息存储到你的账户对应的购物车里
+        // 2、可以实现页面之间的信息共享
+
+        // 缺点
+        // 1、受源(域)的限制，比如你在百度的页面下是拿不到京东的本地存储的
+        // 2、本地存储还受浏览器的限制
+        // console.log(localStorage.getItem('sdfgh'))
+
+        // sessionStorage: 会话存储
+
+
+        // cookie:本地存储
+
+        // session:服务器存储
+
+        // 1、大小限制，cookie一般存储8kb  localStorage一般存储5mb
+        // 2、兼容性：cookie兼容所有的浏览器，localStorage是H5新增的，不兼容低版本的IE
+        // 3、稳定性：cookie是有过期的时间的，(清除浏览器缓存，或者清空历史信息，安全卫士清理垃圾)
+        // 4、如果浏览器开启无痕模式，或者模式，此时没有办法设置cookie，但localStorage是可以的
+        // 5、cookie有过期时间，但是localStorage没有过期时间
+
+        // 6、cookie经常和服务器的session有关，cookie经常从客户端传递给服务器，那服务器也经常把cookie返回给客户端，cookie经常穿梭于服务器和客户端之间
+
+
+        /* 
+        当你输入用户名和密码的时候，点击登录，发送请求，服务器要验证你当前的账号和密码是否匹配，如果用户名和密码匹配成功，会在服务器生成一个session文件，这个session文件会生成一个session-id，服务器返回给你成功的状态，并且在前端会种一个cookie，并且设置一个cookie的过期时间，这个cookie中包含了一些登录的信息和session-id，当客户再次发送请求的时候，都会默认携带当前页面的cookie信息，发送给服务器
+         */
+    //    $.cookie('username','666')
+    </script>
+</body>
+</html>

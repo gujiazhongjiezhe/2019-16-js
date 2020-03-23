@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 缓存：304
+        // 性能优化
+
+        // 强缓存和协商缓存
+        /* 
+        缓存的有点：
+            减少了不必要的数据传输，节省带宽
+            减少服务器的负担，提升网站性能
+            加快了客户端加载网页的速度
+            用户体验友好
+        缺点：
+            资源如果有更改但是客户端不及时更新会造成用户获取信息滞后，如果老版本有bug的话，情况会更加糟糕。
+
+        强缓存：
+            是针对静态资源的html,js,css 就可以走强缓存
+
+            员工列表
+            部门列表
+            职务列表   协商缓存
+
+
+            发请求-->(强缓存)==>看资源是否过期-->过期-->请求服务器-->(协商缓存)==>服务器对比资源是否真的过期-->没过期-->返回304状态码-->客户端用缓存的老资源。
+         */
+    </script>
+</body>
+
+</html>
