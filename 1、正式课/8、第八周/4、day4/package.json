@@ -1,0 +1,20 @@
+{
+  "name": "new",
+  "version": "1.0.0",
+  "description": "",
+  "main": "a.js",
+  "scripts": {
+    "test": "node a.js",
+    "start": "node b.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "jquery": "^3.4.1"
+  },
+  "devDependencies": {
+    "less": "^3.11.1"
+  }
+}

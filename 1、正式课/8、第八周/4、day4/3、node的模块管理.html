@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script src = './a.js'></script>这是前端js的写法，node中没有html，不能这么用，现在我就想在node环境中b.js里去使用a.js的方法 -->
+    <script>
+        // 模块的管理规范
+            // AMD：reaure.js
+            // CMD:rea.js
+            // Common.js:node.js
+
+            // 什么是模块：一个js文件就是一个模块，这些模块化的思想，规定了在js中我们的模块如何创建，如何导入，以及如何导出
+
+            // node中的模块管理
+            
+            // 1、在node环境下，你只要创建了一个新的js，就党项与创建了一个新的模块,模块中的方法都是这个模块下的私有方法，不同的模块中同名的方法不会有任何的冲突(在b中使用a中的方法)
+            // 2、node给其提供了一个导出模块的语法：module.exports = {}
+
+            // 3、require是node天生用来提供导入模块的方法  |  require导入的模块是同步的，a中的代码要先解析一边，如果没有导入完，后面的代码不会执行
+
+            // 导入和导出有什么特点：
+ // 1、内置模块(核心模块，node天生自带的)  2、第三方模块(axios、vue，自己下载的)  3、自定义模块(自己写的js)
+
+            // 1、可以省略后缀名.js
+            // 2、如果调用的模块是自己自定义的模块，必须是相对路径 /(根目录) ./(当前目录) ../(上级目录)
+            // 3、如果不加路径，先找第三方模块，然后再找核心模块，如果还没有就报错
+
+            // 创建三个模块
+            // a: a模块中有一个sum求和方法;
+            // b: b模块中有一个求平均数的方法avg，去掉最大值和最小值;
+            // c: 在c模块中去调用求平均数avg的方法;
+
+    </script>
+</body>
+</html>

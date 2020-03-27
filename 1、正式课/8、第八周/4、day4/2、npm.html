@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // npm随着node安装时，也一并下载了，下载完node之后，大家就可以直接使用npm了
+        // 把你的模块安装带全局或者安装到你的项目
+        // 安装到全局的命令(npm install jquery --global)(npm i jquery -g)
+
+        // 安装到项目 npm insatll xxx
+        // npm init -y; 初始化你的项目，会自定生成一个package.json文件，他可以记录你增经安装过的模块
+
+        // 把模块安装设置为开发依赖(开发中) npm install less --save-dev
+        // 把模块安装设置为生产依赖(部署到服务器上的) npm i axios(npm insatll axios)
+        // npm uninstall  xxx 卸载模块
+
+        // bable-loader：他是把es6编译成es5的模块，代码上线的时候都是es5的代码，在项目真正部署到服务器之前，都得把es6编译成es5，当项目上线之后，就不在需要bable-loader了，所以说这是开发依赖
+
+
+        // 安装到全局和安装到本地项目的区别
+        // 1):安装到全局，对任何一个项目都起作用 查看全局的路径 npm root -g
+        //安装到全局的路径：C:\Users\1\AppData\Roaming\npm\node_modules
+
+        // 2):安装到本地项目，只能针对当前项目有效
+
+        // 在安装node模块之前，一般先npm init -y 生成一个package.json配置文件
+        // 下载模块之后，会生成一个模块配置清单，存放在package.json里，后期如果有人想部署你的项目，只需要执行npm i就可以安装package.json里的所有依赖，这叫跑环境
+
+        // npm i：把开发和生产依赖都会安装一遍
+        // npm i --production :只安装生产依赖的的模块
+
+        // npm.js这个官网里有当前的模块，你才可以下载
+
+
+        // package.json,可以基于scripts选项进行配置本地可以执行的脚本命令
+        // npm + run + scripts里的属性名：相当于把这个属性名对应的属性值放到命令窗口中执行一次
+
+        // "scripts": {
+        //     "test": "node a.js",
+        //     "start": "node b.js"
+        // },
+
+        // 主干
+        // 分支
+
+
+    </script>
+</body>
+
+</html>
