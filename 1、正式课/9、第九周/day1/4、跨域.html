@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 跨域：同源和非同源
+
+        // 什么情况下会产生跨域呢
+        // http://127.0.0.1:8080/app/index.html
+        // 协议      域名     端口
+
+        // ajax是同源策略，不嗯呢该够进行非同源请求
+        // script的src是非同源策略，他可以进行跨域访问，也就是说可以从一个项目去访问另外一个项目，当数据成功返回以后，会默认调用跨域地址后面的callback 回调函数
+
+        // 只能发送get请求
+        // function fn(data){
+        //     console.log(data) // data可以接受到后台传递过来的数据
+        // }
+
+        // jquery
+        // $.ajax({
+        //     url:'user/login',
+        //     dataType:'jsonp',
+        //     success:function(){
+
+        //     }
+        // })
+        // 封装一个方法专门去执行跨域
+
+        function jsonp(option){
+            return new Promise((resolve,reject)=>{
+                window[option.cb] = function(data){
+                    resolve(data);
+                    document.body.removeChild(script);
+                }
+                let script = document.createElement('script');
+                // /login?user=1200&callback=fn;
+                let str = `${option.url}?`;
+                for(var key in option.params){
+                    str+=`${key}=${option.param[key]}&`
+                }
+                str+=`callback=${option.cb}`;
+                script.src = str;
+                document.body.appendChild(script);
+
+
+            })
+        }
+
+        jsonp({url:'/login',params:{user:1200},cb:'fn'}).then(function(data){
+            console.log(data)
+        })
+
+    </script>
+</body>
+</html>

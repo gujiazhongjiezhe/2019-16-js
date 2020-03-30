@@ -10,6 +10,7 @@ http.createServer(function(req,res){
     let {pathname,query} = url.parse( req.url,true)
 
 
+    
     // mime身上有一个方法getType(pathname)
     res.setHeader('content-type',mime.getType(pathname));
 

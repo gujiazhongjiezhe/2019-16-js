@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="a">
+        {{msg}}
+        {{person}}
+        {{obj.name}}
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // filter   some  find  every   reduce forEach  map 
+        // Vue : Vue是一个类 
+        // 数据影响视图：当vue中的data数据发生改变，视图也会发生改变
+         // 大家之前改数据都是删除dom，往dom中增加内容，但是现在只要把data中的数据改了就ok了，这是最大的区别
+        let vm = new Vue({
+            // 这个对象中的名字都是固定的
+            el:"#a", // el代表vue使用范围
+            data:{
+                // data中的数据最后都会放到vm这个实例上
+                msg:'hello',
+                person:12345,
+                obj:{name:'刘德华'}
+            }
+        })
+        vm.person = 'hahhahaah'
+
+
+
+    </script>
+</body>
+
+</html>
