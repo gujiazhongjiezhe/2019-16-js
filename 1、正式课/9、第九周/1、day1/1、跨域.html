@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 跨域：同源和非同源
+        // 什么情况下会产生跨域
+        // https://www.jianshu.com/p/94868f5f4f1b:8080
+        //   协议       域名                      端口号
+
+        // ajax:他是同源策略，不能够进行跨域请求
+        // 浏览器
+        // script的src是非同源策略，可以实现咱们的跨域请求
+
+        // 只能发送get请求
+        // function fn(data){
+        //     console.log(data)
+        // }
+
+        // jq的jsonp跨域方式
+        // $.ajax({
+        //     url:'/index',
+        //     dataType:'jsonp',
+        //     success:function(data){
+
+        //     }
+        // })
+        // 自己去封装一个jsonp跨域请求的方法
+        function jsonp(option){
+            return new Promise((resolve,reject)=>{
+                window[option.callback] = function(data){
+                    resolve(data); // 调用promise的成功态
+                    // 跨域请求成功之后，拿到数据之后，把script从页面删除
+                    document.body.removeChild(script);
+                }
+                // 动态生成script标签
+                let script = document.createElement('script');
+                // '/index?name=1&age=2&callback=fn'
+                let str = `${option.url}?` // '/index'
+                for(var key in option.params){
+                    // key // 属性名
+                    // option.params[key] // 属性值
+                    str+=`${key}=${option.params[key]}&`
+                }
+                str+=`callback=${option.callback}`;
+                // 把路径、参数、回调函数拼接到一起给到script的src属性上
+                console.log(str)
+                script.src = str;
+                document.body.appendChild(script);
+            })
+        }
+        jsonp({
+            url:'/index',
+            params:{name:1,age:2},
+            callback:'fn'
+        }).then(function(data){
+            console.log(data)
+        })
+
+    </script>
+    <script src="http://www.baidu.com?name=1&callback=fn"></script>
+</body>
+</html>

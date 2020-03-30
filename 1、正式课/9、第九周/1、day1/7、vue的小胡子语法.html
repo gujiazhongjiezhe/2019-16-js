@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+     
+    </div>
+    <div id="app">
+        {{msg}}
+        {{person}}
+        {{arr}}
+        {{obj}}
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 30-40%   剩下的就是框架
+        // vue是一个类
+        // 数据影响视图：当vue中的data数据发生变化，视图也会发生变化
+        // 大家之前去修改视图的内容，直接操作dom，现在直接把data中的数据改了就ok了
+        let vm = new Vue({
+            // 这个对象里的名字是固定的
+            el:'#app', // el代表了vue的使用范围
+            data:{
+                // data中数据会绑定到vm这个实例上
+                msg:'6666455666',
+                person:123456,
+                arr:[44,55,66,77],
+                obj:{name:'刘德华'}
+            }
+        })
+        // console.log(vm)// data中数据会绑定到vm这个实例上
+        // vm.msg = '890';
+        // vm.arr[0] = 33; // 并不会出发监听者的动作
+        // vm.obj.name = '猪八戒'
+        // 1、data中的数据如果数组中的某一项发生改变，并不会引起视图的更新，但是对象的属性名对应的属性值发生变化，会引起视图的更新
+
+        ///2、pop push splice shift unshift sort reverse
+        // 数组内置的方法(而且这些方法的能够改变原数组)，可以引起视图的更新
+
+        // vm.arr = vm.arr.filter(item=>{
+        //     return item<66
+        // })
+
+        // 数据会影响视图，如果想更改视图，直接更改对应的数据，视图自动更新
+
+        // 性能好  vue就是采用的MVVM原理
+
+        // 在框架中，根本没有直接操作真正的dom，而是操作的是虚拟的dom，更改了数据之后，会更改虚拟的dom，在进行dom-diff,秩序要把发生变化的地方进行替换，大大提高了页面的性能
+        // {type:div,children:[{},{}]}
+
+    </script>
+</body>
+</html>
