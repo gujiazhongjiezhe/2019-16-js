@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+
+    </div>
+    <div id="app">
+        {{msg}}
+        <input type="text"  v-model="msg" yy="msg">
+        <div id="a">{{msg}}</div>
+        {{s}}
+
+        <div v-for="a in arr">{{a}}</div>
+        <!-- Compile指令解析器，它的作用对每个元素节点的指令进行解析，替换模板数据， -->
+    </div>
+
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 双向数据绑定： 数据 =>视图  视图=>数据  MVVM
+        // 数据影响视图
+        // 视图影响数据
+        // 指令：以v开头，放到行间属性上,有着特殊的意义，这就是vue指令
+        // v-model:应用于表单元素，把data中的数据放到input中
+        let vm = new Vue({
+            el: '#app',
+            data: function () {
+                // null和undefined不能够作为data里的属性值
+
+                    return {
+                        // 这个属性被观察者所监听，只要发生变化就会更新视图
+                        // vueObserver 数据监听器，把一个普通的 JavaScript 对象传给 Vue 实例的 data 选项，Vue 将遍历此对象所有的属性，并使用Object.defineProperty()方法把这些属性全部转成set、get方法
+
+                        msg: 1000,
+                        s:null,
+                        arr:[1,2,3]
+                    }
+            }
+        })
+
+        // 双向数据绑定：(MVVM原理)
+        // M:model(数据)      V:View(视图)        VM:(视图数据)
+
+        // 实际上数据和视图不能够直接通讯，可以经过VM进行数据的传递，vm中有一个观察者，他时刻在观察model中的数据，只要数据发生变化，就会通知视图进行更新(数据更新视图)
+
+        // 当视图发生变化以后，vm也能监听到视图的变化，通过元素的dom事件去进行监听视图是否发生变化，如果改变就去通知数据进行更新(视图更新数据)
+        let obj = {};
+        Object.defineProperty(obj,'val',{
+            // get:function(){}
+            get(){
+                // 当你获取onj中的val属性名对应的属性值时，他就会执行
+                console.log(100)
+                // get方法return的返回值就是当前val对应的属性值
+                return 100
+                
+            },
+            set(val){
+                // 形参val是你设置的最新的值
+                // 当你设置obj的val对应的属性值时，他就是执行
+                console.log(val) // '666'
+
+            }
+        })
+
+        let a = obj.val;
+        // obj.val = '666'
+        console.log(obj)
+
+
+    // 当执行 new Vue() 时，Vue 就进入了初始化阶段，一方面Vue 会遍历 data 选项中的属性，并用 Object.defineProperty 将它们转为 getter/setter，实现数据变化监听功能；另一方面，Vue 的指令编译器Compile 对元素节点的指令进行解析，初始化视图，并订阅Watcher 来更新视图， 此时Wather 会将自己添加到消息订阅器中(Dep),初始化完毕。当数据发生变化时，Observer 中的 setter 方法被触发，setter 会立即调用Dep.notify()，Dep 开始遍历所有的订阅者，并调用订阅者的 update 方法，订阅者收到通知后对视图进行相应的更新
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="box" value="333">
+    <script>
+
+        let box = document.getElementById('box');
+        // 数据影响视图
+        let obj = {};
+        Object.defineProperty(obj,'val',{
+            get(){
+                // 当获取val对应的值的时候执行
+                // return啥，当前val对应的值就是啥
+                console.log(1)
+                return box.value
+            },
+            set(value){
+                // 当你给val重新设置值的时候回执行
+                // 而且set的形参就是你给val设置的值
+                box.value = value
+            }
+
+        })
+
+        // obj.val = 300;
+        // 视图影响数据
+    box.addEventListener('input',function(){
+        obj.val = this.value
+    })
+    </script>
+</body>
+</html>

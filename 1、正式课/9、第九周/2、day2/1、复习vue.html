@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+
+    </div>
+    <div id="app">
+        {{msg}}
+        {{arr}}
+    </div>
+   
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            // 这里的属性名是固定的
+            el:'#app', // 确定了vue的使用范围,
+            data:{
+                msg:1000,
+                arr:[1,2,3]
+            }
+        })
+        console.log(vm)
+        // vue是响应式的
+        // 数据影响视图
+        // vm.msg = 200;
+        // vm.arr[0] = 666;
+        //额你只的方法是可以改变视图的
+        // pop push splice shift unshift sotr reverse
+        // Vue的数据渲染是异步的
+        // vm.arr.push(6)
+    //    vm.arr =  vm.arr.slice(1,2)
+
+    // vue框架内部使用的MVVM原理
+
+
+    </script>
+</body>
+</html>

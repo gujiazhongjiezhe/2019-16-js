@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- a代表数组的每一项,index代表每一项的索引 arr是data中的一个变量 -->
+        <!-- 组啊哟创建什么元素，就把v-for放到哪个元素身上 -->
+
+        <!-- <div v-for="(a,index) in arr">{{a}},,,{{index}}</div>
+        <ul>
+            <li v-for="(a,index) in arr">{{a+1}}</li>
+        </ul> -->
+        <!-- <div v-for="(a,index) in str">{{a}},,,{{index}}</div> -->
+        <!-- <div v-for="(a,index) in num">{{a}},,,{{index}}</div> -->
+        <!-- <div v-for="(a,index,c) in obj">{{a}},,{{index}},,{{c}}</div> -->
+        <div v-for="(a,index) in ary">
+            <span v-if="index !== 1">{{a.fruit}}</span>
+        </div>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // v-for可以循环数组，字符串，数字，对象
+        let vm = new Vue({
+            el:'#app',
+            data:function(){
+                return {
+                    arr:[100,200,300,400,500],
+                    str:'asdfghj',
+                    num:10,
+                    obj:{name:'珠峰',age:10},
+                    ary:[{fruit:'草莓'},{fruit:'苹果'},]
+                }
+            }
+        })
+    </script>
+</body>
+</html>

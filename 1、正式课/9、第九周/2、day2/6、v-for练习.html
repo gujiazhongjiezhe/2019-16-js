@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <ul>
+            <li v-for="(a,index) in arr">
+                {{index+1}}、{{a.name}}
+                <ul>
+                    <li v-for=" (b,indexs) in a.color">
+                        // 使用一个变量，如果当前没有，就往上一级获取
+                       {{index+1}}. {{indexs+1}}、{{b}}
+                    </li>
+                </ul>
+            </li>
+        </ul> -->
+        
+        <!-- <ul v-for="item,num in arr">{{num+1}}{{item.name}}
+            <li v-for="item,num in item.color "> {{num+1}}{{item}}</li>
+        </ul> -->
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                arr: [{ name: '苹果', color: ['green', 'red'] }, { name: '草莓', color: ['black', 'white'] }, { name: '香蕉', color: ['yellow', 'pink'] }]
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <input type="text" v-model="msg"> -->
+        <div v-text="x"></div>
+        <div v-html="x"></div>
+        <div v-show="w">中国足球必胜</div>
+        <!-- {{num>10?'哈哈':'你好'}} -->
+
+         <div v-if="w">中国足球out</div>
+        <div v-else-if="r">中国足球22222</div> 
+        <div v-else>中国足球win</div>
+        <a :href="url"  :s="url">百度一下</a>
+        <img :src="img" alt="">
+    </div>
+
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 指令：v-开头，放在元素的行间，有着特殊意义的一些词
+        // v-model：一般情况下用于表单元素，将data中的数据放在表单元素中
+        // {{}}:小胡子语法，将data中的数据放到元素中(支持三元运算符)
+        // v-text:将data中的文本放到元素中(不识别字符串的标签)
+        // v-html(可以识别字符串的标签)
+        // v-show:通过设置布尔值来控制元素是否显示，如果是true就显示，如果是false就不显示，(通过控制元素的display来让元素是否显示)
+
+        // v-if:控制元素的显示隐藏：如果写的值不是布尔值，那就转布尔
+        // v-else-if
+        // v-else
+        // v-bind:让一些有特殊意义的行内属性去data里取值(把v-bind可以简写成:)
+
+        // if(){}
+
+        // if(){
+
+        // }else if(){
+
+        // }
+
+        // if(){
+
+        // }else {
+
+        // }
+
+        // else{}
+
+
+        // 放在行间的v-指令对应的值，当咱们的代码编译时，首先去vue的data中查找是否有这个属性，如果没有呢，那就直接给你报错
+        let vm = new Vue({
+ 
+            el: '#app', 
+            data: {
+              msg:666,
+              x:'<span>好好学习</span>',
+              w:false,
+              num:11,
+              r:false,
+              url:'http://www.baidu.com',
+              img:'http://www.sssss.com'
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>

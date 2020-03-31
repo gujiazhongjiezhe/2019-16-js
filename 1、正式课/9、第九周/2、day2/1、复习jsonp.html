@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // function fn(data){
+        //     console.log(data)
+        // }
+
+        // fn({[1,2,3]})
+
+        // function jsonp(option){
+        //     return new Promise((resolve,reject)=>{
+        //         window[option.callback] = function(data){
+        //             resolve(data);
+        //             document.body.removeChild(script);
+        //         }
+        //         // '/index?name=1&age=2&callback=fn'
+        //         let script = document.createElement('script');
+        //         let str= `${option.url}?`;
+        //         for(var key in option.params){
+        //             str+=`${key}=${option.params[key]}&`
+        //         }
+        //         str+=`callback=${option.callback}`;
+        //         script.src = str;
+        //         document.body.appendChild(script);
+        //     })
+        // }
+        // jsonp({
+        //     uel:'/index',
+        //     params:{name:1,age:2},
+        //     callback:'fn'
+        // }).then(data=>{
+        //     console.log(data)
+        // })
+        // res.header('Access-Control-Allow-Origin','http://127.0.0.1:8888')
+        // res.header('Access-Control-Allow-','GET,POST')
+
+        // postMessage
+        // require  module.exports = {}   common.js
+        // import export  // ES6的模块管理规范
+
+        // exoprt var a = 1;
+        // export var b = 2;
+        var a = 1;
+        var b = 2;
+        function foo(){
+
+        }
+
+
+        // export {a as x,b}
+
+        // export a 不可以这样做
+
+        // export default a;
+        export default foo;
+
+        import ww from './b.js'
+
+        
+        export const A = 1;
+        export const B = 2;
+        export const C = 3;
+
+        import * as yy from './b.js';
+        yy.A
+
+
+
+
+        import {x as r,b} from './b.js';
+        // console.log(r)
+    </script>
+    <!-- <script src="/inbdex?name=1&callback=fn"></script> -->
+</body>
+</html>
