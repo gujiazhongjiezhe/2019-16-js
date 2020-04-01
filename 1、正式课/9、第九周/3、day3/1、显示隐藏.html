@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        background: orangered;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+        {{num+1}}
+        {{sum()}}
+      <button @click="fn">{{flag?'隐藏':'显示'}}</button>
+      <div v-show="flag" class="box"></div>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 在vue里想改变页面，只需要操作数据，数据==>视图
+      let vm = new Vue({
+        el: "#app",
+        data: {
+            // data中的数据都会挂载到vue的实例身上
+          flag: true,
+          num:10
+        },
+        methods: {
+            fn(){
+                // this-->是vue实例
+                // if(this.flag){
+                //     this.flag = false
+                // }
+                // else {
+                //     this.flag = true
+                // }
+                this.flag = !this.flag;
+            },
+            sum(){
+                console.log(6666)
+                return 9
+            }
+        }
+      });
+    </script>
+  </body>
+</html>

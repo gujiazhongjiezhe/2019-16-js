@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .x {
+          color: orangered;
+          background: palevioletred;
+      }
+      .y {
+          color:palegreen
+      }
+      .z {
+          font-size: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <img :src="img" alt="">
+        <a :href="img">百度一下</a>
+        <div :ss="name">4444</div> -->
+
+        <!-- 大括号里的冒号后面的值转布尔，如果是true，那前面的类名就生效，如果转布尔是false，那前面的类名就不生效 -->
+      <!-- <div :class="{x:flag}">中国足球</div> -->
+
+      <!-- 各行变色 -->
+      <!-- <ul>
+          <li v-for="(item,index) in arr" :class="{x:index%2}">
+              {{item}}
+          </li>
+      </ul> -->
+      <!-- 如果值是数组，回去data中去寻找对应的值 -->
+      <!-- <div :class="[x,z]">精神小伙</div> -->
+
+      <!-- <div :style="{fontSize:num+'px'}">飞天小女警，数码宝贝，四驱兄弟，千与千寻，百变小樱魔术卡</div>
+    </div> -->
+
+    <!-- 如果是数组，就会去data中取值 -->
+    <div :style="[r]">飞天小女警，数码宝贝，四驱兄弟，千与千寻，百变小樱魔术卡</div>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+      // v-bind(可以直接:)
+      // 1、他可以把元素行内的普通属性变为动态的属性,可以去data中取值
+      // 2、:class:属性可以是对象，里面是calss的名字，冒泡后面的值转布尔如果是true，那样是就生效，反之就不生效
+      // 3、style
+
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          img: "http://www.baidu.com",
+          name: "大傻",
+          flag:false,
+          arr:[1,2,3,34,54],
+          x:'x',
+          z:'z',
+          num:20,
+          r:{color:'orangered'}
+        }
+      });
+    </script>
+  </body>
+</html>

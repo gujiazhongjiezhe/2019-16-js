@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        background: orangered;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+          <li v-for="a in arr">
+              {{a}}
+              <img :src="a.productCover" alt="">
+          </li>
+      </ul>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/axios/dist/axios.js"></script>
+    <script>
+      // 在vue里想改变页面，只需要操作数据，数据==>视图
+      // arr的数据是从后台请求回来的，更改数据然后渲染视图
+      let vm = new Vue({
+        el: "#app",
+        data: {
+            arr:[]
+        },
+
+        // 生命中周期函数
+        created(){ // 这就是一个钩子函数，当咱们初始化vue的时候，这个钩子函数就会默认执行,一般在这里发送请求
+            // created函数里的this就是vue实例
+           this.getData()
+        },
+        methods: {
+            getData(){
+                axios.get('./carts.json').then(data=>{
+                console.log(data)
+                this.arr = data.data
+            })
+            }
+        }
+      });
+    </script>
+  </body>
+</html>

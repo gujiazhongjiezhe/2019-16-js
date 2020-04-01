@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        background: orangered;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+        <ul>
+            <li v-show="s"  v-for="item in arr">
+                {{1}}
+                {{s}}
+            </li>
+        </ul>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 在vue里想改变页面，只需要操作数据，数据==>视图
+
+        // js数据类型--->当前元素里的变量-->data里的属性-->报错
+
+        // vue的常见指令：v-text v-html v-show(display) v-if  v-else-if  v-else    v-model v-bind  v-for
+        // 事件  v-on:click="fn($event,100,200)"   @click
+        // 事件修饰符
+        // v-on:click.stop="fn($event,100,200)"
+        // .stop   .preveent  .capture .once  .self  .passive
+        // 键盘修饰符
+        // .enter .13    .left
+        fn()
+        fn()
+        fn()
+      let vm = new Vue({
+        el: "#app",
+        data: {
+            arr:[1,2,3],
+            item:0,
+            s:999
+        },
+        methods: {
+            fn(e,a,b){
+
+            }
+        }
+      });
+    </script>
+  </body>
+</html>
+

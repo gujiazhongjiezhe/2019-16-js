@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="checkbox" v-model="val" />全选 <br />
+      <ul>
+        <li v-for="item in arr">
+          <input type="checkbox" v-model="item.isSelected" />{{item.name}}
+        </li>
+      </ul>
+      {{sum}}
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          arr: [
+            { isSelected: false, name: "手机" },
+            { isSelected: true, name: "娃娃" }
+          ]
+        },
+        methods: {},
+        filters: {},
+        computed: {
+          val: {
+            // data、methods、computed中的值不要一样，会报错
+
+            // 计算属性：当一个属性去依赖多个属性发生变化时，一般会采用computed方法，当依赖的属性发生变化的时候，会立即执行get方法，并且重新计算当前val的值，最终会重新渲染视图
+            // computed：会默认走缓存，节省性能
+            get() {
+              console.log(1);
+              // this-->当前vue的实例
+              // 当获取val的时候，然后get函数就会执行，并且get函数的返回值就是val的值
+              // 当arr对象中的isSelected改变的时候，会默认触发get函数(当依赖的属性发生变化的时候，就会执行get函数)
+              return this.arr.every(item => {
+                return item.isSelected;
+              });
+            },
+            set(a) {
+              // 当设置val的值的时候就会执行，
+              // a，就是当前设置的最新的值,但点击全选框的时候就会触发set函数
+              console.log(a);
+              this.arr.forEach(item => {
+                item.isSelected = a;
+              });
+            }
+          },
+          sum() {
+            // 如果computed中对应的值放的是函数，那默认就是get函数
+            return 100;
+          }
+          //   sum:{
+          //       get(){}
+          //   }
+        }
+      });
+    </script>
+  </body>
+</html>
