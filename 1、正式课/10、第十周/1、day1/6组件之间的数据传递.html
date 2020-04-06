@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <div v-bind:ss = 'msg'>eeeee</div> -->
+        <child :c= 'msg'  :d = 'ss'></child>
+        <child :c= 'num'></child>
+        <child :c= 'ss'></child>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 1、创建组件
+        // 2、注册组件
+        // 3、使用组件
+
+        // 把第二次使用的组件里的内容改为袁华
+        let child={
+            data(){
+                return {
+                    // msg:'马冬梅'
+                }
+            },
+            props:['c','d'],
+            template:'<div>{{c}}{{d}}</div>'
+        }
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'大春',
+                num:'袁华',
+                ss: '秦桧'
+            },
+            components:{
+                child
+            }
+        })
+    </script>
+</body>
+</html>

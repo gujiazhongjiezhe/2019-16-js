@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+
+    </div>
+    <div id="app">
+        <!-- {{s}}
+        {{s | fn}} -->
+        <div ref="a" id="sss">3333</div>
+        <button @click="fn">点击</button>
+        <ul>
+            <li v-for="a in arr">{{a}}</div>
+        </ul>
+        
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 数据驱动视图  虚拟DOM(内存)<==>真实的DOM
+        // MVVM   ：双向数据绑定原理
+        //指令： v-html  v-text  v-show  v-if  v-else  v-else-if   v-for  @ v-on   v-bind :
+
+        //  el：规定了vue的使用范围
+        // data：数据
+        // methods：方法
+        // computed：计算属性
+        // watch: 数据监听
+        let vm  = new Vue({
+            // el:'#app',
+            data:{
+                arr:[1,2,3],
+                obj:{
+                    name:1
+                }
+            },
+            methods:{
+                fn(){
+                    this.arr.push(9)
+                }
+            },
+            beforeUpdate(){
+                console.log(document.getElementsByTagName('li'))
+            },
+            updated(){
+                console.log(document.getElementsByTagName('li'))
+            },
+            computed:{ // 计算属性
+                // 1、多对一
+                // 2、走缓存，节省性能
+                // 3、不支持异步
+                // s:{
+                //     get(){
+
+                //     },
+                //     set(){
+
+                //     }
+                // }
+
+            },
+            // template:'<div></div>'
+            // watch:{
+            //     // 监听data中的数据的,当监听的属性发生变化之后就执行
+
+            //     obj:{
+            //         deep:true,
+            //         immediate:true
+            //     }
+            // },
+            // filters:{
+
+            // },
+            // directives:{ // 设置自定义指令
+            //     focus(el){
+
+            //     }
+            // }
+        }).$mount('#app')
+
+        // vue实例身上的一些属性
+        // $el:
+
+        // vue的生命周期
+
+        // beforeCreate   created{在这里你可以获取到data中的数据，方法}
+        // beforeMount    mounted{可以获取到真是的DOM元素}
+
+        // beforeUpdate     updated    // 这两个函数在你更改数据的时候才会执行
+        // beforeDestroy    destroyed  // 手动调用vm.$destroy()  {销毁vue实例，不在具有双向数据绑定了}
+
+        console.log(vm)
+    </script>
+</body>
+</html>

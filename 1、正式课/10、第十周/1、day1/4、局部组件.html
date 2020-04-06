@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <son></son> -->
+        <parent></parent>
+    </div>
+    <div id="app1">
+        <son></son>
+        <parent></parent>
+    </div>
+
+    <template id="first">
+        <div>{{msg}}</div>
+    </template>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 局部组件
+        // 1、创建组件
+        // 2、注册组件
+        // 3、使用组件
+        let son = {
+            data(){
+                return {
+                    msg:'板牙拖车'
+                }
+            },
+            created(){
+                console.log('created')
+            },
+            template:'#first'
+        };
+        let parent = {
+            data(){
+                return {
+                    msg:'板牙拖车'
+                }
+            },
+            created(){
+                console.log('created')
+            },
+            template:'<div>我是父亲</div>'
+        };
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'haha'
+            },
+            components:{ // 注册局部组件的属性
+                // son, // 属性名和属性值一样，可以只写一个
+                // parent:parent
+                // ss:parent
+            }
+        })
+
+        let vm1 = new Vue({
+            el:'#app1',
+            data:{
+                msg:'haha'
+            },
+            components:{ // 注册局部组件的属性
+                son, // 属性名和属性值一样，可以只写一个
+                parent:parent
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <parent></parent>
+
+    </div>
+
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 组件的嵌套：组件和组件可以进行嵌套，但是子组件要在在父组件的 components里进行注册
+        Vue.component('parent',{
+            data(){
+                return {
+                    msg:'11111'
+                }
+            },
+            template:'<div>{{msg}}</div>'
+        })
+        // 子组件和父组件到底谁先运行
+        let child = {
+            // created(){
+            //     console.log('child->created')
+            // },
+            beforeMount() {
+                console.log('child->beforeMount')
+            },
+            mounted() {
+                console.log('child->mounted')
+            },
+            template: '<div>我是儿子组件</div>'
+        };
+        // 在mounted函数中child先执行，把元素挂载到parent身上，最后parent一次性挂载到页面上(性能比较高。只需要渲染一次)
+        // 全局组件和局部组件重名时，应该用谁的
+        let parent = {
+            // created(){
+            //     console.log('parent->created')
+            // },
+            beforeMount() {
+                console.log('parent->beforeMount')
+            },
+            mounted() {
+                console.log('parent->mounted')
+            },
+            components: {
+                child
+            },
+            template: '<div><child></child><ul></ul>我是父亲组件</div>'
+        };
+        // 我想在父组件里使用子组件
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                // child,
+                parent
+            }
+        })
+    </script>
+</body>
+
+</html>

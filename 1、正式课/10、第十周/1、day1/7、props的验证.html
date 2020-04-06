@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <child :arr="arr"></child>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        let child = {
+            data() {
+                return {
+                    // msg:'马冬梅'
+                }
+            },
+            // props: ['arr'],
+            props:{
+                arr:{
+                    // type:Array // 规定了当前传递值的数据类型
+                    // type:[Array,Number], // 对传递过来的数据类型进行校验，如果不对，那句抛出警告
+                    // required:true, // 指定当前属性是否为必传属性
+                    default:[6,6,6], // 设置默认值
+                    // validator(val){ // 校验器
+                    //     console.log(val) // val就是当前传递过来的值
+                    //     // 函数返回一个布尔值，如果是true，那就是校验通过，如果是false，那就是校验不通过，就会抛出警告
+                    //     return val.length>1 && val.length<4
+                    // }
+                }
+            },
+            template: '<div><div v-for="a in arr">{{a}}</div></div>'
+        }
+        let vm = new Vue({
+            el: '#app',
+            data: {
+               arr: [1,2,3,4,5]
+            },
+            components: {
+                child
+            }
+        })
+    </script>
+</body>
+
+</html>

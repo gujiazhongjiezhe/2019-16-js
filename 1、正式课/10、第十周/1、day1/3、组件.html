@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <com1></com1>
+    <div id="app">
+        <!-- <name-age></name-age> -->
+        <!-- <com1></com1>
+        <com1></com1> -->
+        <div></div>
+    </div>
+    <div id="app1">
+        <com1></com1>
+    </div>
+
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 组件化思想
+        // 单页面应用：框架一般使用与单页面应用，整个项目之后一个页面，其他页面都是通过切换路由的方式进行页面的切换
+        // 组件：把具有相同功能的代码封装成一个组件，以后要是想再次使用这个结构的时候，直接掉用这个组件就好了，实现了代码的复用率
+
+        // 组件： 1、全局组件   2、局部组件
+        // 在vue里，组件都是vue的实例
+
+        // 创建一个全局组件
+        // 在Vue的身上有一个属性component函数，函数执行的时候传两个参数，第一个是一个字符串的组件名，第二个参数是组件的信息对象
+
+        //注册一个组件，在页面中把组件名当做一个标签使用就可以(但是得放到app元素的里边)
+        // vue中的每一个组件都是vue的小实例,也有生命周期函数
+        // 全局组件可以在任何vue的实例中使用，而且每一个组件都是vue的实例，当调用这个组件的时候，就会生成组件的生命周期函数，组件每当使用一次就会生成一次生命周期函数
+
+        // 使用组件的注意事项
+        // 1、组件的名字首字母可以大写，而切使用的时候可以不区分大小写
+        // 2、名字不能使用驼峰命名法，如果名字有多个单词，那就拿-隔开
+        // 3、不能使用H5内置的标签名作为组件名
+        Vue.component('com1', {
+            data() {
+                return {
+                    msg:'板牙拖车'
+                }
+            },
+            created() {
+                console.log('created')
+            },
+            mounted(){
+
+            },
+            methods: {
+                fn(){
+                    console.log(55555)
+                }
+            },
+            template: '<div @click="fn">{{msg}}</div>'
+        });
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        })
+        let vm1 = new Vue({
+            el: '#app1',
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

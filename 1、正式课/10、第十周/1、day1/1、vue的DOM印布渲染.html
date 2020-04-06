@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="a in arr">{{a}}</li>
+        </ul>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                arr:[1,2,3]
+            },
+            created(){
+                // 此时还没有编译模板
+                // this.arr = [1,2,3,4]
+            },
+            beforeMount(){
+                this.arr = [1,2,3,4] // 当模板开始编译时，会生成原始的3个li，存在咱们的内存中，当data中的数据发生改变时，会立即把模板重新进行编译成4个li，这时候还没有把dom放到页面中，所以不会触发beforeupdate和updated
+            },
+            mounted(){
+                // 模板已经编译完成，真正的DOM已经渲染到页面上
+                // 当开始编译模板时，原有的数据只有三3个li，所以说渲染到页面中的DOM元素，当数据更新的时候，他是一个异步的过程，并不会等到更新完成之后代码才会往再走
+                // this.arr = [1,2,3,4];
+                // let oLis = document.getElementsByTagName('li');
+                // console.log(oLis)
+                // 我就想在这里获取到最新的DOM元素
+
+                // this.$nextTick需要传入一个回到函数，当真实的DOM更新之后才会执行回调函数
+                // this.$nextTick(()=>{
+                //     let oLis = document.getElementsByTagName('li');
+                //     console.log(oLis);
+                // })
+            },
+            beforeUpdate(){
+                // 这两个函数是在真正的DOM元素渲染到页面之后才会有可能执行
+                console.log('beforeUpdate')
+            },
+            updated(){
+                console.log('updated')
+            }
+        })
+    </script>
+</body>
+</html>
