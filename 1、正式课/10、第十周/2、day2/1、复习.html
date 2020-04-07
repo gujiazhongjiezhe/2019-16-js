@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <com></com> -->
+        <!-- <son></son> -->
+        <son :r='num'></son>
+    </div>
+    <!-- <template id="first">
+        <div>{{msg}}</div>
+    </template> -->
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // Vue的dom渲染是异步的  vm.$nextTick(()=>{
+        //这个函数会等到最新的DOM渲染完成之后才会执行
+        //    })
+        // 组件 ：全局组件   局部组件
+        // 
+        // 每一个组件都是vue的实例，都有自己的生命周期
+
+        // 不区分大小写
+        // 不能使用驼峰命名法，可以用-隔开
+        // 组件名不能喝H5内置的标签名一致
+        Vue.component('Com', {
+            data() {
+                // 这里必须是函数
+                return {
+                    msg: '板牙拖车'
+                }
+            },
+            props:['r'],
+            // 模板里只能有一个根元素
+            template: '<div>80/div>'
+        });
+
+        // 1、创建组件
+        // 2、注册组件
+        // 3、使用组件
+
+        let son = {
+            data() {
+                return {
+
+                }
+            },
+            methods:{
+                fn(){
+                    console.log(this)
+                }
+            },
+            props:['r'], // 通过props接收的属性最终放到当前组件的实例上
+            template: '<div @click="fn">{{r}}</div>'
+        }
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                num:'8888'
+            },
+            components: {
+                son
+            }
+        })
+    </script>
+</body>
+
+</html>

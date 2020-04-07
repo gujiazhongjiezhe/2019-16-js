@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{num}}: <button @click="fn">父按钮</button>
+        <son :s="num"></son>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 当父组件中的数据发生改变，那么当子组件中也用到这个数据了，那响应的数据也会随着发生改变，父组件的数据流向了子组件，子组件也会随着更新，这就是组件之间的数据传递(单向数据流)
+
+        // 父组件--》子组件 ，但是子组件变化，不能勾引起父组件的变化
+        let son = {
+            methods:{
+                add(){
+                   this.s-- 
+                }
+            },
+             beforeUpdate(){
+                console.log('child--> beforeUpdate')
+            },
+            updated(){
+                console.log('child--> updated')
+            },
+            props:['s'], // props接收的属性会放到当前组件的实例上
+            template:'<div>{{s}}<button @click="add">子组件按钮</button></div>'
+        }
+
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                num:100
+            },
+            methods:{
+                fn(){
+                    this.num++
+                }
+            },
+            beforeUpdate(){
+                console.log('father--> beforeUpdate')
+            },
+            updated(){
+                console.log('father--> updated')
+            },
+            components:{
+                son
+            }
+        })
+
+        // father--> beforeUpdate    child--> beforeUpdate  child--> updated  father--> updated
+    </script>
+</body>
+</html>

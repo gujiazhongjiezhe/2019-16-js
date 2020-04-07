@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <bro1></bro1>
+        <bro2></bro2>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 必须找一个中间人
+        // 兄弟之间的数据传递：eventBus
+        // $on: 订阅
+        // $emit: 发布：循环当前事件类型对应的事件池，让池子里的方法全部执行
+        // $off: 取消订阅
+        let eventBus = new Vue; // eventBus就是vue的实例
+        let bro1 = {
+            data(){
+                return {
+                    color:'红色'
+                }
+            },
+            created(){
+                eventBus.$on('chnageGreen',this.changeGreen);
+            },
+            methods:{
+                fn1(){
+                    eventBus.$emit('changeRed')
+                },
+                changeGreen(){
+                    this.color="绿色"
+                }
+            },
+            template:'<div>bro1： {{color}}<button @click="fn1">点击让bro2变红</button></div>'
+        }
+         let bro2 = {
+            data(){
+                return {
+                    color:'绿色'
+                }
+            },
+            created(){
+                // 可以拿到data中的属性和methods中的方法
+                // 不可以拿到真实的DOM元素
+                eventBus.$on('changeRed',this.chagneRed)
+                // 订阅一个changeRed事件池子
+            },
+            methods:{
+                chagneRed(){
+                    this.color = '红色'
+                },
+                fn2(){
+                    eventBus.$emit('chnageGreen')
+                }
+            },
+            template:'<div>bro2： {{color}}<button @click="fn2">点击让bro1变绿</button></div>'
+        }
+        let vm = new Vue({
+            el:'#app',
+            data:{
+
+            },
+
+            components:{
+                bro1,
+                bro2
+            }
+        })
+    </script>
+</body>
+</html>

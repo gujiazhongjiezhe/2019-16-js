@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+       父亲：{{monkey}}
+        <!-- 自定义事件 -->
+        <son :m="monkey" :ss="fn"  @change-monkey="fn">
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 数据之间的传递
+        // 父传子   子传父  兄弟之间的传递
+        // $emit $on $off
+        let son = {
+            methods: {
+                add() {
+                    // this.ss()
+                    // 子组件是不能直接修改父组件的内容的，
+                    // $emit:用来发布自定义事件
+                    // 自定义事件的名字不能使用驼峰命名法
+                    this.$emit('change-monkey');
+                }
+            },
+            props: ['m','ss'], // props接收的属性都会放到当前组件的实例上
+            template: '<div>儿子：{{m}}<button @click="add">点击儿子</button></div>'
+        };
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                monkey: 888
+            },
+            methods: {
+                fn() {
+                    this.monkey = 100000
+                }
+            },
+            components: {
+                son
+            }
+        })
+    </script>
+</body>
+
+</html>
