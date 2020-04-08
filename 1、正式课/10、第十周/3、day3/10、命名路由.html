@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 将to改为动态属性  :to="{name:组件中的name的民字}"-->
+        <router-link :to="{name:'first'}">按钮</router-link>
+        <router-view></router-view>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        let home = {
+            data(){
+                return {
+                    msg:'我变秃了，也变强了'
+                }
+            },
+            template:'<div>{{msg}}</div>'
+        }
+        let routes = [{path:'/home',component:home,name:'first'}];
+        let router = new VueRouter({
+            routes
+        });
+
+        let vm = new Vue({
+            el:'#app',
+            data:{
+
+            },
+            router
+        })
+    </script>
+</body>
+</html>

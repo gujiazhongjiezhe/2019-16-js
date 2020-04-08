@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{monkey}}
+        <!-- <son :m='monkey' :add="fn" @change-monkey="fn"></son> -->
+        <!-- <son :m='monkey' @update:m="monkey=$event"></son> -->
+        <son :m='monkey' :m.sync="monkey"></son>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 父传子 子传父  兄弟之间
+
+        let son = {
+            data(){
+                return {}
+            },
+            methods:{
+                ss(){
+                    // this.$emit('change-monkey')
+                    this.$emit('update:m',99999)
+                }
+            },
+            props:['m','add'],
+            template:'<div>儿子{{m}}<button @click="ss">点击</button></div>'
+        };
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                monkey:888
+            },
+            methods:{
+                // fn(){
+                //     this.monkey = 100000
+                // }
+            },
+            components:{
+                son
+            }
+        })
+    </script>
+</body>
+</html>

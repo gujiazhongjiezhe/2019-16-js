@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <first></first>
+        <second></second>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vuex/dist/vuex.js"></script>
+    <script>
+        // gettres:vuex中允许定义getters，就是store中的计算属性，也会有缓存，当依赖的值发生变化就会变化
+        let state = {
+            count: 0,
+            num: 1,
+            ss: 6
+        };
+        let getters = {
+            sex(state) {
+                return state.count % 2 === 0 ? '男' : '女'
+            }
+        }
+        let store = new Vuex.Store({ // 建立一个存储公共状态的仓库
+            state: state,
+            getters,
+            mutations: {
+                add(state, payload) {
+                    console.log(payload)
+                    // setTimeout(()=>{
+                        state.count += payload
+                    // },2000)
+                    
+                },
+                min(){
+
+                }
+            }
+        });
+        let first = {
+            data() {
+                return {
+
+                }
+            },
+            computed:{
+                // count(){ // 依赖的值发生变化，就会执行次函数
+                //     return this.$store.state.count
+                // }  
+            },
+            computed: {
+                rr() {
+                    return 3
+                },
+                ...Vuex.mapState(['count','num']),
+                ...Vuex.mapGetters(['sex'])
+            },
+            methods: {
+                // fn() {
+                //     // this.$store.state.count = 999
+                //     // this.$store.commit('add',999)
+                //     this.$store.commit({
+                //         type: 'add',
+                //         a: 1
+                //     })
+                // }
+                // add()==>this.$store.commit('add',1)
+                ...Vuex.mapMutations(['add','min'])
+                // ...Vuex.mapMutations({
+                //     ss:'add'
+                // })
+            },
+            // computed:Vuex.mapState(['count','num']),
+            template: '<div>一组件{{count}}{{num}}<button @click="add(1)">点击</button>{{sex}}</div>'
+        }
+
+        let second = {
+            data() {
+                return {
+
+                }
+            },
+            template: '<div>二组件{{$store.state.count}}</div>'
+        }
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                // msg:'hha'
+            },
+            components: {
+                first,
+                second
+            },
+            store: store
+        })
+        console.log(vm)
+
+        // var w = {name:3,age:5};
+        // var obj1 = {
+        //     ss:6,
+        //     ...w
+        // }
+
+    </script>
+</body>
+
+</html>

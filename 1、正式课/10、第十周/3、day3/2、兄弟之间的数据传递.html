@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <bro1></bro1>
+        <bro2></bro2>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // eventBus  他是组件之间沟通的纽带
+        // $on:订阅
+        // $emit:发布
+        let eventBus = new Vue;
+        let bro1 = {
+            data(){
+                return{
+                    msg:'开开说要我要变强'
+                }
+            },
+            created(){
+                // 当前data的属性和methods里的方法已经挂载到vue身上了
+                eventBus.$on('change',this.change);
+            },
+            methods:{
+                change(){
+                    this.msg = '开开你变秃了'
+                }
+            },
+            template:'<div>{{msg}}</div>'
+        }
+
+        let bro2 = {
+            data(){
+                return{
+                    
+                }
+            },
+            methods:{
+                fn(){
+                    eventBus.$emit('change')
+                }
+            },
+            template:'<div>我是bro2||<button @click="fn">点击改变bro1的内容</button></div>'
+        }
+        let vm = new Vue({
+            el:'#app',
+            data:{
+
+            },
+            components:{
+                bro1,
+                bro2
+            }
+        })
+    </script>
+</body>
+</html>

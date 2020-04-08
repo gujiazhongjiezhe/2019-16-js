@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <first></first>
+        <second></second>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vuex/dist/vuex.js"></script>
+    <script>
+        // 模块
+        let moudlesA = {
+            state:{
+               num:100 ,
+               sssss:99999
+            },
+            getters:{
+                w(){
+                    return 6
+                }
+            }
+        }
+        let moudlesB = {
+            state:{
+               num:200
+            }
+        }
+        let state = {
+            count: 0,
+            num: 1,
+            ss: 6
+        };
+        // let state = {
+        //     count: 0,
+        //     num: 1,
+        //     ss: 6,
+        //     first:{
+        //         num:100,
+        //         sssss:99999
+        //     }
+        // };
+
+        let getters = {
+            sex(state) {
+                return state.count % 2 === 0 ? '男' : '女'
+            },
+
+        }
+        let store = new Vuex.Store({ // 建立一个存储公共状态的仓库
+            state: state,
+            getters,
+            mutations: {
+                add(state, payload) {
+                    state.count += payload;
+                },
+                min() {
+
+                }
+            },
+            actions: {
+                addNum({ commit }, a) {
+                    setTimeout(() => {
+                        commit('add', a)
+                    }, 2000)
+
+                    // this.$store.commit('add',1)
+                }
+            },
+            modules:{
+                // 这个modules会把各自模块的state，actions，getters、mutations最终会放到store
+                first:moudlesA,
+                second:moudlesB
+            }
+        });
+        let first = {
+            data() {
+                return {
+
+                }
+            },
+
+            computed: {
+                rr() {
+                    return 3
+                },
+                ...Vuex.mapState(['count', 'num','first']),
+                ...Vuex.mapGetters(['sex','w'])
+            },
+            created(){
+                console.log(this.w)
+            },
+            methods: {
+
+                // ...Vuex.mapMutations(['add', 'min'])
+                ...Vuex.mapActions({
+                    ww: 'addNum'
+                })
+
+            },
+
+            template: '<div>一组件{{count}}{{num}}<button @click="ww(1)">点击</button>{{sex}}{{first.sssss}}</div>'
+        }
+
+        let second = {
+            data() {
+                return {
+
+                }
+            },
+            template: '<div>二组件{{$store.state.count}}</div>'
+        }
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                // msg:'hha'
+            },
+            components: {
+                first,
+                second
+            },
+            store: store
+        })
+        console.log(vm)
+
+
+    </script>
+</body>
+
+</html>

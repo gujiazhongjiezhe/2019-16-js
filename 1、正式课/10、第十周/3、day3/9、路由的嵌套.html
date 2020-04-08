@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/home" tag="button">首页</router-link>
+        <router-link to="/person" tag="button">个人中心</router-link>
+        <router-view></router-view>
+
+    </div>
+    <template id="person">
+        <div>
+            个人中心
+            <router-link to="/person/login">登录</router-link>
+            <router-link to="/person/detail">详情</router-link>
+            <router-view></router-view>
+        </div>
+
+
+    </template>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        let home = {
+            data() {
+                return {
+                    msg: '我是首页'
+                }
+            },
+            template: '<div>{{msg}}</div>'
+        }
+        let person = {
+            data() {
+                return {
+                    msg: '我是个人中心页'
+                }
+            },
+            template: '#person'
+        };
+        let login = {
+            template: '<div>我是登录页</div>'
+        };
+        let detail = {
+            template: '<div>我是详情页</div>'
+        }
+
+        // detail和login是person的子路由组件
+        // 在组件路由配置的时候，如果有children属性，属性值是一个数组，里面配置了子路由，路由中的子路由路径不需要加父路由路径，同事也不需要加 '/',因为子路由会自动加上父路由的路径和 '/'
+        // 
+
+        let routes = [
+            {path: '/home', component: home }, 
+            {path: '/person', component: person, children: [
+                {path:'login',component:login},
+                {path:'detail',component:detail}
+            ]}
+        ];
+        let router = new VueRouter({
+            routes
+        })
+        let vm = new Vue({
+            el: "#app",
+            data: {
+
+            },
+            router
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/book/1">第一个</router-link>
+        <router-link to="/book/2">第二个</router-link>
+        <router-link to="/book/3">第三个</router-link>
+        <router-view></router-view>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        let book1 = {
+            created(){
+                console.log(this.$route)
+            },
+            data() {
+                return {
+                    msg: '我是第一本书'
+                }
+            },
+            // watch:{
+            //     "$route"(to,from){ // 新的  老的
+            //         console.log(to) // 要到达的组件的$route
+            //         console.log(from) // 上一个组件的$route
+            //     }
+
+            // 路由守卫
+            // 在路由更新之前会默认调用改钩子函数
+            beforeRouteUpdate(to,from,next){
+                // next : 如果让next执行，会立即进行跳转
+                console.log(to) // 即将进入目标路由的对象信息
+                console.log(from) // 即将离开路由的对象信息
+                if(from.params.id == 1){
+                     next()
+                }
+            },
+            
+            template: '<div>我是第{{$route.params.id}}本书</div>'
+        }
+        // let book2 = {
+        //     data() {
+        //         return {
+        //             msg: '我是第二本书'
+        //         }
+        //     },
+        //     template: '<div>{{msg}}</div>'
+        // }
+        // let book3 = {
+        //     data() {
+        //         return {
+        //             msg: '我是第三本书'
+        //         }
+        //     },
+        //     template: '<div>{{msg}}</div>'
+        // }
+        let routes = [{ path: '/book/:id', component: book1}];
+        let router = new VueRouter({
+            routes
+        });
+        // 动态路由：路由传参，路径后面是 :变量；这就是动态路由，也可以叫做路由动态传参  他会把变量放到$route的params里
+
+        // 1、代码量少了
+        // 2、由于动态路由渲染的同一个book1组件，所以说这个组件不会销毁再次重新创建，性能高，但是他的生命周期函数只会执行一次
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            router
+        })
+    </script>
+</body>
+
+</html>

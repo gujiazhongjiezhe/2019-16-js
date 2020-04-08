@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+   
+        <router-link to="/allhome" tag="button">按钮1</router-link>
+        <router-link to="/allperson" tag="button">按钮2</router-link>
+        <router-link to="/alllist" tag="button">按钮3</router-link>
+        <router-view></router-view>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        // 每一个被路由渲染出来的组件都有一个$router属性，这个属性上有好多操作路由的方法
+        // 当组件切换的时候，原来的组件会被销毁
+        // 1、push：直接跳转到当前路径对应的路由上  push(路径)
+        // 2、go(number):可以前进。可以后退
+        // 3、back:回退到上一次的路由上
+        let home = {
+            data() {
+                return {
+                    msg: '我是首页'
+                }
+            },
+            created(){
+                console.log('created')
+            },
+            beforeDestroy(){
+                console.log('beforeDestroy')
+            },
+            methods:{
+                goList(){
+                // console.log(this) 
+                // 直接跳转到当前路径对应的路由上
+                this.$router.push('/alllist');
+
+                // 当路由切换的时候，当前组件是否销毁
+                }
+            },
+            template: '<div>{{msg}} <button @click="goList">去列表页</button></div>'
+        }
+        let person = {
+            data() {
+                return {
+                    msg: '我是个人中心'
+                }
+            },
+            methods:{
+                fn(){
+                    // console.log(1)
+                    // this.$router.forward()
+                }
+            },
+            template: '<div>{{msg}}<button @click="fn">按钮</button></div>'
+        }
+        let list = {
+            data() {
+                return {
+                    msg: '我是列表页'
+                }
+            },
+            methods:{
+                back(){
+                    // this.$router.back()
+                    this.$router.go(-1)
+                }
+            },
+            template: '<div>{{msg}}<button @click="back">返回上一级</button></div>'
+        }
+        let routes = [{ path: '/allhome', component: home }, { path: '/allperson', component: person }, { path: '/alllist', component: list }];
+        // 3、注册路由映射表
+        let router = new VueRouter({
+            routes: routes
+        });
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            // 4、把理由挂载到跟实例上
+            router: router
+            //    store:store
+        })
+        console.log(vm)
+    </script>
+</body>
+
+</html>
