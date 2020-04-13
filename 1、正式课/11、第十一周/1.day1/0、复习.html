@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <child></child>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+
+        // 组件 数据传递  vuex  vueRouter 路由守卫  插槽 动画  vuex的源码
+        // VueRouter的源码
+        // webpack 简单  大量的插件
+
+        // 1、Vue.use() // 但使用第三方组件的时候，需要使用Vue.us方法，这个方法会默认调用里面的install
+        // Vue.use({
+        //     install:function(_Vue){
+        //         console.dir(_Vue)
+        //     }
+        // })
+        // 2、mixin：混入,可以把里边写的东西混入到所有的vue实例里
+        let child = {
+        data(){
+            return {
+                aa:999
+            }
+        },
+            template:'<div>11111</div>'
+        }
+
+        Vue.mixin({
+            created(){
+                // console.log(this,33)
+            }
+        })
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                ss:100
+            },
+            methods:{
+
+            },
+            components:{
+                child
+            }
+        })
+        console.log(vm)
+        // 
+        // 把生成的$store注入到每一个vue的实例身上
+        // vuex: state getters  mutations  actions
+    </script>
+
+</body>
+</html>
