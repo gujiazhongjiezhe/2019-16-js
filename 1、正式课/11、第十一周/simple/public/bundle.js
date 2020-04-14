@@ -1,3 +1,4 @@
+/*! 你不能抄袭我的 */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -86,6 +87,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./app/1.png":
+/*!*******************!*\
+  !*** ./app/1.png ***!
+  \*******************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (__webpack_require__.p + \"76465136beba9b6c24a8393335ed0ad1.png\");//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hcHAvMS5wbmc/NDM0MiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtBQUFlLG9GQUF1Qix5Q0FBeUMiLCJmaWxlIjoiLi9hcHAvMS5wbmcuanMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgZGVmYXVsdCBfX3dlYnBhY2tfcHVibGljX3BhdGhfXyArIFwiNzY0NjUxMzZiZWJhOWI2YzI0YTgzOTMzMzVlZDBhZDEucG5nXCI7Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./app/1.png\n");
+
+/***/ }),
+
 /***/ "./app/index.css":
 /*!***********************!*\
   !*** ./app/index.css ***!
@@ -105,7 +118,7 @@ eval("var api = __webpack_require__(/*! ../node_modules/style-loader/dist/runtim
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n__webpack_require__(/*! ./index.css */ \"./app/index.css\");\n\n// 这样写只会让index.css执行一遍\n// import './index.less';\nvar a = 100; // const greeter = require('./greeter.js');\n// // import './a.js';\n// document.querySelector(\"#root\").appendChild(greeter());\n\nvar fn = function fn() {\n    console.log(a);\n};\nfn();//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hcHAvbWFpbi5qcz9mMTYxIl0sIm5hbWVzIjpbImEiLCJmbiIsImNvbnNvbGUiLCJsb2ciXSwibWFwcGluZ3MiOiI7O0FBSUE7O0FBQXFCO0FBQ3JCO0FBQ0EsSUFBSUEsSUFBSSxHQUFSLEMsQ0FOQTtBQUNBO0FBQ0E7O0FBS0EsSUFBSUMsS0FBSyxTQUFMQSxFQUFLLEdBQUk7QUFDVEMsWUFBUUMsR0FBUixDQUFZSCxDQUFaO0FBQ0gsQ0FGRDtBQUdBQyIsImZpbGUiOiIuL2FwcC9tYWluLmpzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiLy8gY29uc3QgZ3JlZXRlciA9IHJlcXVpcmUoJy4vZ3JlZXRlci5qcycpO1xyXG4vLyAvLyBpbXBvcnQgJy4vYS5qcyc7XHJcbi8vIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIjcm9vdFwiKS5hcHBlbmRDaGlsZChncmVldGVyKCkpO1xyXG5cclxuaW1wb3J0ICcuL2luZGV4LmNzcycgLy8g6L+Z5qC35YaZ5Y+q5Lya6K6paW5kZXguY3Nz5omn6KGM5LiA6YGNXHJcbi8vIGltcG9ydCAnLi9pbmRleC5sZXNzJztcclxubGV0IGEgPSAxMDA7XHJcbmxldCBmbiA9ICgpPT57XHJcbiAgICBjb25zb2xlLmxvZyhhKVxyXG59XHJcbmZuKCkiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./app/main.js\n");
+eval("\n\n__webpack_require__(/*! ./index.css */ \"./app/index.css\");\n\nvar _ = __webpack_require__(/*! ./1.png */ \"./app/1.png\");\n\nvar _2 = _interopRequireDefault(_);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// 这样写只会让index.css执行一遍\n// import './index.less';\nvar a = 100; // const greeter = require('./greeter.js');\n// // import './a.js';\n// document.querySelector(\"#root\").appendChild(greeter());\n\nvar fn = function fn() {\n    console.log(a);\n};\nfn();\n\nconsole.log(_2.default);//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hcHAvbWFpbi5qcz9mMTYxIl0sIm5hbWVzIjpbImEiLCJmbiIsImNvbnNvbGUiLCJsb2ciLCJpbWciXSwibWFwcGluZ3MiOiI7O0FBSUE7O0FBT0E7Ozs7OztBQVBxQjtBQUNyQjtBQUNBLElBQUlBLElBQUksR0FBUixDLENBTkE7QUFDQTtBQUNBOztBQUtBLElBQUlDLEtBQUssU0FBTEEsRUFBSyxHQUFJO0FBQ1RDLFlBQVFDLEdBQVIsQ0FBWUgsQ0FBWjtBQUNILENBRkQ7QUFHQUM7O0FBRUFDLFFBQVFDLEdBQVIsQ0FBWUMsVUFBWiIsImZpbGUiOiIuL2FwcC9tYWluLmpzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiLy8gY29uc3QgZ3JlZXRlciA9IHJlcXVpcmUoJy4vZ3JlZXRlci5qcycpO1xyXG4vLyAvLyBpbXBvcnQgJy4vYS5qcyc7XHJcbi8vIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIjcm9vdFwiKS5hcHBlbmRDaGlsZChncmVldGVyKCkpO1xyXG5cclxuaW1wb3J0ICcuL2luZGV4LmNzcycgLy8g6L+Z5qC35YaZ5Y+q5Lya6K6paW5kZXguY3Nz5omn6KGM5LiA6YGNXHJcbi8vIGltcG9ydCAnLi9pbmRleC5sZXNzJztcclxubGV0IGEgPSAxMDA7XHJcbmxldCBmbiA9ICgpPT57XHJcbiAgICBjb25zb2xlLmxvZyhhKVxyXG59XHJcbmZuKClcclxuaW1wb3J0IGltZyBmcm9tICcuLzEucG5nJztcclxuY29uc29sZS5sb2coaW1nKSJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./app/main.js\n");
 
 /***/ }),
 
