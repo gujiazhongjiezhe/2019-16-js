@@ -14,6 +14,7 @@
 <script>
     // @==>/src
     import {login} from '@/api/login.js';
+
     export default {
         name:'login',
         data(){
@@ -44,11 +45,12 @@
                        })
                    }
                    if(data.code == 0){
+                       localStorage.setItem('power',data.power);
                         this.$alert('恭喜您，登录成功','提示',{
                            confirmButtonText:'好的',
                            callback:action=>{
                                console.log(action)
-                               this.$router.push('/home')
+                               this.$router.push('/')
                            }
                        })
                    }
